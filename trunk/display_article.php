@@ -4,6 +4,9 @@
 #		File loaded when displaying a single article
 #
 include(KNIFE_PATH.'/plugins/kses.php');
+include(KNIFE_PATH.'/inc/class.parse.php');
+
+$Parser = new Parser;
 		$k = $_GET[k];
 #		if (!$k) { $k = $pathinfo_array[1]; }
 		if (!$k) { $k = $KAclass->urldeconstructor($pathinfo_array, "title"); }
@@ -12,6 +15,7 @@ include(KNIFE_PATH.'/plugins/kses.php');
 			foreach ($allarticles as $timestamp => $article) {
 				if (urlTitle($article[title]) == $k) {
 					$k = $timestamp;
+					print_r($next);
 					break 1;
 					}
 				}
@@ -73,27 +77,7 @@ include(KNIFE_PATH.'/plugins/kses.php');
 		reset($articlescomments);
 		$i = 1;
 		foreach ($articlescomments as $commentid => $comment) {
-			$output = $template[comment];
-			$output = str_replace("{number}", $i, $output);
-			
-			if ($comment[parentcid]) {
-				$quotecomment = $articlescomments[$comment[parentcid]];
-				$quoteout = $template[quote];
-				$quoteout = str_replace("{name}", $quotecomment[name], $quoteout);
-				$quoteout = str_replace("{quote}", Markdown(kses_filter($quotecomment[content])), $quoteout);
-				
-				$output = str_replace("{parentquote}", $quoteout, $output);
-				}
-			else { $output = str_replace("{parentquote}", "", $output); }
-			
-			$output = str_replace("{comment}", Markdown(kses_filter($comment[content])), $output);
-			$output = str_replace("{ip}", $comment[ip], $output);
-			$output = str_replace("{author}", $comment[name], $output);
-			$output = str_replace("{date}", date("d/m/y H:i", $commentid), $output);
-			$output = str_replace("{url}", $comment[url], $output);
-			$output = str_replace("{email}", $comment[mail], $output);
-			$output = str_replace("{reply}", '<a href="'.$_SERVER[PHP_SELF].'?replyto='.$commentid.'">reply</a>', $output);
-			echo $output;
+			echo $Parser->Comment($template, $commentid, $comment);
 			$i++;
 		}
 	}
@@ -103,7 +87,7 @@ include(KNIFE_PATH.'/plugins/kses.php');
 		#	If receiving a comment
 		#
 		
-		if ($_POST[comment] && $valid) {
+	if ($_POST[comment] && $valid) {
 				
 		if (!$_POST[comment][name] or $_POST[comment][name] == "") {
 			$errors .= "<li><p>" . i18n("visible_comment_error_name") . "</p></li>";
@@ -118,57 +102,69 @@ include(KNIFE_PATH.'/plugins/kses.php');
 			$errors .= "<li><p>" . i18n("visible_comment_error_content") . "</p></li>";
 			}
 
-	if (!$errors) {
-	$_POST[comment][name] = trim($_POST[comment][name]);		# clean the submitted name for db lkp
-	$match = $Userclass->indatabase($allusers);
+		if (!$errors && !$_POST[comment][preview]) {
+			$_POST[comment][name] = trim($_POST[comment][name]);		# clean the submitted name for db lkp
+			$match = $Userclass->indatabase($allusers);
 		
-		if ($match[match]) {
+			if ($match[match]) {
 				$userverifymessage = "<li><p>" . i18n("visible_comment_error_registered") . "</p>
 				<form method=\"post\" action=\"\"><p><input type=\"text\" name=\"comment[password]\" /></p>
 				<p><!--hidden-->
+					<input type=\"hidden\" value=\"". $_POST[comment][parentcid]. "\" name=\"comment[parentcid]\" />
 					<input type=\"hidden\" value=\"". $_POST[comment][name]. "\" name=\"comment[name]\" />
 					<input type=\"hidden\" value=\"". $_POST[comment][email]. "\" name=\"comment[email]\" />
 					<input type=\"hidden\" value=\"". $_POST[comment][url]. "\" name=\"comment[url]\" />
 					<input type=\"hidden\" value=\"". $_POST[comment][content]. "\" name=\"comment[content]\" />
 				<!--endhidden--></p>
 				<p><input type=\"submit\" value=\"" . i18n("generic_add") . "\" /></p></form></li>";
-			if ($_POST[comment][password]) {
-				if ($match[type] = "nick") {
-					$_POST[comment][name] = $match[user];
+				if ($_POST[comment][password]) {
+					if ($match[type] = "nick") {
+						$_POST[comment][name] = $match[user];
+						}
+					$null = $Userclass->verify();
+					if ($Userclass->username) {
+						$_POST[comment][name] = $match[name];
+						# No error, we're good to go
+						}
+					else {
+						$errors .= $userverifymessage;
+						}
 					}
-				$null = $Userclass->verify();
-				if ($Userclass->username) {
-					$_POST[comment][name] = $match[name];
-					# No error, we're good to go
-					}
+			
 				else {
 					$errors .= $userverifymessage;
 					}
 				}
-			
-			else {
-				$errors .= $userverifymessage;
-				}
 			}
-		}
 		
-		# Save the comment if no errors occurred.
-		if (!$errors) {
+		# Save the comment if no errors occurred and we didnt request a preview
+		if (!$errors and !$_POST[comment][preview]) {
 			$commentsclass->add($date);
 			#FIXME: Redirect javascript doesn't work on all servers
 			echo "<script type=\"text/javascript\">self.location.href='http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}';</script>";
 			}
 		
-		# Or show the errors
-		else {
+		# Show the errors if any
+		if ($errors) {
 			echo "<div id=\"Commentposterrors\"><h1>". i18n("generic_error") ."</h1><p>". i18n("visible_comment_error_info"). "</p><ol>$errors</ol></div>";
 			}
+			
+		if ($_POST[comment][preview] && !$errors) {
+			#
+			# FIXME: ADD COMMENT PREVIEW ROUTINE HERE
+			$output = '<div id="Commentpostpreview">';
+			$output .= Markdown($_POST[comment][content]);
+			$output .= '</div>';
+			echo $Parser->Comment($template, time(), $_POST[comment]);
 		}
+	}
 
 		#	Show the comment form
 		#		
 		$output = '<form method="post" action="" id="'.SCRIPT_TITLE.'_addcommentform">';
 		$output .= $template[commentform];
+		$output = preg_replace("/\[save\=\"(.*)\"\]/ui", "<input name=\"comment[save]\" type=\"submit\" value=\"\\1\" />", $output);
+		$output = preg_replace("/\[preview\=\"(.*)\"\]/ui", "<input name=\"comment[preview]\" type=\"submit\" value=\"\\1\" />", $output);
 		$output = str_replace("{allowedtags}", kses_filter("gettags"), $output);
 		$output .= '</form>';
 		echo $output;

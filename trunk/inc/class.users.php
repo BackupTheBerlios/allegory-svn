@@ -95,26 +95,31 @@ function getnicks($allusers="FALSE") {
 	return $usernicks;
 	}
 	
-function indatabase($allusers="FALSE") {
+function indatabase($allusers="FALSE", $user=false) {
 	if (!$allusers) {
 		$allusers = KUsers::getusers();
 		}
-		
-	if (array_key_exists(urlTitle($_POST[comment][name]), $allusers)) {
+	
+	if ($user) { $checkuser = $user; }
+	else { $checkuser = $_POST[comment][name]; }
+	
+	if (array_key_exists(urlTitle($checkuser), $allusers)) {
 		$match = array(
 			"match" => true,
 			"type" => "name",
-			"name" => $_POST[comment][name],
+			"name" => $checkuser,
+			"avatar" => $allusers[$checkuser][avatar],
 			);
 		}
 	else {
 		$usernicks = KUsers::getnicks($allusers);
-		if (array_key_exists($_POST[comment][name], $usernicks)) {
+		if (array_key_exists($checkuser, $usernicks)) {
 			$match = array(
 				"match" => true,
 				"type" => "nick",
-				"name" => $_POST[comment][name],
-				"user" => $usernicks[$_POST[comment][name]],
+				"name" => $checkuser,
+				"user" => $usernicks[$checkuser],
+				"avatar" => $allusers[$usernicks[$checkuser]][avatar],
 				);
 			}
 		}

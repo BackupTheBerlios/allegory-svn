@@ -42,20 +42,20 @@ Latest comment by: {latestcomment}<br />
 </div>',
         'comment' => '<div class="comment">
 <div class="commentheader">
-<a href="{url}">{author}</a> <small>({date} - <a href="mailto:{email}">@</a> {reply})</small>
+{avatar} <a href="{url}">{author}</a> <small>({date} - <a href="mailto:{email}">@</a> {reply})</small>
 </div>
 {parentquote}
 {comment}
 </div>',
         'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
         'commentform' => '<fieldset><legend>Add comment?</legend>
-<input type="text" name="comment[parent]" /> Parent<br />
+<input type="text" name="comment[parentcid]" /> Parent<br />
 <input type="text" name="comment[name]" /> Name<br />
 <input type="text" name="comment[email]" /> Email<br />
 <input type="text" name="comment[url]" /> URL<br /><br />
 Comment <small>(allowed html: {allowedtags})</small><br />
 <textarea name="comment[content]" rows="7" cols="50"></textarea>
-<p><input type="submit" name="comment[submit]" value="Add" /></p>
+<p>[preview="Forhåndsvis"] [save="Send"]</p>
 </fieldset>',
       ),
       2 => 
@@ -92,6 +92,7 @@ Seks
 Sju
 Åtte',
         'level' => '4',
+        'avatar' => 'http://localhost/knife/source/trunk/graphics/talk.png',
       ),
       'commenter' => 
       array (

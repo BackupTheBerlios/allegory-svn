@@ -21,4 +21,17 @@ $config_urlstyle = array(
 	1 => "category",
 	2 => "title",
 	);
+	
+	
+$config_avatardimensions = array(
+	"comments" => array(
+		"width" => 20,
+		"height" => 20,
+		),
+		
+	"articles" => array(
+		"width" => 30,
+		"height" => 30,
+		),
+	);
 ?>

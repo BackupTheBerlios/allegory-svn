@@ -1,3 +1,6 @@
+General:
+========
+
 Default release should contain:
 
 	Default category (id = 0)	- undeletable ("general"?)
@@ -5,57 +8,44 @@ Default release should contain:
 	
 	
 New name: "Allegori"
-
-
-Features
-
-	Config:
-		Txp:
-			Comments disabled after set time
-			Preview
-				Box where you can define some css rules?
-				
-			
-	{latestcommentby}
-			
-	Photoblogging capability
-			(exif support)
-			
-	display_articles needs a wrapper that can destroy variables and do basic config
-	helper tools ala plog
-	restrict users to certain categories
-	gravatars
-	favatars
-	comment-user avatars
-			
-			
-			
-			
 			
 
+Feature wishlist:
+=================
+
+	- Comments can be disabled after set time
+	- Comment and article preview
+		* Preview can be forced
+	- Photoblogging capability w/exif support
+	- Display_articles needs a wrapper that can destroy variables and do basic config
+	- Utility page
+		* Import AJ-Fork to Allegory
+		* Import Cutenews to Allegory
+		* Import Wordpress to Allegory
+		* Reset everything to defaults
+		
+	- Restrict users to certain categories
+	- Gravatars
+	- Favatars
+	- Users should have avatars usable in comments	
+		* Restrict size of images
+		* Upload avatars
 
 
 
 
 
 
-tables:
+Data structure:
+===============
 
-1 article table
-1 comment table
-
-	? 1 templates table
-	? 1 users table
-	- OR we could just use flat files here since they should be fast enough for anyone
-
-
-
-
-
-
-
-
-
+	Articles => 1 Table or File	(inc/articles.php)
+	Comments => 1 Table or File	(inc/comments.php)
+	Settings => 1 File			(inc/settings.php)
+		- Users
+		- Templates
+		- Categories
+		- Configuration
 
 
 

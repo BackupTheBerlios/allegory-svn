@@ -266,4 +266,13 @@ function array_slice_key($array, $offset, $len=-1){
  
    return $return;
 }
+
+function randomquote() {
+	$quotes = file(KNIFE_PATH.'/inc/quotes.txt');
+	$max = count($quotes);
+	$max--;
+	$n = rand(0, $max);
+	$quote = $quotes[$n];
+	return $quote;
+	}
 ?>

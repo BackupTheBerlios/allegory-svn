@@ -14,7 +14,7 @@ function html2specialchars($str){
 #	Fetch and set up needed data
 
 	$settingclass = new SettingsStorage('settings');
-	$templates = $settingclass->settings['templates'];
+	$templates = $Settings->te;
 
 if($_POST[template] && !$_POST["switch"]) {
 	$id = sanitize_variables(stripslashes($_POST[template][id]));

@@ -10,7 +10,10 @@
     	
 	include_once(KNIFE_PATH.'/inc/functions.php');			# load common functions
 	include_once(KNIFE_PATH.'/config.php');					# load temporary config
-	include_once(KNIFE_PATH.'/inc/class.users.php');				# load userclass - can't live without
+	include_once(KNIFE_PATH.'/inc/class.users.php');
+	include_once(KNIFE_PATH.'/inc/class.settings.php');
+	include_once(KNIFE_PATH.'/inc/class.comments.php');
+	include_once(KNIFE_PATH.'/inc/class.articles.php');
 
 
 
@@ -74,6 +77,14 @@ if (!$User->username) {
 #	Oh, great. Somehow we're logged in.
 if ($User->username) {
 
+	$Comments	= new KComments;
+	$Articles 	= new KArticles;
+	$Settings 	= new KSettings;
+	
+	$Settings->getCats();			#
+	$Settings->getTemplates();		#	Initialize settings
+	$Settings->getConfig();			#
+	
 #
 #	Set up the first menu
 	$menus[0] = "
@@ -477,7 +488,7 @@ th {
 	
 	<div id="footer">
 		<?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?> &quot;cutting edge personal publishing&quot; - Licensed under the <strong>GPL</strong>
-		<?php 
+		<?php /*
 			if (!$_GET[debug]) { 
 				$_GET[debug] = 1;
 				} 
@@ -490,7 +501,7 @@ th {
 				print_r($_COOKIE);
 				print_r($User->collectlogin());
 				echo "</pre></fieldset>";
-				}
+				}*/
 				?>
 	</div>
 

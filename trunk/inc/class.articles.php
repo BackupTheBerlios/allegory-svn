@@ -49,6 +49,7 @@ class KArticles {
 			"content" 	=> stripslashes($_POST[article][content]),
 			"title" 	=> stripslashes($_POST[article][title]),
 			"author" 	=> stripslashes($author),
+			"lastedit"	=> "",
 			"category" 	=> stripslashes($savecats),
 			"views"		=> "0",
 			);
@@ -58,7 +59,7 @@ class KArticles {
 			
 		if (defined("KNIFESQL")) {
 			$dataclass = KArticles::connect();			
-			$write_sql = "INSERT INTO articles VALUES ('$data[timestamp]', '$data[category]', '$data[author]', '$data[title]', '$data[content]', '$data[views]')";
+			$write_sql = "INSERT INTO articles VALUES ('$data[timestamp]', '$data[category]', '$data[author]', '0', '$data[title]', '$data[content]', '$data[views]')";
 			$result = mysql_query($write_sql) or die('Query failed: ' . mysql_error());
 			$statusmessage = i18n("generic_article"). " &quot;$data[title]&quot; ". i18n("write_published");
 			return $statusmessage;
@@ -75,8 +76,40 @@ class KArticles {
 			}
 		}
 	
-	function edit($timestamp) {
-	
+	function edit($timestamp, $user) {
+		# Remove unwanted stuff!
+		$_POST[article][content] = sanitize_variables($_POST[article][content]);
+		$_POST[article][title] = sanitize_variables($_POST[article][title]);
+		$_POST[article][category] = sanitize_variables($_POST[article][category]);
+		$_POST[article][views] = sanitize_variables($_POST[article][views]);
+		$savecats = implode(", ", $_POST[article][category]);
+
+		# Put the posted and santitized stuff into an array for saving
+		$data = array(
+			"content" 	=> stripslashes($_POST[article][content]),
+			"title" 	=> stripslashes($_POST[article][title]),
+			"author" 	=> "",
+			"lastedit"	=> stripslashes($user),
+			"category" 	=> stripslashes($savecats),
+			"views"		=> stripslashes($_POST[article][views]),
+			);
+			
+		if (defined("KNIFESQL")) {
+			# needs author
+			$sql = "UPDATE articles SET category='$data[category]' author='$data[author]' lastedit='$data[lastedit]' title='$data[title]' content='$data[content]' views='$data[views]' WHERE articleid = '$timestamp'";
+			}
+		else {
+			$dataclass = KArticles::connect();
+			if ($dataclass->settings['articles'][$timestamp]) {
+				$data[author] = $dataclass->settings['articles'][$timestamp][author];
+				$dataclass->settings['articles'][$timestamp] = $data;
+				$dataclass->save();
+				return "Article successfully edited!<br /><a href=\"javascript:history.go(-1);\">Go back</a>";
+				}
+			else {
+				return "Invalid article.";
+				}
+			}
 		}
 	#
 	#	Delete article(s)

@@ -13,8 +13,8 @@ $menus["sub_options"] = '
 ';
 
 	$settingclass = new SettingsStorage('settings');
-	$currentcats = $settingclass->settings['categories'];
-	$alltemplates = $settingclass->settings['templates'];
+	$currentcats = $Settings->ca;
+	$alltemplates = $Settings->te;
 
 #
 # Knife setup

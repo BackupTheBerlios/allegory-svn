@@ -22,6 +22,54 @@ class KUsers {
 #	delete()
 #	edit()
 
+function add() {
+	$now = time();
+	$db = KUsers::connect();
+	$currentusers = KUsers::getusers();
+
+	# Remove unwanted stuff!
+	$_POST[adduser][name] 		= sanitize_variables($_POST[adduser][name]);
+	$_POST[adduser][password] 	= sanitize_variables($_POST[adduser][password]);	
+	$_POST[adduser][password] 	= md5($_POST[adduser][password]);
+	$_POST[adduser][password] 	= sha1($_POST[adduser][password].UNIQUE);
+	$_POST[adduser][email] 		= sanitize_variables($_POST[adduser][email]);
+	$_POST[adduser][url] 		= sanitize_variables($_POST[adduser][url]);
+	$_POST[adduser][profile] 	= sanitize_variables($_POST[adduser][profile]);
+	$adduserkey 				= urlTitle($_POST[adduser][name]);
+	
+	if (array_key_exists($adduserkey, $currentusers)) { 
+		$statusmessage = "User &quot;$adduserkey&quot; already exists in the database!<br /><a href=\"javascript:history.go(-1);\">How about choosing another name?</a>";
+		}
+		
+	# if the name is available
+	else {
+		$data = array(
+		"registered"=> stripslashes($now),
+		"lastlogin" => "",
+		"nickname"	=> stripslashes($_POST[adduser][nickname]),
+		"password" 	=> stripslashes($_POST[adduser][password]),
+		"email" 	=> stripslashes($_POST[adduser][email]),
+		"url" 		=> stripslashes($_POST[adduser][url]),
+		"profile" 	=> stripslashes($_POST[adduser][profile]),
+		"level"		=> stripslashes($_POST[adduser][level]),
+		);
+	
+	$db->settings['users'][$adduserkey] = $data;
+	$db->save();
+	
+	# Give the user a status message
+	$statusmessage = "User &quot;$adduserkey&quot; successfully added";
+	}	
+	return $statusmessage;
+}
+
+function drop() {
+	$userkey = $_GET[edit];
+	$db = KUsers::connect();
+	$db->delete("users", $userkey);
+	return "User &quot;$userkey&quot; dropped";
+}
+
 function connect() {
 	$settingclass = new SettingsStorage('settings');
 	return $settingclass;
@@ -145,8 +193,8 @@ function verify() {
 				$this->type = $userdata[logintype];
 				
 				if ($userdata[logintype] == "standard") {
-					setcookie("kusername", $thisuser, time()+3600);
-					setcookie("kmd5password", $e_md5, time()+3600);	
+					setcookie("kusername", $thisuser, time()+7200);
+					setcookie("kmd5password", $e_md5, time()+7200);	
 					setcookie("klanguage", $userdata[language]);
 					}
 				}
@@ -155,8 +203,8 @@ function verify() {
 	}
 
 function logout() {
-	setcookie("kusername", "", time() - 3600);
-	setcookie("kmd5password", "", time() - 3600);
+	setcookie("kusername", "", time() - 7200);
+	setcookie("kmd5password", "", time() - 7200);
 	}
 }
 ?>

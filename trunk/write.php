@@ -8,9 +8,7 @@ if ($User->level < 2) {
 	#
 	$moduletitle 		= i18n("write_mainmodtitle");
 	$settingsclass 		= new SettingsStorage('settings');
-	$currentcats 		= $settingsclass->settings['categories'];
-
-	include(KNIFE_PATH.'/inc/class.articles.php');
+	$currentcats 		= $Settings->ca;
 	
 
 #
@@ -18,8 +16,7 @@ if ($User->level < 2) {
 #
 
 if($_POST[article] && !$_POST[preview]) {
-	$KAclass = new KArticles;
-	$statusmessage = $KAclass->add($User->username);
+	$statusmessage = $Articles->add($User->username);
 }
 
 

@@ -10,49 +10,7 @@ if($_POST[adduser]) {
 
 #
 #	Add a new user (Routine)
-#
-
-	$now = time();
-	$dataclass = new SettingsStorage('settings');
-	$currentusers = $dataclass->settings['users'];
-	
-	
-
-	# Remove unwanted stuff!
-	$_POST[adduser][name] = sanitize_variables($_POST[adduser][name]);
-	$_POST[adduser][password] = sanitize_variables($_POST[adduser][password]);
-	
-	$_POST[adduser][password] = md5($_POST[adduser][password]);
-	$_POST[adduser][password] = sha1($_POST[adduser][password].UNIQUE);
-	
-	$_POST[adduser][email] = sanitize_variables($_POST[adduser][email]);
-	$_POST[adduser][url] = sanitize_variables($_POST[adduser][url]);
-	$_POST[adduser][profile] = sanitize_variables($_POST[adduser][profile]);
-	
-	$adduserkey = urlTitle($_POST[adduser][name]);
-	
-	if (array_key_exists($adduserkey, $currentusers)) { 
-		$statusmessage = "User &quot;$adduserkey&quot; already exists in the database!<br /><a href=\"javascript:history.go(-1);\">How about choosing another name?</a>";
-		}
-		
-	# if the name is available
-	else {
-		$data = array(
-		"registered"=> stripslashes($now),
-		"nickname"	=> stripslashes($_POST[adduser][nickname]),
-		"password" 	=> stripslashes($_POST[adduser][password]),
-		"email" 	=> stripslashes($_POST[adduser][email]),
-		"url" 		=> stripslashes($_POST[adduser][url]),
-		"profile" 	=> stripslashes($_POST[adduser][profile]),
-		"level"		=> stripslashes($_POST[adduser][level]),
-		);
-	
-	$dataclass->settings['users'][$adduserkey] = $data;
-	$dataclass->save();
-	
-	# Give the user a status message
-	$statusmessage = "User &quot;$adduserkey&quot; successfully added";
-	}
+	$statusmessage = $User->add();
 }
 
 
@@ -127,7 +85,7 @@ if($_GET[edit] && !$_POST[edituser] && !$_GET[action]) {
 
 	$now = time();
 	$dataclass = new SettingsStorage('settings');
-	$currentusers = $dataclass->settings['users'];
+	$currentusers = $User->getusers();
 	
 	$usertoedit = urlTitle($_GET[edit]);
 	if (array_key_exists($usertoedit, $currentusers)) {
@@ -176,9 +134,6 @@ if($_GET[edit] && !$_POST[edituser] && !$_GET[action]) {
 #	Display add user form and current users
 #
 if (!$_POST[adduser] && !$_GET[edit]) {
-
-	$dataclass = new SettingsStorage('settings');
-	$currentusers = $dataclass->settings['users'];
 	
 	$leveltotext = array(
 		4 => "Admin",
@@ -224,7 +179,7 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 			</tr>
 		</thead>';
 	
-	foreach ($currentusers as $username => $userdata) {
+	foreach ($User->getusers() as $username => $userdata) {
 		$level = $userdata[level];
 		$level = $leveltotext[$level];
 		$main_content .= "<tr><form method=\"get\"><input type=\"hidden\" name=\"panel\" value=\"users\" /><input type=\"hidden\" name=\"edit\" value=\"$username\" /><td>$username</td><td>$level</td><td>".date("j. F Y", $userdata[registered])."</td><td></td><td><input type=\"submit\" value=\"".i18n("generic_edit")."\" /><input type=\"submit\" name=\"action[delete]\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td></form></tr>";
@@ -240,17 +195,7 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 #	Delete
 #
 if ($_GET[action][delete]) {
-
-	$userkey = $_GET[edit];
-	$dataclass = new SettingsStorage('settings');
-	$users = $dataclass->settings['users'];
-	
-	$dataclass->delete("users", $userkey);
-	
-	$moduletitle = "Delete article";
-	
-	# Give the user a status message
-	$statusmessage = "User &quot;$userkey&quot; dropped from database.";
+	$statusmessage = $User->drop();
 	
 }
 

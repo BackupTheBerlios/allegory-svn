@@ -818,12 +818,12 @@ Var bare det jeg ville si.',
 
 Er det egentlig noen som tror dette er noe annet enn en slags moderne form for gapestokk? Er det noen som forventer at juryen skal ta hensyn til hver enkelt person? Er det noen som forventer at juryen skal se helt bort fra de uungåelige "brenn dem på bålet"-strømningene i samfunnet utenfor rettssalen?
 
-Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? Neger ',
+Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? ',
         'title' => 'Pedofili',
         'author' => 'eruin',
         'lastedit' => 'eruin',
-        'category' => '7',
-        'views' => 3,
+        'category' => '3, 7',
+        'views' => '3',
       ),
     ),
   ),

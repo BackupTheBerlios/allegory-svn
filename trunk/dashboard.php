@@ -1,21 +1,19 @@
 <?php
 
-$moduletitle = i18n("dashboard_moduletitle");
-$statusmessage = i18n("login_YouAre").$User->nickname;
-include(KNIFE_PATH.'/inc/class.comments.php');
-include(KNIFE_PATH.'/inc/class.articles.php');
-$Commentclass = new KComments;
-$Articleclass = new KArticles;
+/*
+ *	Set up page
+ */
+	$moduletitle 	= i18n("dashboard_moduletitle");
+	$statusmessage 	= i18n("login_YouAre").$User->nickname;
+	$statusmessage 	= randomquote();
 
-	$templates = $settingsdatabase->settings['templates'];
-	$articledatabase = new ArticleStorage('storage');
-	$allarticles = $articledatabase->settings['articles'];
-	$configuration = $settingsdatabase->settings['configuration'];
+/*
+ *	Get settings
+ */
 	
-	krsort($allarticles);
-	
-	$totalarticles = count($allarticles);
-	$totalusers = count($users);
+	$totalarticles 		= count($Articles->listarticles());
+	$totalusers 		= count($User->getusers());
+	$totalcats			= count($Settings->ca);
 	
 	$main_content = "
 	<div id=\"dashboard_wrapper\">
@@ -24,8 +22,8 @@ $Articleclass = new KArticles;
 			<legend>".i18n("dashboard_Statistics")."</legend>
 		".i18n("dashboard_Articles").": $totalarticles<br />
 		".i18n("dashboard_Users").": $totalusers<br />
-		".i18n("dashboard_ACS").": ".formatsize(filesize("./data/articles.php"))."<br />
-			<acronym title=\"".i18n("templates").", ".i18n("users").", etc\">".i18n("dashboard_SS")."</acronym>: ".formatsize(filesize("./data/settings.php"))."
+		".i18n("dashboard_ACS").": ".formatsize(filesize(KNIFE_PATH.'/data/articles.php'))."<br />
+			<acronym title=\"".i18n("templates").", ".i18n("users").", etc\">".i18n("dashboard_SS")."</acronym>: ".formatsize(filesize(KNIFE_PATH.'/data/settings.php'))."
 		</div>";
 		
 			
@@ -96,10 +94,9 @@ $Articleclass = new KArticles;
 		</div>
 	</div>";
 	$main_content .= '<div class="div_normal"><fieldset><legend>Latest comments</legend>';
-	$number = 5;
-	$latestcomments = $Commentclass->latestcomments($number);
-	foreach ($latestcomments as $commentid => $commentdata) {
-		$article = $Articleclass->getarticle($commentdata[parent]);
+	$last = $Comments->latestcomments("5");
+	foreach ($last as $commentid => $commentdata) {
+		$article = $Articles->getarticle($commentdata[parent]);
 		$title = $article[title];
 		$main_content .= date("d/m ", $commentid) . $commentdata[name] . " <small>commenting $title</small> <blockquote>" . $commentdata[content] . "</blockquote><br />";
 		}

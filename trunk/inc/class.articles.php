@@ -226,6 +226,25 @@ class KArticles {
 			}
 		}
 
+	function search($term, $where=false) {
+		# VERY crude search tool. Single arg
+		#
+		# FIXME:
+		#	Accept multiple needles
+		#	Allow limiting searches to title or content
+		if (!$where) { $where = "content"; }
+		$haystack = KArticles::listarticles();
+		foreach ($haystack as $date => $article) {
+			if (preg_match("/$term/i", $article[$where])) {
+				$matches[$date] = array(
+					"title" => $article[title],
+					"category" => $article[category],
+					);
+				}
+			}
+		$matching = array_search($term, $haystack);
+		return $matches;	
+	}
 }
 
 ?>

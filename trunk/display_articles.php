@@ -152,6 +152,8 @@ foreach($allarticles as $date => $article) {
 		}
 	unset($catarray);
 	unset($newcatarray);
+	unset($lastcomment);
+	unset($article);
 	}
 	# FIXME: This should be put in a seperate file ala cutenews that handles variable deaths, etc
 }
@@ -175,6 +177,7 @@ foreach($allarticles as $date => $article) {
 	unset ($from);
 	unset ($amount);
 	unset ($template);
+
 ?>
 
 <!--

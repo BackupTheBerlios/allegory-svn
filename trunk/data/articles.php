@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 141,
+        'views' => 152,
       ),
       1108842457 => 
       array (
@@ -47,7 +47,7 @@ Forresten, Philip: Beezewax skal spille i Bergen snart :)
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 3,
+        'views' => 4,
       ),
       1107206795 => 
       array (
@@ -336,7 +336,7 @@ Kommer
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 1,
       ),
       1101861121 => 
       array (
@@ -449,7 +449,7 @@ Anbefaler forøvrig alle å skaffe seg Tim Christensens album "[Honeyburst][5]".
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 1,
       ),
       1100005946 => 
       array (
@@ -690,7 +690,7 @@ Drit i regelverk for pokker - drep punksms og kast bakmennene i fangehullet <str
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 4,
       ),
       1095436249 => 
       array (
@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 43,
+        'views' => 44,
       ),
     ),
   ),

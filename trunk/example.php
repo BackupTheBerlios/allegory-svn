@@ -211,7 +211,7 @@ color: #f32988;
 			echo "<h1>$item[title]</h1>\n<div>$item[content]</div>";
 			}
 		else {
-			$cat = 7;
+			$cat = 3;
 			$amount = 7;
 			include("display_articles.php");
 			}
@@ -235,6 +235,9 @@ color: #f32988;
 		}
 	?> 
 	</ul>
+	<?php
+		include("search.php");
+	?>
 	</div>
 
 	</div>
@@ -242,7 +245,7 @@ color: #f32988;
 	<div id="footer">
 	<?=SCRIPT_TITLE;?> using <?php if(defined("KNIFESQL")) { echo "mysql"; } else { echo "flat (var_dump)"; } ?> backbone
 	</div>
-
+	
 </div>
 </div>
 </body>

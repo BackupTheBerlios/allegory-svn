@@ -44,7 +44,7 @@ include(KNIFE_PATH.'/plugins/kses.php');
 			}		
 		$output = str_replace("{title}", $article[title], $output);
 		
-			$article[content] = Markdown($article[content]);
+		$article[content] = Markdown($article[content]);
 		
 		$output = str_replace("{content}", $article[content], $output);
 		$output = str_replace("{extended}", "", $output);
@@ -171,5 +171,5 @@ include(KNIFE_PATH.'/plugins/kses.php');
 		$output .= $template[commentform];
 		$output = str_replace("{allowedtags}", kses_filter("gettags"), $output);
 		$output .= '</form>';
-		echo $output;		
+		echo $output;
 ?>

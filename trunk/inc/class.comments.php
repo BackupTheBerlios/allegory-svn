@@ -66,10 +66,19 @@ class KComments {
 		}
 	
 	function getcomment($article, $comment) {
+		if (defined("KNIFESQL")) {
+			$class = KComments::connect();
+			$mysql_query = "SELECT * FROM comments WHERE commentid = $comment";
+			$result = mysql_query($mysql_query) or die('getcomment() Query failed: Comment not found: ' . mysql_error());
+			$comment = mysql_fetch_assoc($result);
+			return $comment;
+			}
+		else {
 			$comments = KComments::articlecomments($article);
 			$comment = $comments[$comment];
 			return $comment;
 			}
+		}
 			
 	function latestcomments($number) {
 		$allcomments = KComments::allcomments();

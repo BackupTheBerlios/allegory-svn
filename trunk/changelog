@@ -1,0 +1,79 @@
+# Changelog
+
+	[wed 23 feb]
+	
+	New: Javascript magic in edit articles list (selecting)
+	New: Comments
+	New: Comments shown in edit screens
+	Fix: Delete article also deletes its comments
+	Fix: Blank comments, faulty email and faulty urls not accepted. Name required. Errors reported
+	Fix: Markdown upstream merged
+	
+	[tue 22 feb]
+	
+	New: mySQL support all over
+	Fix: Article handling being abstracted in class.articles.php
+	Fix: Login fix
+	Fix: Configuration abstracted even more
+	Fix: display.articles.php cleaned up alot
+	Fix: Templates displayed are htmlspecialchar()'d
+
+	[tue 15 feb]
+	
+	New: Preview feature foundation in write.php
+	
+	[mon 14 feb]
+	
+	Fix: Edit list has better category listing
+	Fix: Edit screen has better category handling
+	Fix: Display_articles being modularized
+
+	[sat 12 feb]
+	
+	Brk: Apache 2.0.53-1 (breaks pcre)
+	Fix: Sorted the logincheck order: languages now load instantly
+	Fix: Logout redirects to index.php
+
+	[wed 09 feb]
+
+	New: i18n-function, hooks being placed, norwegian bokmål (nb_no) file is testcase	
+	New: Menus are named
+	New: Preliminary {lastedit} support
+	
+	Fix: HTML Cleanups in edit/write
+	Fix: Default template for categories now saved
+	Fix: Option subscreens all include $menu["sub_options"]
+	Fix: Display articles sorts listed items by $_GET[cat] [1]
+	Bug: Problem with [1] renders $_GET[cat] = 0 useless. 0 = false :/
+
+
+	[tue 08 feb]
+	
+	New: Add categories (multiple)
+	New: Quicktag buttons off AJ-Fork implemented
+	
+	Fix: New article screen uses stored categories
+	Fix: Edit articles list uses stored categories
+
+	[mon 07 feb]
+	
+	New: Login system in place.
+	Fix: Write article uses logged in user
+	Fix: Multiple article deletion works
+
+	[sun 06 feb]
+	
+	New: Add template
+	New: Edit template
+	New: Delete template
+	New: Edit user
+	New: Delete user
+	New: Delete article
+	
+	Fix: Timestamp incorrectly set when viewing a single article
+	Fix: Delete-buttons should be more noticeable (red)
+	Fix: Add user form fields poorly laid out
+	
+	[sat 05 feb]
+	
+	Initial

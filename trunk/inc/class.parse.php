@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  *
  *	Parsing class
@@ -11,7 +10,7 @@
 class Parser {
 
 	function Comment($template, $commentid, $comment) {
-		global $config_avatardimensions;
+		global $config_avatardimensions, $config_avatardefaulturl;
 		$output = $template[comment];
 		$output = str_replace("{number}", $i, $output);
 		
@@ -41,6 +40,19 @@ class Parser {
 				}
 			else {
 				$output = str_replace("{avatar}", "", $output);
+				}
+			}
+			
+		if (eregi("{gravatar}", $output)) {
+			if($comment[email]) {
+				$gravatarid = trim(md5($comment[email]));
+				$size = $config_avatardimensions[comments][width];
+				$default = $config_avatardefaulturl;
+				$gravatarurl = "http://www.gravatar.com/avatar.php?gravatar_id=$gravatarid&amp;size=$size&amp;default=$default&amp;border=$border";
+				$output = str_replace("{gravatar}", "<img src=\"$gravatarurl\" alt=\"$comment[name]_gravatar\" />", $output);
+				}
+			else {
+				$output = str_replace("{gravatar}", "", $output);
 				}
 			}
 

@@ -6,11 +6,6 @@ if ($User->level < 4) {
 include("options.php");
 $moduletitle = i18n("templates_moduletitle");
 
-function html2specialchars($str){
-   $trans_table = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
-   return strtr($str, $trans_table);
-}
-
 #	Fetch and set up needed data
 
 	$settingclass = new SettingsStorage('settings');
@@ -147,7 +142,8 @@ $tvars_quote = array(
 	ksort($tvars_quote);
 	
 $tvars_commentform = array(
-	"{none}" => "Display nothing",
+	"[save=\"Add me\"]" => "Print the comment save button with the text &quot;Add me&quot; on it",
+	"[preview=\"Let me see\"]" => "Print the comment preview button with the text &quot;Let me see&quot; on it",
 	);
 	ksort($tvars_commentform);
 

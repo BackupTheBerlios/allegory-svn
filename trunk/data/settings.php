@@ -42,7 +42,7 @@ Latest comment by: {latestcomment}<br />
 </div>',
         'comment' => '<div class="comment">
 <div class="commentheader">
-{avatar} <a href="{url}">{author}</a> <small>({date} - <a href="mailto:{email}">@</a> {reply})</small>
+{gravatar} <a href="{url}">{author}</a> <small>({date} - <a href="mailto:{email}">@</a> {reply}) {ip}</small>
 </div>
 {parentquote}
 {comment}

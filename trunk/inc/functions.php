@@ -275,4 +275,28 @@ function randomquote() {
 	$quote = $quotes[$n];
 	return $quote;
 	}
+	
+function validate_ip($ip){
+   $return = TRUE;
+   $tmp = explode(".", $ip);
+   if(count($tmp) < 4){
+      $return = FALSE;
+   } else {
+      foreach($tmp AS $sub){
+         if($return != FALSE){
+            if(!eregi("^([0-9])", $sub)){
+               $return = FALSE;
+            } else {
+               $return = TRUE;
+            }
+         }
+      }
+   }
+   return $return;
+}
+
+function html2specialchars($str){
+   $trans_table = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
+   return strtr($str, $trans_table);
+}
 ?>

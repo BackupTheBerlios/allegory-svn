@@ -78,7 +78,7 @@ class KArticles {
 	
 	function edit($timestamp, $user) {
 		# Remove unwanted stuff!
-		$_POST[article][content] = sanitize_variables($_POST[article][content]);
+		$_POST[article][content] = html2specialchars(sanitize_variables($_POST[article][content]));
 		$_POST[article][title] = sanitize_variables($_POST[article][title]);
 		$_POST[article][category] = sanitize_variables($_POST[article][category]);
 		$_POST[article][views] = sanitize_variables($_POST[article][views]);

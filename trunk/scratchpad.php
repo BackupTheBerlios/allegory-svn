@@ -30,9 +30,12 @@ Feature wishlist:
 	- Users should have avatars usable in comments	
 		* Restrict size of images
 		* Upload avatars
+		
+	- Fetch IP when adding a comment
 
 
-
+7647a2c00083d0f752b4bb6ade8968df
+7647a2c00083d0f752b4bb6ade8968df
 
 
 

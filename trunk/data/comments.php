@@ -2201,6 +2201,26 @@ html-tag allowed by kses (strong).',
         'browser' => 'Mozilla/5.0 (X11; U; Linux i686; nb-NO; rv:1.7.5) Gecko/20050221 Firefox/1.0 (Ubuntu) (Ubuntu package 1.0+dfsg.1-6ubuntu1)',
         'content' => 'Adding comment using class',
       ),
+      1109963281 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Josue Salazar',
+        'email' => 'js@josuesalazar.com',
+        'url' => '',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; nb-NO; rv:1.7.5) Gecko/20050221 Firefox/1.0 (Ubuntu) (Ubuntu package 1.0+dfsg.1-6ubuntu1)',
+        'content' => 'Adding a gravatar test comment',
+      ),
+      1109964494 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.2',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; nb-NO; rv:1.7.5) Gecko/20050221 Firefox/1.0 (Ubuntu) (Ubuntu package 1.0+dfsg.1-6ubuntu1)',
+        'content' => 'IP add?',
+      ),
     ),
     1109627134 => 
     array (

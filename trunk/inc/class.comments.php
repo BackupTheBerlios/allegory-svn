@@ -102,26 +102,30 @@ class KComments {
 	
 	function add($articleid) {
 		$newcommentid = time();
+		$ip = $_SERVER["REMOTE_ADDR"];
+		if (!validate_ip($ip)) { $ip = "127.0.0.2"; }
 		$data = array(
 			'parentcid' => stripslashes($_GET[replyto]),
 			'name' => stripslashes($_POST[comment][name]),
 			'email' => stripslashes($_POST[comment][email]),
 			'url' => stripslashes($_POST[comment][url]),
-			'ip' => '127.0.0.1',
+			'ip' => $ip,
 			'browser' => $_SERVER["HTTP_USER_AGENT"],
 			'content' => stripslashes($_POST[comment][content]),
 			);
 		if (defined("KNIFESQL")) {
-			$class = KArticles::connect();			
+			$class = KComments::connect();			
 			$write_sql = "INSERT INTO comments VALUES ('$articleid', '$newcommentid', '$data[parentcid]', '$data[name]', '$data[email]', '$data[url]', '$data[ip]', '$data[browser]', '$data[content]')";
 			$result = mysql_query($write_sql) or die('Query failed: ' . mysql_error());
 			return true;
 		}
+		else {
 			$class = KComments::connect();
-			$class->settings[$articleid][$newcommentid] = $savecomment;
+			$class->settings[$articleid][$newcommentid] = $data;
 			$class->save();
 			return true;
 		}
+	}
 		
 	function connect() {
 		if (defined("KNIFESQL")) {

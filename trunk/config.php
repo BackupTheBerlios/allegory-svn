@@ -7,7 +7,7 @@ define('UNIQUE', 'b83b9c064c365cc68d675c8e1ca986904159a9f0');
 define('SCRIPT_TITLE', 'Allegory');
 define('SCRIPT_VERSION', '0.3.1');
 
-    define( "KNIFESQL", "yes");							# Comment this to use flatfiles
+#    define( "KNIFESQL", "yes");							# Comment this to use flatfiles
 	define( "KNIFE_SQL_SERVER", "localhost");			# mySQL server
 	define( "KNIFE_SQL_USER", "root");					# mySQL username
 	define( "KNIFE_SQL_PASSWORD", "");					# mySQL password
@@ -34,4 +34,5 @@ $config_avatardimensions = array(
 		"height" => 30,
 		),
 	);
+$config_avatardefaulturl = "http://appelsinjuice.org/cutepress/graphics/icons/users.png";
 ?>

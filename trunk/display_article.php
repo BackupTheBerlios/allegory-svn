@@ -64,9 +64,10 @@ $Parser = new Parser;
 		
 		#
 		#	Start showing comments
-		#
+		#	FIXME: If comments are disabled, don't show any of the following
 		
 		echo '<div id="'.SCRIPT_TITLE.'_commentscontainer">';
+		
 		$articlescomments = $commentsclass->articlecomments($date);
 		
 	if (!$articlescomments or $articlescomments == "") {
@@ -160,7 +161,7 @@ $Parser = new Parser;
 	}
 
 		#	Show the comment form
-		#		
+		#	FIXME: If comments are disabled, don't show this
 		$output = '<form method="post" action="" id="'.SCRIPT_TITLE.'_addcommentform">';
 		$output .= $template[commentform];
 		$output = preg_replace("/\[save\=\"(.*)\"\]/ui", "<input name=\"comment[save]\" type=\"submit\" value=\"\\1\" />", $output);

@@ -39,6 +39,7 @@ if ($_GET[id] && !$_POST[id] && !$_GET[action]) {
 							unset ($selected);
 	}
 	
+	$editentry[content] = htmlspecialchars($editentry[content]);
 $main_content .= '
 <script src="inc/quicktags.js" language="JavaScript" type="text/javascript"></script>
 <div id="edit_article_wrapper">

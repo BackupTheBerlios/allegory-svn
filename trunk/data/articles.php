@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 154,
+        'views' => 174,
       ),
       1108842457 => 
       array (
@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 47,
+        'views' => 72,
       ),
       1109869152 => 
       array (
@@ -818,12 +818,16 @@ Var bare det jeg ville si.',
 
 Er det egentlig noen som tror dette er noe annet enn en slags moderne form for gapestokk? Er det noen som forventer at juryen skal ta hensyn til hver enkelt person? Er det noen som forventer at juryen skal se helt bort fra de uungåelige "brenn dem på bålet"-strømningene i samfunnet utenfor rettssalen?
 
-Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? ',
+Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? 
+
+<textarea>
+What do you think?
+</textarea>',
         'title' => 'Pedofili',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => '3',
+        'views' => 6,
       ),
     ),
   ),

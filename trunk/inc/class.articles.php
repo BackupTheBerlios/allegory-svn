@@ -95,13 +95,21 @@ class KArticles {
 			);
 			
 		if (defined("KNIFESQL")) {
-			# needs author
-			$sql = "UPDATE articles SET category='$data[category]' author='$data[author]' lastedit='$data[lastedit]' title='$data[title]' content='$data[content]' views='$data[views]' WHERE articleid = '$timestamp'";
+			$db = KArticles::connect();
+			$oldarticle = KArticles::getarticle($timestamp);
+			$data[author] = $oldarticle[author];
+			foreach ($data as $key => $value) {
+				$value = addslashes($value);
+				$data[$key] = $value;
+				}
+			$sql = "UPDATE articles SET category='$data[category]', author='$data[author]', lastedit='$data[lastedit]', title='$data[title]', content='$data[content]', views='$data[views]' WHERE articleid = '$timestamp'";
+			$result = mysql_query($sql) or die('Edit Query failed: ' . mysql_error());
+			return "Article successfully edited!<br /><a href=\"javascript:history.go(-1);\">Go back</a>";
 			}
 		else {
 			$dataclass = KArticles::connect();
-			if ($dataclass->settings['articles'][$timestamp]) {
-				$data[author] = $dataclass->settings['articles'][$timestamp][author];
+			if ($article = KArticles::getarticle($timestamp)) {
+				$data[author] = $article[author];
 				$dataclass->settings['articles'][$timestamp] = $data;
 				$dataclass->save();
 				return "Article successfully edited!<br /><a href=\"javascript:history.go(-1);\">Go back</a>";
@@ -181,7 +189,7 @@ class KArticles {
 	#	Get a specific article based on its timestamp id
 	function getarticle($timestamp) {
 			if (defined("KNIFESQL")) {
-				$class = KComments::connect();
+				$class = KArticles::connect();
 				$mysql_query = "SELECT * FROM articles WHERE articleid = $timestamp";
 				$result = mysql_query($mysql_query) or die('<h1>SQL query failed.</h1><p>Looks like the timestamp is invalid or not supplied...:</p> ' . mysql_error());
 				$article = mysql_fetch_assoc($result);

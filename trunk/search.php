@@ -2,8 +2,10 @@
 	<fieldset>
 		<legend>Search</legend>
 		<p>
+			<label for="search[terms]">Terms</label><br />
 			<input type="text" name="search[terms]" id="search[terms]" />
-			<label for="search[terms]">Terms</label>
+			<input type="checkbox" name="search[regexp]" value="yes" id="search_regexp"/>
+			<label for="search_regexp"><small>regexp</small></label>
 		</p>
 		<p>
 			<input type="radio" name="search[where]" value="title" id="search_title" />
@@ -23,7 +25,7 @@
 if ($_POST[search]) {
 	$allcats = $settingsdatabase->settings['categories'];
 #	$Kaclass = new Karticles;
-	$results = $KAclass->search($_POST[search][terms], $_POST[search][where]);
+	$results = $KAclass->search($_POST[search][terms], $_POST[search][where], $_POST[search][regexp]);
 	$resultnumber = count($results);
 	if ($resultnumber >= 1) {
 	echo '<fieldset><legend>Search results <small>('.$resultnumber.')</small></legend>';

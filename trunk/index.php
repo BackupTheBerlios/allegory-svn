@@ -149,10 +149,13 @@ if ($User->username) {
 */
 
 html,body {
-	background: #fffaee;
 	color: #333;
 	font: 0.87em "Trebuchet MS";
 	margin: 0;
+}
+
+body {
+	background: #fffaee url(graphics/talk.png) top right no-repeat;
 }
 
 a {
@@ -184,8 +187,6 @@ h1, h2, h3 {
 	}
 	
 #header h1 {
-	background: url(graphics/logo.png) no-repeat top left;
-	padding: 0 0 0 35px;
 	font-size: 23px;
 }
 

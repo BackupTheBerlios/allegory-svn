@@ -226,20 +226,32 @@ class KArticles {
 			}
 		}
 
-	function search($term, $where=false) {
+	function search($terms, $where=false, $regexp=false) {
+
 		# VERY crude search tool. Single arg
 		#
 		# FIXME:
 		#	Accept multiple needles
 		#	Allow limiting searches to title or content
+		##	Allow regexp searches (done)
+		
 		if (!$where) { $where = "content"; }
 		$haystack = KArticles::listarticles();
+		$terms = explode(" ", $terms);
 		foreach ($haystack as $date => $article) {
-			if (preg_match("/$term/i", $article[$where])) {
-				$matches[$date] = array(
-					"title" => $article[title],
-					"category" => $article[category],
-					);
+			foreach ($terms as $null => $term) {
+				if ($regexp != "yes") { $term = "/\s$term\s/i"; }			# default search regexp
+				
+				if (preg_match($term, $article[$where]) and !$nonmatches[$date]) {
+					$matches[$date] = array(
+						"title" => $article[title],
+						"category" => $article[category],
+						);
+					}
+				else {
+					$nonmatches[$date] = true;
+					unset($matches[$date]);
+					}
 				}
 			}
 		$matching = array_search($term, $haystack);

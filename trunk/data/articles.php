@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 152,
+        'views' => 154,
       ),
       1108842457 => 
       array (
@@ -137,7 +137,7 @@ Jeg holder det meste inni meg nå, men å skrive om dette her hjelper iallefall 
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 1,
       ),
       1102741716 => 
       array (
@@ -232,7 +232,7 @@ Nå skulle jeg bare skryte. Plata blir garantert med på neste førjulsfest i Be
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 6,
       ),
       1102256823 => 
       array (
@@ -336,7 +336,7 @@ Kommer
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 1,
+        'views' => 2,
       ),
       1101861121 => 
       array (
@@ -385,7 +385,7 @@ Forøvrig er det et helvete uten like å ikke ha bærbar musikk!',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 2,
       ),
       1101084114 => 
       array (
@@ -565,7 +565,7 @@ En annen fin ting med denne Onsdagen er at Marit har booka meg for denne kvelden
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 1,
       ),
       1097535673 => 
       array (
@@ -753,7 +753,7 @@ Jeg er værre enn kortfattet. Jeg er punktlig.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 4,
       ),
       1095104398 => 
       array (
@@ -810,7 +810,20 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 44,
+        'views' => 47,
+      ),
+      1109869152 => 
+      array (
+        'content' => '<a href="http://news.bbc.co.uk/2/hi/europe/4314309.stm">Sekstiseks foreldre tiltalt for å ha voldtatt eller på annen måte forgrepet seg seksuelt på sine barn</a>. Barn helt ned i seksmånedersalderen. Dette er rimelig syke greier, og jeg blir grepet av tanken at slike personer ikke fortjener annet enn livstid på isolasjonscelle, men jeg lurer også litt på hvordan man skal ta stilling til straffeskyldspørsmålet for hver enkelt person. Sekstiseks individer tiltalt i samme rettsak.
+
+Er det egentlig noen som tror dette er noe annet enn en slags moderne form for gapestokk? Er det noen som forventer at juryen skal ta hensyn til hver enkelt person? Er det noen som forventer at juryen skal se helt bort fra de uungåelige "brenn dem på bålet"-strømningene i samfunnet utenfor rettssalen?
+
+Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? Neger ',
+        'title' => 'Pedofili',
+        'author' => 'eruin',
+        'lastedit' => 'eruin',
+        'category' => '7',
+        'views' => 3,
       ),
     ),
   ),

@@ -12,10 +12,13 @@
 */
 
 html,body {
-	background: #fffaee;
 	color: #333;
 	font: 0.87em "Trebuchet MS";
 	margin: 0;
+}
+
+body {
+	background: #fffaee url(graphics/talk.png) top right no-repeat;
 }
 
 a {
@@ -234,6 +237,10 @@ color: #f32988;
 		echo "<li><a href=\"?display=documentation&amp;location=$key\">$info[title]</a></li>";
 		}
 	?> 
+	</ul>
+	<h3>Links</h3>
+	<ul>
+	<li><a href="<?=dirname($_SERVER[SCRIPT_NAME]);?>/index.php">Admin panel</a></li>
 	</ul>
 	<?php
 		include("search.php");

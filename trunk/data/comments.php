@@ -2235,6 +2235,29 @@ html-tag allowed by kses (strong).',
         'content' => '\',',
       ),
     ),
+    1109869152 => 
+    array (
+      1110047125 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => '',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.5) Gecko/20050221 Firefox/1.0 (Ubuntu) (Ubuntu package 1.0+dfsg.1-6ubuntu1)',
+        'content' => 'Pedofili suger',
+      ),
+      1110135788 => 
+      array (
+        'parentcid' => '1110047125',
+        'name' => 'Øivind',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => '',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.5) Gecko/20050221 Firefox/1.0 (Ubuntu) (Ubuntu package 1.0+dfsg.1-6ubuntu1)',
+        'content' => 'En quotende kommentar',
+      ),
+    ),
   ),
 );
 ?>

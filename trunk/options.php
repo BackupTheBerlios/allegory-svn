@@ -1,6 +1,9 @@
 <?php
+if ($User->level < 4) { 
+	die(i18n("login_noaccess"));
+	}
 
-$moduletitle = i18n("options_moduletitle");
+$moduletitle = i18n("options_moduletitle", "12twelve");
 
 $menus["sub_options"] = '
 
@@ -13,6 +16,7 @@ $menus["sub_options"] = '
 ';
 
 	$settingclass = new SettingsStorage('settings');
+	
 	$currentcats = $Settings->ca;
 	$alltemplates = $Settings->te;
 
@@ -20,18 +24,152 @@ $menus["sub_options"] = '
 # Knife setup
 #
 
-function makeField($type, $name, $id, $value, $label) {
-	return "<input type=\"$type\" name=\"$name\" id=\"$id\" value=\"$value\" /> <label for=\"$id\">$label</label>";
+
+/*
+ *	Form-creating functions
+ *
+ */
+ 
+function makeField($type, $name, $id, $value, $label, $class=false, $pos=false) {
+	if(!$class) { $class = "inshort"; }
+	$label = "<label for=\"$id\">$label</label>";
+		switch ($pos) {
+		case false:
+			$right = " " . $label;
+			break 1;
+		case "top":
+			$top = $label . "<br />";
+			break 1;
+		case "bottom":
+			$bottom = "<br />" . $label;
+			break 1;
+		case "left":
+			$left = $label . " ";
+			break 1;
+			}
+		
+	return "
+	<p>
+		$top
+		$left<input type=\"$type\" name=\"$name\" id=\"$id\" value=\"$value\" class=\"$class\" />$right
+		$bottom
+		</p>";
 }
+
+function formGroup($executes, $name) {
+	$out = '<fieldset><legend>'.$name.'</legend>';
+	if (is_array($executes)) {
+		unset($executes[name]);
+		foreach ($executes as $null => $exec) {
+			$out .= $exec;
+			}
+		}
+	else {
+		$out .= $executes;
+		}
+	$out .= '</fieldset>';
+	return $out;
+	}
+
+
+
+function radioGroup($values, $id, $name, $label, $current=false, $moreinfo=false) {
+	$out = '<fieldset><legend>'.$label.'</legend><p>';
+	if ($moreinfo) { $out .= '<p>'.$moreinfo.'</p>'; }
+	foreach ($values as $value => $description) {
+		if (isset($current) and ($current == $value)) {
+			$out .= '<input id="'.$name . $value.'" type="radio" name="'.$name.'" value="'.$value.'" checked="checked" />
+					<label for="'.$name . $value.'">'.$description.'</label><br />';
+			}
+		else {
+			$out .= '<input id="'.$name . $value.'" type="radio" name="'.$name.'" value="'.$value.'" />
+					<label for="'.$name . $value.'">'.$description.'</label><br />';
+			}
+		}
+	$out .= '</p></fieldset>';
+	return $out;
+}
+
 
 if ($_GET[screen] == "setup") {
 
-	$main_content = makeField("text", "something", "theid", "something", "Label");
-	$main_content .= "
+	if ($_POST[configsave]) {
+		foreach ($_POST[config] as $where => $value) {
+			$Settings->saveConfig($where, $value);
+			}
+		}
 	
+	else {
 	
-	";
+		/*
+		 *	Setup option values;
+		 */
+		 
+		$i18nfiles = FileFolderList("./lang/", $depth = 1, $current = '', $level=0);
+		$available_languages = available_languages($i18nfiles);
+		
+		foreach ($available_languages as $null => $language) {
+			$options_languages[$language[file]] = "$language[langinternational] ($language[langnational])";
+			}
+		
+		$options_yesno = array(
+			"yes" => i18n("generic_yes"),
+			"no" => i18n("generic_no"),
+			);
+		
+		$options_storage = array(
+			"mysql" => "mySQL Database", 
+			"flat" => "Flat file (var_dump) DB",
+			);
 
+		$options_comment_requirepreview = array(
+			"yes" => "Require preview before posting",
+			"no" => "Do not require preview",
+			);
+			
+		$options_mysql_info = array(
+				makeField("text", "config[storage][mysqluser]", "mysqluser", $Settings->co[storage][mysqluser], i18n("options_mysql_username", "MySQL"), "inshort"),
+				makeField("text", "config[storage][mysqlpass]", "mysqlpass", $Settings->co[storage][mysqlpass], i18n("options_mysql_password", "MySQL,<small>,</small>"), "inshort"),
+				makeField("text", "config[storage][mysqlhost]", "mysqlhost", $Settings->co[storage][mysqlhost], i18n("options_mysql_host", "MySQL,<small>,</small>"), "inshort"),
+				makeField("text", "config[storage][mysqldatabase]", "mysqldb", $Settings->co[storage][mysqldatabase], i18n("options_mysql_database", "MySQL"), "inshort"),
+			);
+			
+		$settingfields = array(
+			"general" => array(
+				"name" => i18n("options_general"),
+				makeField("text", "config[general][uniquekey]", "uniquekey", $Settings->co[general][uniquekey], i18n("options_d_unique", "<small>,</small>"), "inlong", "top"), 
+				makeField("text", "config[general][typekey]", "typekey", $Settings->co[general][typekey], "TypeKey", "inmedium", "top"),
+				formGroup($options_mysql_info, i18n("options_mysql_info")),
+				radioGroup($options_yesno, "emailspam", "config[general][emailspam]", i18n("options_emailspam"), $Settings->co[general][emailspam]),
+				radioGroup($options_languages, "defaultlanguage", "config[general][defaultlanguage]", i18n("options_default_lang"), $Settings->co[general][defaultlanguage]),
+				),
+			"articles" => array (
+				"name" => i18n("dashboard_Articles"),
+				makeField("text", "config[articles][dateformat]", "articledateformat", $Settings->co[articles][dateformat], "Articles date format", $group),
+				),
+			"comments" => array(
+				"name" => i18n("dashboard_Comments"),
+				radioGroup($options_yesno, "requireregister", "config[comments][requireregister]", i18n("options_requireregister"), $Settings->co[comments][requireregister]),
+				radioGroup($options_yesno, "markdownpreview", "config[comments][markdownpreview]", i18n("options_markdownpreview"), $Settings->co[comments][markdownpreview], i18n("options_markdownpreviewd")),
+				makeField("text", "config[comments][dateformat]", "commentdateformat", $Settings->co[comments][dateformat], "Comments date format"),
+				makeField("text", "config[comments][avatar][size]", "gravatarsize", $Settings->co[comments][avatar][size], "Gravatar size (in pixels)"),
+				makeField("text", "config[comments][avatar][defaulturl]", "gravatardefault", $Settings->co[comments][avatar][defaulturl], "Default gravatar (url)", "inlong"),
+				radioGroup($options_yesno, "requireemail", "config[comments][requiremail]", "Require email?", $Settings->co[comments][requiremail]),
+				),
+			);
+			
+	$main_content .= '<form id="config" method="post" action="">';
+	$main_content .= '<div id="storage_select" class="div_extended">';
+	$main_content .= radioGroup($options_storage, "storage", "config[storage][backend]", "Database backend", $Settings->co[storage][backend]);
+	$main_content .= '</div><div class="div_normal">';
+	foreach ($settingfields as $class => $fields) {
+		$main_content .= formGroup($fields, $fields[name]);
+		}
+	$main_content .= '<p><input type="submit" value="Save" name="configsave" /></p></div>';
+	$main_content .= '</form>';
+	
+	
+	}
 }
 
 

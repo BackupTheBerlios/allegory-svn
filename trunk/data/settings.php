@@ -42,7 +42,7 @@ Latest comment by: {latestcomment}<br />
 </div>',
         'comment' => '<div class="comment">
 <div class="commentheader">
-{gravatar} <a href="{url}">{author}</a> <small>({date} - <a href="mailto:{email}">@</a> {reply}) {ip}</small>
+{gravatar} <a href="{url}">{author}</a> <small>({date} - [mail="mail"] {reply}) {ip}</small>
 </div>
 {parentquote}
 {comment}
@@ -50,11 +50,11 @@ Latest comment by: {latestcomment}<br />
         'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
         'commentform' => '<fieldset><legend>Add comment?</legend>
 <input type="text" name="comment[parentcid]" /> Parent<br />
-<input type="text" name="comment[name]" /> Name<br />
-<input type="text" name="comment[email]" /> Email<br />
-<input type="text" name="comment[url]" /> URL<br /><br />
+<input type="text" name="comment[name]" id="commentame" /> Name<br />
+<input type="text" name="comment[email]" id="commentemail" /> Email<br />
+<input type="text" name="comment[url]" id="commenturl" /> URL<br /><br />
 Comment <small>(allowed html: {allowedtags})</small><br />
-<textarea name="comment[content]" rows="7" cols="50"></textarea>
+<textarea onkeyup="markUp(\'\', false);" name="comment[content]" rows="7" cols="50" id="commentcomment"></textarea>
 <p>[preview="Forhåndsvis"] [save="Send"]</p>
 </fieldset>',
       ),
@@ -134,11 +134,12 @@ Sju
         'profile' => '',
         'level' => '4',
       ),
-      'admin' => 
+      'john' => 
       array (
-        'registered' => '1107983473',
-        'nickname' => 'like.. an admin',
-        'password' => '17dc22e4ab03b081598ea4b1d273cdc6327b942a',
+        'registered' => '1109971013',
+        'lastlogin' => '',
+        'nickname' => 'john',
+        'password' => '82de2423ab98a11f25949847337462fbafd0f8c8',
         'email' => '',
         'url' => '',
         'profile' => '',
@@ -176,6 +177,40 @@ Sju
       array (
         'name' => 'Life',
         'template' => '1',
+      ),
+    ),
+    'configuration' => 
+    array (
+      'storage' => 
+      array (
+        'backend' => 'mysql',
+        'mysqluser' => 'appelsinjuice_o',
+        'mysqlpass' => '',
+        'mysqlhost' => '',
+        'mysqldatabase' => 'appelsinjuice_o',
+      ),
+      'articles' => 
+      array (
+        'dateformat' => 'd/m/Y',
+      ),
+      'comments' => 
+      array (
+        'requireregister' => 'yes',
+        'markdownpreview' => 'yes',
+        'dateformat' => 'd/m/Y H:i:s',
+        'avatar' => 
+        array (
+          'size' => '20',
+          'defaulturl' => 'http://appelsinjuice.org/cutepress/graphics/icons/users.png',
+        ),
+        'requiremail' => 'yes',
+      ),
+      'general' => 
+      array (
+        'uniquekey' => 'b83b9c064c365cc68d675c8e1ca986904159a9f0',
+        'typekey' => 'WRbB3duitFfHK13T072K',
+        'emailspam' => 'yes',
+        'defaultlanguage' => 'nb_no.php',
       ),
     ),
   ),

@@ -22,13 +22,17 @@
 <div id="searchresults">
 <?php
 
+#
+#	FIXME: This entire file should probably be moved into display_articles
+#
+
 if ($_POST[search]) {
 	$allcats = $settingsdatabase->settings['categories'];
-#	$Kaclass = new Karticles;
 	$results = $KAclass->search($_POST[search][terms], $_POST[search][where], $_POST[search][regexp]);
 	$resultnumber = count($results);
 	if ($resultnumber >= 1) {
-	echo '<fieldset><legend>Search results <small>('.$resultnumber.')</small></legend>';
+	echo '<fieldset><legend>'.i18n("search_header", "<small>,$resultnumber,</small>").'</legend>';
+	$results = multi_sort($results, "relevance");
 	foreach ($results as $date => $info) {
 		unset ($url);
 		unset ($cats);
@@ -40,7 +44,7 @@ if ($_POST[search]) {
 		}
 		
 		$url = $KAclass->urlconstructor($info, $cats);
-		echo '<a href="'.$_SERVER[SCRIPT_NAME].'/'.$url.'">'.$info[title].'</a><br />';
+		echo '<a href="'.$_SERVER[SCRIPT_NAME].'/'.$url.'">'.$info[title].'</a>('.$info[relevance].')<br />';
 		}
 	echo '</fieldset>';
 	}

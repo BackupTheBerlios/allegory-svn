@@ -8,7 +8,20 @@ Default release should contain:
 	
 	
 New name: "Allegori"
-			
+
+Feature hightlights:
+====================
+
+	- Dual backend.
+		* mySQL and var_dump (flat files)
+	- Write / Edit / Delete articles
+	- Comment articles
+		* Ability to require email
+		* Gravatar (http://gravatar.com) support
+	- Standards-compliant interface and output	
+	- Search articles
+		* Results ranked by relevance
+		* Strict match for all words
 
 Feature wishlist:
 =================
@@ -25,17 +38,12 @@ Feature wishlist:
 		* Reset everything to defaults
 		
 	- Restrict users to certain categories
-	- Gravatars
+#	- Gravatars
 	- Favatars
-	- Users should have avatars usable in comments	
-		* Restrict size of images
-		* Upload avatars
-		
+#	- Typekey support
+	- Let users register themselves
 	- Fetch IP when adding a comment
 
-
-7647a2c00083d0f752b4bb6ade8968df
-7647a2c00083d0f752b4bb6ade8968df
 
 
 

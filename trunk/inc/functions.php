@@ -212,10 +212,12 @@ return $file_size;
 #	knife Login function
 #
 
-function i18n( $messageid ) {
+function i18n( $messageid, $variable=false ) {
 	global $lang;
+	
 	if ($lang->$messageid) {
-		return $lang->$messageid;
+		$variable = explode(",", $variable);
+		return vsprintf($lang->$messageid, $variable);
 		}
 	else {
 		$return = 'i18nFIXME-'.$messageid;
@@ -296,7 +298,15 @@ function validate_ip($ip){
 }
 
 function html2specialchars($str){
-   $trans_table = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
-   return strtr($str, $trans_table);
-}
+	$trans_table = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
+	return strtr($str, $trans_table);
+	}
+
+# http://no2.php.net/usort (todor at todor dot net)
+# updated for int-assoc article arrays
+function multi_sort($array,$key){
+	$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? -1 : 1;}');
+	uasort($array,$compare) ;
+	return $array ;
+	}
 ?>

@@ -131,7 +131,16 @@ $tvars_view = array(
 	ksort($tvars_view);
 	
 $tvars_comment = array(
-	"{none}" => "Display nothing",
+	"{name}" => "Name of poster",
+	"{ip}" => "Originating IP",
+	"{gravatar}" => "Gravatar of user",
+	"{email}" => "Email of poster",
+	"{url}" => "Url of poster",
+	"{reply}" => "A link to quote this comment",
+	"{parentquote}" => "The comment being quoted, if any",
+	"{comment}" => "Comment content",
+	"{date}" => "Date of comment submission",
+	"{number}" => "Number on page",
 	);
 	ksort($tvars_comment);
 	
@@ -260,7 +269,7 @@ $tvars_commentform = array(
 					<input type="submit" class="delete" name="changet[delete]" value="'.i18n("generic_delete").'" />
 				</p>
 				<p>
-					'.i18n("templates_fillnew").'
+					'.i18n("templates_fillnew", $template[name]).'
 				</p>
 				<p>
 					<input type="text" name="changet[name]" class="inshort" id="changetname" /> 

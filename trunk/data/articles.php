@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 174,
+        'views' => 207,
       ),
       1108842457 => 
       array (
@@ -58,7 +58,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 17,
+        'views' => 18,
       ),
       1107009146 => 
       array (
@@ -385,7 +385,7 @@ Forøvrig er det et helvete uten like å ikke ha bærbar musikk!',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 2,
+        'views' => 3,
       ),
       1101084114 => 
       array (
@@ -753,7 +753,7 @@ Jeg er værre enn kortfattet. Jeg er punktlig.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 4,
+        'views' => 6,
       ),
       1095104398 => 
       array (
@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 72,
+        'views' => 155,
       ),
       1109869152 => 
       array (
@@ -821,13 +821,13 @@ Er det egentlig noen som tror dette er noe annet enn en slags moderne form for g
 Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? 
 
 <textarea>
-What do you think?
+Test to make sure we can use extended html in articles and still have a surviving editarticles screen...<?php echo "moo"; ?>
 </textarea>',
         'title' => 'Pedofili',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 6,
+        'views' => 43,
       ),
     ),
   ),

@@ -84,8 +84,6 @@ class KComments {
 		$allcomments = KComments::allcomments();
 		$amount = 0;
 		foreach ($allcomments as $newsid => $comments) {
-			krsort($comments);
-			reset($comments);
 			foreach ($comments as $commentid => $commentdata) {
 				$latestcomments[$commentid] = $commentdata;
 				$latestcomments[$commentid][parent] = $newsid;
@@ -126,11 +124,13 @@ class KComments {
 			return true;
 		}
 	}
-		
+				
 	function connect() {
 		if (defined("KNIFESQL")) {
-			$mysql_id = mysql_connect(KNIFE_SQL_SERVER, KNIFE_SQL_USER, KNIFE_SQL_PASSWORD);
-			mysql_select_db(KNIFE_SQL_DATABASE, $mysql_id);
+			global $Settings;
+			$Storage = $Settings->co[storage];
+			$mysql_id = mysql_connect($Storage[mysqlhost], $Storage[mysqluser], $Storage[mysqlpass]);
+			mysql_select_db($Storage[mysqldatabase], $mysql_id);
 			return $mysql_id;	
 			}
 		

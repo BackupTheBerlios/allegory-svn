@@ -9,8 +9,9 @@
  
 class Parser {
 
-	function Comment($template, $commentid, $comment) {
-		global $config_avatardimensions, $config_avatardefaulturl;
+	function Comment($template, $commentid, $comment, $articlescomments) {
+			global $Settings;
+			$Config = $Settings->co;
 		$output = $template[comment];
 		$output = str_replace("{number}", $i, $output);
 		
@@ -28,26 +29,20 @@ class Parser {
 		$output = str_replace("{comment}", Markdown(kses_filter($comment[content])), $output);
 		$output = str_replace("{ip}", $comment[ip], $output);
 		$output = str_replace("{author}", $comment[name], $output);
-		$output = str_replace("{date}", date("d/m/y H:i", $commentid), $output);
+		$output = str_replace("{date}", date($config[comments][dateformat], $commentid), $output);
 		$output = str_replace("{url}", $comment[url], $output);
-		$output = str_replace("{email}", $comment[email], $output);
-		$output = str_replace("{reply}", '<a href="'.$_SERVER[PHP_SELF].'?replyto='.$commentid.'">reply</a>', $output);
+		# Output mail if given
+		$comment[email] ? $output = preg_replace("/\[mail\=\"(.*)\"\]/ui", "<a href=\"mailto:$comment[email]\">\\1</a>", $output) : $output = preg_replace("/\[mail\=\"(.*)\"\]/ui", "", $output);
+		$output = str_replace("{reply}", '<a href="'.$currenturl.'?replyto='.$commentid.'">reply</a>', $output);
+
+		# The following will be set if the user is registered
 		$checkuser = KUsers::indatabase(false, $comment[name]);
-		
-		if (eregi("{avatar}", $output)) {
-			if ($checkuser) {
-				$output = str_replace("{avatar}", '<img width="'.$config_avatardimensions[comments][width].'" height="'.$config_avatardimensions[comments][height].'" src="'.$checkuser[avatar].'" alt="'.$checkuser[name].'_avatar" />', $output);
-				}
-			else {
-				$output = str_replace("{avatar}", "", $output);
-				}
-			}
 			
 		if (eregi("{gravatar}", $output)) {
 			if($comment[email]) {
 				$gravatarid = trim(md5($comment[email]));
-				$size = $config_avatardimensions[comments][width];
-				$default = $config_avatardefaulturl;
+				$size = $Config[comments][avatar][size];
+				$default = $Config[comments][avatar][defaulturl];
 				$gravatarurl = "http://www.gravatar.com/avatar.php?gravatar_id=$gravatarid&amp;size=$size&amp;default=$default&amp;border=$border";
 				$output = str_replace("{gravatar}", "<img src=\"$gravatarurl\" alt=\"$comment[name]_gravatar\" />", $output);
 				}
@@ -55,9 +50,20 @@ class Parser {
 				$output = str_replace("{gravatar}", "", $output);
 				}
 			}
-
 		return $output;
 	}
+	
+	
+	function CommentForm($template) {
+		$output = '<form method="post" action="" id="'.SCRIPT_TITLE.'_addcommentform" name="comment">';
+		$output .= $template[commentform];
+		$output = preg_replace("/\[save\=\"(.*)\"\]/ui", "<input name=\"comment[save]\" type=\"submit\" value=\"\\1\" />", $output);
+		$output = preg_replace("/\[preview\=\"(.*)\"\]/ui", "<input name=\"comment[preview]\" type=\"submit\" value=\"\\1\" />", $output);
+		$output = str_replace("{allowedtags}", kses_filter("gettags"), $output);
+		$output .= '</form>';
+		return $output;
+	
+		}
 
 
 }

@@ -9,13 +9,21 @@
     	}
     	
 	include_once(KNIFE_PATH.'/inc/functions.php');			# load common functions
-	include_once(KNIFE_PATH.'/config.php');					# load temporary config
 	include_once(KNIFE_PATH.'/inc/class.users.php');
 	include_once(KNIFE_PATH.'/inc/class.settings.php');
 	include_once(KNIFE_PATH.'/inc/class.comments.php');
 	include_once(KNIFE_PATH.'/inc/class.articles.php');
-
-
+	
+/*
+ *	Required setup
+ */	
+	$Settings 	= new KSettings;								# Initiate the settings class
+	$Settings->getConfig();										# Load the configuration
+	include_once(KNIFE_PATH.'/config.php');						# Include config file (FIXME)
+	
+	if ($Settings->co[storage][backend] == "mysql") { 
+		define("KNIFESQL", "yes");								# Flat or mysql
+		}
 
 #
 # 	Load the user class and run verify
@@ -79,11 +87,9 @@ if ($User->username) {
 
 	$Comments	= new KComments;
 	$Articles 	= new KArticles;
-	$Settings 	= new KSettings;
 	
 	$Settings->getCats();			#
 	$Settings->getTemplates();		#	Initialize settings
-	$Settings->getConfig();			#
 	
 #
 #	Set up the first menu
@@ -408,6 +414,15 @@ fieldset {
 	-moz-border-radius: 5px;
 	padding: 5px;
 }
+
+fieldset fieldset {
+	margin: 3px 0 5px 15px;
+	width: 70%;
+	border: 1px solid #dae4ea;
+	}
+fieldset fieldset legend {
+	font-size: 0.89em;
+	}
 fieldset legend {
 	font-weight: bold;
 	font-size: 130%;
@@ -440,6 +455,10 @@ th {
 .templates_options {
 	width: 210px;
 	}
+	
+.users_options {
+	width: 210px;
+}
 	
 	
 	

@@ -10,6 +10,15 @@
 	
 */
 
+
+/*
+
+	%d 	= integer
+	%s  = string
+	%1$d = first string
+
+*/
+
 $lang->login_modtitle			= 'Autentisering påkrevd';
 $lang->login_AuthReq  			= 'Du må oppgi gyldig brukernavn og passord for å få tilgang til dette systemet. <br />Dette krever at nettleseren din støtter cookies';
 $lang->login_Username 			= 'Brukernavn';
@@ -36,6 +45,7 @@ $lang->menu_setup				= '-oppsett';
 $lang->dashboard_moduletitle	= 'Skrivebord';
 $lang->dashboard_Statistics		= 'Statistikk';
 $lang->dashboard_Articles		= 'Artikler';
+$lang->dashboard_Comments		= 'Kommentarer';
 $lang->dashboard_Users			= 'Antall brukere';
 $lang->dashboard_ACS			= 'Total artikkelstørrelse';
 $lang->dashboard_SS				= 'Størrelse på innstillinger';
@@ -58,6 +68,19 @@ $lang->edit_quickerase			= 'Slett';
 $lang->edit_lastedit			= 'Sist redigert av';
 
 $lang->options_moduletitle		= 'Alle innstillinger';
+$lang->options_general			= 'Generelle innstillinger';
+$lang->options_d_unique			= 'Unik installasjonsnøkkel. %1$s(Brukes til hardning av svake passord)%2$s';
+$lang->options_mysql_info		= 'MySQL-info';
+$lang->options_mysql_username	= '%1$s-brukernavn';
+$lang->options_mysql_password	= '%1$s-passord %2$s(la stå tomt for å ikke bruke passord)%3$s';
+$lang->options_mysql_host		= '%1$s-server %2$s(la stå tomt for å koble til &quot;localhost&quot;)%3$s';
+$lang->options_mysql_database	= '%1$s-database';
+$lang->options_default_lang		= 'Standardspråk';
+$lang->options_emailspam		= 'Motarbeid emailspamming?';
+$lang->options_storage_backedn	= 'Databasemotor';
+$lang->options_requireregister	= 'Bare registrerte brukere kan skrive kommentarer?';
+$lang->options_markdownpreview	= 'Aktivèr forhåndsvisning';
+$lang->options_markdownpreviewd = 'Kommentaren vil bli vist formatert med Markdown-filteret mens brukere skriver.<br /> Denne funksjonaliteten er basert på javascript, og støttes bare av nyere Mozilla-nettlesere';
 
 $lang->templates_moduletitle	= 'Rediger maler';
 $lang->templates_current		= 'Nåværende mal';
@@ -65,7 +88,7 @@ $lang->templates_list			= 'Artikkelliste';
 $lang->templates_view			= 'Artikkel';
 $lang->templates_comment		= 'Kommentar';
 $lang->templates_commentform	= 'Kommentarskjema';
-$lang->templates_fillnew		= 'Nye maler vil bli basert på den du har valgt over. Fyll inn det nye navnet under:';
+$lang->templates_fillnew		= 'Nye maler vil bli basert på &quot;%1$s&quot;. Fyll inn det nye navnet under:';
 $lang->templates_newtemplate	= 'Lag ny mal';
 $lang->templates_editname		= 'Endre malnavn';
 $lang->templates_quote			= 'Sitat';
@@ -76,6 +99,8 @@ $lang->categories_defaulttpl	= 'Standardmal';
 
 $lang->users_add				= 'Ny bruker';
 $lang->users_existing			= 'Eksisterende brukere';
+$lang->users_restrict			= 'Tillatte kategorier';
+$lang->users_restrictdesc		= 'Om brukeren er journalist, kan den bare skrive artikler innen denne kategorien';
 
 $lang->generic_title			= 'Tittel';
 $lang->generic_article			= 'Artikkel';
@@ -100,11 +125,20 @@ $lang->generic_language			= 'Språk';
 $lang->generic_preview			= 'Forhåndsvisning';
 $lang->generic_click			= 'Klikk';
 $lang->generic_error			= 'Feil';
+$lang->generic_yes				= 'Ja';
+$lang->generic_no				= 'Nei';
+$lang->generic_general			= 'Generelt';
+
+
+$lang->search_header			= 'Søkeresultat %1$s(%2$d)%3$s';
 
 $lang->visible_comment_error_info			= 'Det oppstod et problem under verifiseringen av kommentaren. De spesifikke problemene finner du under, og du oppfordres til  å rette opp i dem og prøve igjen:';
-$lang->visible_comment_error_name			= 'Du må identifisere deg med et navn';
-$lang->visible_comment_error_email			= 'Du må oppgi en ekte email-adresse';
-$lang->visible_comment_error_url			= 'Du må oppgi en ekte URL. Gjorde du det? Sjekk at den starter med den nødvendige http://-delen';
+$lang->visible_comment_error_name			= 'Du må identifisere deg med et navn.';
+$lang->visible_comment_error_email			= 'Du må oppgi en ekte emailadresse.';
+$lang->visible_comment_error_url			= 'Du må oppgi en ekte URL. Gjorde du det? Sjekk at den starter med den nødvendige http://-delen.';
 $lang->visible_comment_error_content		= 'En kommentar uten innhold er vel egentlig ikke særlig verdifull, er du ikke enig?';
 $lang->visible_comment_error_registered		= 'Dette navnet er registrert.<br />Hvis det er ditt navn, vennligst send ditt passord under:';
+$lang->visible_comment_error_onlyregistered	= 'Bare registrerte brukere kan legge inn kommentarer, og &quot;%1$s&quot; er ikke registrert.';
+$lang->visible_comment_error_requiremail	= 'Du må oppgi emailadressen din for å legge inn kommentarer.';
+$lang->visible_comment_preview				= 'Kommentarforhåndsvisning';
 ?>

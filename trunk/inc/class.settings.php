@@ -9,6 +9,7 @@ class KSettings {
 	var $te;
 	var $co;
 	var $ca;
+	var $unique;
 	
 	function connect() {
 		$db = new SettingsStorage('settings');
@@ -26,6 +27,7 @@ class KSettings {
 		$db = KSettings::connect();
 		$configuration = $db->settings['configuration'];
 		$this->co = $configuration;
+		$this->unique = $configuration[general][uniquekey];
 		return $configuration;
 		}
 		
@@ -36,5 +38,13 @@ class KSettings {
 		return $categories;
 		}
 	
+	
+	
+	function saveConfig($where, $what, $sub=false) {
+		$db = KSettings::connect();
+		$db->settings['configuration'][$where] = $what;
+		$db->save();
+		return true;
+		}
 }
 ?>

@@ -1,5 +1,13 @@
 # Changelog
 	
+	[sat 05 mar]
+	
+	New: Gravatars
+	New: Options and truly portable storage
+	Fix: i18n-function updated - can now accept variables %d %s
+	Fix: Lots of code tweaks
+	
+	
 	[thu 03 mar]
 	
 	New: Changelog has been neglected for too long.

@@ -11,8 +11,10 @@ class KArticles {
 	
 	function connect() {
 		if (defined("KNIFESQL")) {
-			$mysql_id = mysql_connect(KNIFE_SQL_SERVER, KNIFE_SQL_USER, KNIFE_SQL_PASSWORD);
-			mysql_select_db(KNIFE_SQL_DATABASE, $mysql_id);
+			global $Settings;
+			$Storage = $Settings->co[storage];
+			$mysql_id = mysql_connect($Storage[mysqlhost], $Storage[mysqluser], $Storage[mysqlpass]);
+			mysql_select_db($Storage[mysqldatabase], $mysql_id);
 			return $mysql_id;	
 			}
 		
@@ -274,19 +276,22 @@ class KArticles {
 		# FIXME:
 		#	Accept multiple needles
 		#	Allow limiting searches to title or content
-		##	Allow regexp searches (done)
 		
 		if (!$where) { $where = "content"; }
 		$haystack = KArticles::listarticles();
 		$terms = explode(" ", $terms);
+		$numberofterms = count($terms);
 		foreach ($haystack as $date => $article) {
+			$rel = 0;
 			foreach ($terms as $null => $term) {
-				if ($regexp != "yes") { $term = "/\s$term\s/i"; }			# default search regexp
+				if ($regexp != "yes") { $term = "/$term\s/i"; }			# default search regexp
 				
-				if (preg_match($term, $article[$where]) and !$nonmatches[$date]) {
+				if ($hits = preg_match_all($term, $article[$where], $hits) and !$nonmatches[$date]) {
+					$rel += $hits;
 					$matches[$date] = array(
 						"title" => $article[title],
 						"category" => $article[category],
+						"relevance" => $rel,
 						);
 					}
 				else {

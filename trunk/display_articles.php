@@ -4,40 +4,52 @@
     	define( "KNIFE_PATH", dirname(__FILE__)."/");	# Absolute path to current script
     	}
 
-	include_once(KNIFE_PATH.'/config.php');					# load temporary config
 	include_once(KNIFE_PATH.'/inc/class.articles.php');
 	include_once(KNIFE_PATH.'/inc/class.comments.php');
 	include_once(KNIFE_PATH.'/inc/class.users.php');				# load userclass - can't live without
-	include_once(KNIFE_PATH.'/lang/nb_no.php');				# load a language
+	include_once(KNIFE_PATH.'/inc/class.settings.php');
 	
 	include_once(KNIFE_PATH.'/inc/functions.php');
 	include_once(KNIFE_PATH.'/plugins/markdown.php');
+	include_once(KNIFE_PATH.'/plugins/live-comment-preview.php');
 
-	$pathinfo_array = explode("/",$_SERVER[PATH_INFO]);
-	$commentsclass = new KComments;
-	$Userclass = new KUsers;
-	$KAclass = new KArticles;
+	$pathinfo_array	= explode("/",$_SERVER[PATH_INFO]);
+	$commentsclass 	= new KComments;
+	$Userclass 		= new KUsers;
+	$KAclass 		= new KArticles;
+	$Settings 		= new KSettings;
+	
+	$Settings->getCats();			#
+	$Settings->getTemplates();		#	Initialize settings
+	$Settings->getConfig();			#
+	
+	
+	$settingsdatabase = new SettingsStorage('settings');
+	$alltemplates = $Settings->te;
+	$allcats = $Settings->ca;
+	$Config = $Settings->co;
+	$allusers = $Userclass->getusers();
 
+	include_once(KNIFE_PATH.'/config.php');					# load temporary config
+
+	#FIXME: Recognize cookies here
+	require(KNIFE_PATH.'/lang/'.$Settings->co[general][defaultlanguage]);
 #
 #	Reset some variables
 #
-
 $timestamp = 0;
 
 #
 #	Display articles
 #
 
-$settingsdatabase = new SettingsStorage('settings');
-$alltemplates = $settingsdatabase->settings['templates'];
-$allcats = $settingsdatabase->settings['categories'];
-$allusers = $Userclass->getusers();
+if ($Settings->co[storage][backend] == "mysql") { define("KNIFESQL", "yes"); }
 	
 if ($template) {
-	$template = $alltemplates[$template];
+	$template = $Settings->te[$template];
 	}
 else { 
-	$template = $alltemplates[1];
+	$template = $Settings->te[1];
 	}
 if (!$amount && isset($_GET[amount])) { 
 	$amount = $_GET[amount];											#FIXME
@@ -119,7 +131,7 @@ foreach($allarticles as $date => $article) {
 	$output = str_replace("{extended}", "", $output);
 	$output = str_replace("{author}", $article[author], $output);
 	$output = str_replace("{category}", $thiscatnamelisting, $output);
-	$output = str_replace("{date}", date("dmy H:i", $date), $output);
+	$output = str_replace("{date}", date($Settings->co[articles][dateformat], $date), $output);
 		
 	$articlescomments = $commentsclass->articlecomments($date);
 	if (is_array($articlescomments)) {
@@ -162,7 +174,7 @@ foreach($allarticles as $date => $article) {
 		include("display_article.php");
 		}
 			
-	if ($_GET[debug] and !$static) {
+	if (!$_GET[debug] and !$static) {
 				echo " (debug mode)<br /><pre>";
 				print_r($_GET);
 				echo "\n\n-----------&lt;- get  | post   -&gt;---------------\n\n";
@@ -181,7 +193,8 @@ foreach($allarticles as $date => $article) {
 ?>
 
 <!--
-
-	Content publishing: <?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?>
-	
+    
+    Content publishing: <?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?> 
+    	GPL-licensed by Øivind Hoel (http://appelsinjuice.org/)
+    
 -->

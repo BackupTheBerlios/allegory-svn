@@ -1,18 +1,22 @@
 <?php
 // ** MySQL settings ** //
-
-$cp->unique = 'b83b9c064c365cc68d675c8e1ca986904159a9f0';
+#$cp->unique = 'b83b9c064c365cc68d675c8e1ca986904159a9f0';
 define('CPATH', dirname(__FILE__) . '/' );
-define('UNIQUE', 'b83b9c064c365cc68d675c8e1ca986904159a9f0');
+#define('UNIQUE', 'b83b9c064c365cc68d675c8e1ca986904159a9f0');
 define('SCRIPT_TITLE', 'Allegory');
 define('SCRIPT_VERSION', '0.3.1');
 
-#    define( "KNIFESQL", "yes");							# Comment this to use flatfiles
-	define( "KNIFE_SQL_SERVER", "localhost");			# mySQL server
-	define( "KNIFE_SQL_USER", "root");					# mySQL username
-	define( "KNIFE_SQL_PASSWORD", "");					# mySQL password
-    define( "KNIFE_SQL_DATABASE", "ajfork");			# mySQL database
+/*	
+	DEEEEEEEEEEEEEEEEEEEEEEEEPRECATED
+	
+	define( "KNIFE_SQL_SERVER", $Settings->co[storage][mysqlhost]);			# mySQL server
+	define( "KNIFE_SQL_USER", $Settings->co[storage][mysqluser]);					# mySQL username
+	define( "KNIFE_SQL_PASSWORD", $Settings->co[storage][mysqlpass]);					# mySQL password
+    define( "KNIFE_SQL_DATABASE", $Settings->co[storage][mysqldatabase]);			# mySQL database
     define( "KNIFE_SQL_TBL_PREFIX", "knife_");			# mySQL table prefix (unused)
+    
+    
+    */
 
 	define( "DEFAULT_LANGUAGE", "nb_no.php");
 
@@ -34,5 +38,4 @@ $config_avatardimensions = array(
 		"height" => 30,
 		),
 	);
-$config_avatardefaulturl = "http://appelsinjuice.org/cutepress/graphics/icons/users.png";
 ?>

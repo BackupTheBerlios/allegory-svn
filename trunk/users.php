@@ -142,13 +142,20 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 		1 => "Commenter",
 		);
 
+	foreach ($Settings->ca as $catid => $catinfo) {
+	
+		# get a config for default cat select
+		if ($catid == "0") { $checked = "checked=\"checked\" "; } else { $checked = ""; }
+		$catformfields .= "<input type=\"checkbox\" name=\"adduser[category][]\" id=\"catbox$catid\" value=\"$catid\" $checked/>
+							<label for=\"catbox$catid\">$catinfo[name]</label><br />";
+	}
+
 	$main_content = '
 	<div id="manage_users_wrapper">
+	<form id="add_user_form" class="cpform" method="post">
 	<div class="div_normal">
 		<fieldset>
 		<legend>'.i18n("users_add").'</legend>
-		
-	<form id="add_user_form" class="cpform" method="post">
 		<input type="hidden" name="	panel" value="users" />
 		<p><label for="add_user_name">'.i18n("login_Username").'</label><br /><input class="inshort" type="text" id="add_user_name" name="adduser[name]" /> 
 		<select id="add_user_level" name="adduser[level]">
@@ -164,7 +171,16 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 		<p><label for="add_user_profile">'.i18n("generic_profile").'</label><br /><textarea class="tamedium" id="add_user_profile" name="adduser[profile]"></textarea></p>
 		</fieldset>
 		<p><input type="submit" value="'.i18n("generic_add").'" /></p>
+	</div>
+	<div class="div_extended users_options">
+		<fieldset>
+			<legend>'.i18n("users_restrict").'</legend>
+			<p>'.i18n("users_restrictdesc").'</p>
+			'.$catformfields.'
+		</fieldset>
+	</div>
 	</form>
+	<div class="div_normal">
 	
 	<fieldset>
 		<legend>'.i18n("users_existing").'</legend>
@@ -186,8 +202,7 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 		}
 	$main_content .='
 	</table>
-	</fieldset>
-	</div><div class="div_extended"><p>Extended options</p></div>';
+	</fieldset></div>';
 	
 	}
 

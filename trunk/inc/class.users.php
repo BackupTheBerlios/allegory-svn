@@ -23,6 +23,7 @@ class KUsers {
 #	edit()
 
 function add() {
+	global $Settings;
 	$now = time();
 	$db = KUsers::connect();
 	$currentusers = KUsers::getusers();
@@ -31,7 +32,8 @@ function add() {
 	$_POST[adduser][name] 		= sanitize_variables($_POST[adduser][name]);
 	$_POST[adduser][password] 	= sanitize_variables($_POST[adduser][password]);	
 	$_POST[adduser][password] 	= md5($_POST[adduser][password]);
-	$_POST[adduser][password] 	= sha1($_POST[adduser][password].UNIQUE);
+	$_POST[adduser][password] 	= sha1($_POST[adduser][password].$Settings->unique);
+	$savecats 					= implode(", ", $_POST[adduser][category]);
 	$_POST[adduser][email] 		= sanitize_variables($_POST[adduser][email]);
 	$_POST[adduser][url] 		= sanitize_variables($_POST[adduser][url]);
 	$_POST[adduser][profile] 	= sanitize_variables($_POST[adduser][profile]);
@@ -52,6 +54,7 @@ function add() {
 		"url" 		=> stripslashes($_POST[adduser][url]),
 		"profile" 	=> stripslashes($_POST[adduser][profile]),
 		"level"		=> stripslashes($_POST[adduser][level]),
+		"cats"		=> stripslashes($savecats),				# should only be used to restrict journalists
 		);
 	
 	$db->settings['users'][$adduserkey] = $data;
@@ -167,13 +170,13 @@ function collectlogin() {
 }
 
 function verify() {
+	global $Settings;
 	$userdata = KUsers::collectlogin();
 	
 	if (!$userdata) { return false; }
 	$users = KUsers::getusers();
-	$unique = UNIQUE;
+	$unique = $Settings->unique;
 	$return = false;
-	# $unique_password = $userdata[ . $unique;
 	
 	if ($userdata[logintype] == "standard") {
 		$e_md5 = md5($userdata[password]);

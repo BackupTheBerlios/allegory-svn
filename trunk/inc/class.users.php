@@ -214,5 +214,24 @@ function logout() {
 	setcookie("kusername", "", time() - 7200);
 	setcookie("kmd5password", "", time() - 7200);
 	}
+	
+function convertlevel($level) {
+	switch ($level) {
+		case 1:
+			$return = i18n("level_commenter");
+			break;
+		case 2:
+			$return = i18n("level_journalist");
+			break;
+		case 3:
+			$return = i18n("level_editor");
+			break;
+		case 4:
+			$return = i18n("level_admin");
+			break;
+		}
+		return $return;
+	}
+	
 }
 ?>

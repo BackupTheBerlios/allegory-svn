@@ -14,9 +14,9 @@
 	include_once(KNIFE_PATH.'/plugins/live-comment-preview.php');
 
 	$pathinfo_array	= explode("/",$_SERVER[PATH_INFO]);
-	$commentsclass 	= new KComments;
+	$ACDB 	= new KComments;
 	$Userclass 		= new KUsers;
-	$KAclass 		= new KArticles;
+	$AADB 		= new KArticles;
 	$Settings 		= new KSettings;
 	
 	$Settings->getCats();			#
@@ -63,7 +63,7 @@ if (!$from && isset($_GET[from])) {
 	
 # Get all the articles...
 if ($static) { $from = null; }
-$allarticles = $KAclass->listarticles($amount, $from);
+$allarticles = $AADB->listarticles($amount, $from);
 
 if (!$_GET[k] and !$pathinfo_array[1] or $static) {
 $i = 0;
@@ -125,7 +125,7 @@ foreach($allarticles as $date => $article) {
 
 	$output = str_replace("[link]","<a title=\"".htmlspecialchars($article[title])."\" href=\"$PHP_SELF?k=$date\">", $output);
 	$output = str_replace("[/link]","</a>", $output);    		
-	$output = str_replace("[friendlylink]","<a title=\"".htmlspecialchars($article[title])."\" href=\"$_SERVER[SCRIPT_NAME]/".$KAclass->urlconstructor($article, $catarray)."\">", $output);
+	$output = str_replace("[friendlylink]","<a title=\"".htmlspecialchars($article[title])."\" href=\"$_SERVER[SCRIPT_NAME]/".$AADB->urlconstructor($article, $catarray)."\">", $output);
     $output = str_replace("[/friendlylink]","</a>", $output);
 	$output = str_replace("{content}", $article[content], $output);
 	$output = str_replace("{extended}", "", $output);
@@ -133,7 +133,7 @@ foreach($allarticles as $date => $article) {
 	$output = str_replace("{category}", $thiscatnamelisting, $output);
 	$output = str_replace("{date}", date($Settings->co[articles][dateformat], $date), $output);
 		
-	$articlescomments = $commentsclass->articlecomments($date);
+	$articlescomments = $ACDB->articlecomments($date);
 	if (is_array($articlescomments)) {
 		krsort($articlescomments);
 		reset($articlescomments);
@@ -147,7 +147,7 @@ foreach($allarticles as $date => $article) {
 	$article[comments] = count($articlescomments);
 	$output = str_replace("{latestcomment}", $lastcomment[name], $output);
 	$output = str_replace("{comments}", $article[comments], $output);
-	$article[views] = $KAclass->articleupdate($date, "views", "noupdate");
+	$article[views] = $AADB->articleupdate($date, "views", "noupdate");
 	$output = str_replace("{views}", $article[views], $output);
 	
 	if ($article[lastedit]) {

@@ -139,6 +139,7 @@ if ($_GET[screen] == "setup") {
 				"name" => i18n("options_general"),
 				makeField("text", "config[general][uniquekey]", "uniquekey", $Settings->co[general][uniquekey], i18n("options_d_unique", "<small>,</small>"), "inlong", "top"), 
 				makeField("text", "config[general][typekey]", "typekey", $Settings->co[general][typekey], "TypeKey", "inmedium", "top"),
+				makeField("text", "config[general][dateoffset]", "dateoffset", $Settings->co[general][dateoffset], i18n("options_dateoffset"), "inshort"),
 				formGroup($options_mysql_info, i18n("options_mysql_info")),
 				radioGroup($options_yesno, "emailspam", "config[general][emailspam]", i18n("options_emailspam"), $Settings->co[general][emailspam]),
 				radioGroup($options_languages, "defaultlanguage", "config[general][defaultlanguage]", i18n("options_default_lang"), $Settings->co[general][defaultlanguage]),

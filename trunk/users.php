@@ -101,20 +101,12 @@ if($_GET[edit] && !$_POST[edituser] && !$_GET[action]) {
 			<form id="edit_user_form" class="cpform" method="post">
 			<input type="hidden" name="panel" value="users" />
 			<input type="hidden" name="edituser[name]" value="'.$userkey.'" />
-			<p><select name="edituser[level]">';
-		
-	if($usertoedit[level] == 4){$main_content .= ' <option value="4" selected="selected">Admin</option>';}
-		else {$main_content .= ' <option value="4">Admin</option>';}
-	if($usertoedit[level] == 3){$main_content .= ' <option value="3" selected="selected">Editor</option>';}
-		else {$main_content .= ' <option value="3">Editor</option>';}
-	if($usertoedit[level] == 2){$main_content .= ' <option value="2" selected="selected">Journalist</option>';}
-		else {$main_content .= ' <option value="2">Journalist</option>';}
-	if($usertoedit[level] == 1){$main_content .= ' <option value="1" selected="selected">Commenter</option>';}
-		else {$main_content .= ' <option value="1">Commenter</option>';}
-		
+			<p>';
+			
+		$main_content .= createSelectBox(array("4" => i18n("level_admin"), "3" => i18n("level_editor"), "2" => i18n("level_journalist"), "1" => i18n("level_commenter")), "userlevelselect", "edituser[level]", $usertoedit[level]);
 		
 		$main_content .='
-			</select></p><p><input class="inshort" type="text" id="edit_user_nname" name="edituser[nickname]" value="'.$usertoedit[nickname].'" /><label for="edit_user_nname">'.i18n("generic_nickname").'</label></p>
+			</p><p><input class="inshort" type="text" id="edit_user_nname" name="edituser[nickname]" value="'.$usertoedit[nickname].'" /><label for="edit_user_nname">'.i18n("generic_nickname").'</label></p>
 			<p><input class="inshort" type="text" id="edit_user_password" name="edituser[password]" /><label for="edit_user_password">'.i18n("login_Password").'</label></p>
 			<p><input class="inmedium" type="text" id="edit_user_email" name="edituser[email]" value="'.$usertoedit[email].'" /><label for="edit_user_email">'.i18n("generic_email").'</label></p>
 			<p><input class="inmedium" type="text" id="edit_user_url" name="edituser[url]" value="'.$usertoedit[url].'" /><label for="edit_user_url">'.i18n("generic_url").'</label></p>
@@ -135,12 +127,6 @@ if($_GET[edit] && !$_POST[edituser] && !$_GET[action]) {
 #
 if (!$_POST[adduser] && !$_GET[edit]) {
 	
-	$leveltotext = array(
-		4 => "Admin",
-		3 => "Editor",
-		2 => "Journalist",
-		1 => "Commenter",
-		);
 
 	foreach ($Settings->ca as $catid => $catinfo) {
 	
@@ -157,13 +143,10 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 		<fieldset>
 		<legend>'.i18n("users_add").'</legend>
 		<input type="hidden" name="	panel" value="users" />
-		<p><label for="add_user_name">'.i18n("login_Username").'</label><br /><input class="inshort" type="text" id="add_user_name" name="adduser[name]" /> 
-		<select id="add_user_level" name="adduser[level]">
-			<option value="4">Admin</option>
-			<option value="3">Editor</option>
-			<option value="2">Journalist</option>
-			<option value="1">Commenter</option>
-		</select> <label for="add_user_level">'.i18n("generic_level").'</label></p>
+		<p><label for="add_user_name">'.i18n("login_Username").'</label><br /><input class="inshort" type="text" id="add_user_name" name="adduser[name]" />';
+
+		$main_content .= createSelectBox(array("4" => i18n("level_admin"), "3" => i18n("level_editor"), "2" => i18n("level_journalist"), "1" => i18n("level_commenter")), "add_user_level", "adduser[level]", $Settings->co[general][defaultuserlevel]);
+$main_content .= ' <label for="add_user_level">'.i18n("generic_level").'</label></p>
 		<p><input class="inshort" type="text" id="add_user_nname" name="adduser[nickname]" /><label for="add_user_nname">'.i18n("generic_nickname").'</label></p>
 		<p><input class="inshort" type="text" id="add_user_password" name="adduser[password]" /><label for="add_user_password">'.i18n("login_Password").'</label></p>
 		<p><input class="inmedium" type="text" id="add_user_email" name="adduser[email]" /><label for="add_user_email">'.i18n("generic_email").'</label></p>
@@ -196,8 +179,7 @@ if (!$_POST[adduser] && !$_GET[edit]) {
 		</thead>';
 	
 	foreach ($User->getusers() as $username => $userdata) {
-		$level = $userdata[level];
-		$level = $leveltotext[$level];
+		$level = $User->convertlevel($userdata[level]);
 		$main_content .= "<tr><form method=\"get\"><input type=\"hidden\" name=\"panel\" value=\"users\" /><input type=\"hidden\" name=\"edit\" value=\"$username\" /><td>$username</td><td>$level</td><td>".date("j. F Y", $userdata[registered])."</td><td></td><td><input type=\"submit\" value=\"".i18n("generic_edit")."\" /><input type=\"submit\" name=\"action[delete]\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td></form></tr>";
 		}
 	$main_content .='

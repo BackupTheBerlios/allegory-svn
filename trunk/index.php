@@ -40,7 +40,7 @@ $null = $User->verify();
 		include_once(KNIFE_PATH.'/lang/'.$User->language);
 		}
 	else {
-		include_once(KNIFE_PATH.'/lang/'.DEFAULT_LANGUAGE);
+		include_once(KNIFE_PATH.'/lang/'.$Settings->co[general][defaultlanguage]);
 		}
 #
 #	We need to display the login form if no good login data is found

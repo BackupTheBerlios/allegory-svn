@@ -124,14 +124,22 @@ function msg_status($message) {
 		echo $message;
 		}
 		
-function sanitize_variables($variable) {
+function sanitize_variables($variable, $template=false) {
 		
 		$search = array(
 				"\'",
+				"{",
+				"}",
+				"[",
+				"]",
 				);
 				
 		$replace = array(
 				"&#39;",
+				"&#123;",
+				"&#125;",
+				"&#91;",
+				"&#93;",
 				);
 
 		$variable = str_replace($search, $replace, $variable);
@@ -309,4 +317,51 @@ function multi_sort($array,$key){
 	uasort($array,$compare) ;
 	return $array ;
 	}
+	
+	
+		function createSelectBox($options, $id, $name, $selected) {
+			$out = '<select name="'.$name.'" id="'.$id.'">';
+			foreach ($options as $value => $description) {
+				if ($value == $selected) {
+					$out .= '<option value="'.$value.'" selected="selected">'.$description.'</option>';
+					}
+				else {
+					$out .= '<option value="'.$value.'">'.$description.'</option>';
+					}
+				}
+			$out .= '</select>';
+			return $out;
+			}
+			
+function easy_date_format_replace($template,$date,$adjust=false) {
+	global $Settings;
+	
+	// Create a regular expression
+	$find = '#\{date=(.*?)\}#i';
+	
+	// Find all occurences of the regular expression
+	preg_match_all($find,$template,$matches,PREG_SET_ORDER);
+	
+	
+	// If matches were found
+	if (!empty($matches))
+		// Loop through all the matches
+		foreach ($matches as $null => $match)
+			// Replaces current match with the correct date format
+			$template = str_replace($match[0], date($match[1], $date + ($adjust*60)), $template);
+
+	// return the newly formatted entry
+	return $template;
+}
+
+
+# off bbpress, updated by me
+function make_clickable($ret) {
+	$ret = ' ' . $ret . ' ';
+	$ret = preg_replace("#([\s>])(https?)://([^\s<>{}()]+[^\s.,<>{}()])#i", "$1<a href=\"$2://$3\">$2://$3</a>", $ret);
+	$ret = preg_replace("#(\s)www\.([a-z0-9\-]+)\.([a-z0-9\-.\~]+)((?:/[^ <>{}()\n\r]*[^., <>{}()\n\r]?)?)#i", "$1<a href=\"http://www.$2.$3$4\">www.$2.$3$4</a>", $ret);
+	$ret = preg_replace("#(\s)([a-z0-9\-_.]+)@([^,< \n\r]+)#i", "$1<a href=\"mailto:$2@$3\">$2@$3</a>", $ret);
+	$ret = trim($ret);
+	return $ret;
+}
 ?>

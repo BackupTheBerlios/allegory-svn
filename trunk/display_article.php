@@ -8,6 +8,8 @@ include_once(KNIFE_PATH.'/inc/class.parse.php');
 
 
 # FIXME: NEEDS LOTS OF WORK
+
+
 $currenturl = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/" . end(explode("/", $_SERVER['SCRIPT_NAME'])) . $_SERVER['PATH_INFO'];
 global $currenturl;
 $currentdir = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/";
@@ -17,7 +19,7 @@ $Parser 	= new Parser;
 $k = $_GET[k];
 #		if (!$k) { $k = $pathinfo_array[1]; }
 if (!$k) { 
-	$k = $KAclass->urldeconstructor($pathinfo_array, "title");
+	$k = $AADB->urldeconstructor($pathinfo_array, "title");
 	}
 if (eregi("[a-z]", $k)) {
 	# if $k is alpha , find the timestamp for this article
@@ -31,7 +33,7 @@ if (eregi("[a-z]", $k)) {
 	}
 
 unset($allarticles);
-$article = $KAclass->getarticle($k);
+$article = $AADB->getarticle($k);
 if (!$article) { 
 	$article = $allarticles[$k];
 	}
@@ -70,7 +72,7 @@ $output = str_replace("{author}", $article[author], $output);
 $output = str_replace("{category}", $article[category], $output);
 $output = str_replace("{date}", date("dmy H:i", $date), $output);
 
-$article[views] = $KAclass->articleupdate($date, "views", "update");
+$article[views] = $AADB->articleupdate($date, "views", "update");
 $output = str_replace("{views}", $article[views], $output);
 		
 echo $output;
@@ -81,7 +83,7 @@ echo $output;
 #	FIXME: If comments are disabled, don't show any of the following
 		
 echo '<div id="'.SCRIPT_TITLE.'_commentscontainer">';
-$articlescomments = $commentsclass->articlecomments($date);
+$articlescomments = $ACDB->articlecomments($date);
 		
 if (!$articlescomments or $articlescomments == "") {
 	echo "No comments";
@@ -136,7 +138,7 @@ if ($_POST[comment] && $valid) {
 				<input type=\"hidden\" value=\"". $_POST[comment][name]. "\" name=\"comment[name]\" />
 				<input type=\"hidden\" value=\"". $_POST[comment][email]. "\" name=\"comment[email]\" />
 				<input type=\"hidden\" value=\"". $_POST[comment][url]. "\" name=\"comment[url]\" />
-				<input type=\"hidden\" value=\"". $_POST[comment][content]. "\" name=\"comment[content]\" />
+				<input type=\"hidden\" value=\"". htmlspecialchars($_POST[comment][content]). "\" name=\"comment[content]\" />
 			<!--endhidden--></p>
 			<p><input type=\"submit\" value=\"" . i18n("generic_add") . "\" /></p></form></li>";
 			
@@ -147,7 +149,8 @@ if ($_POST[comment] && $valid) {
 				$null = $Userclass->verify();
 				if ($Userclass->username) {
 					$_POST[comment][name] = $match[name];
-					# No error, we're good to go
+					# No error, we're good to go - but first - make sure the stuff we're saving is okay...
+					$_POST[comment][content] = html2specialchars($_POST[comment][content]);
 					}
 				else {
 					$errors .= $userverifymessage;
@@ -162,7 +165,7 @@ if ($_POST[comment] && $valid) {
 		
 		# Save the comment if no errors occurred and we didnt request a preview
 	if (!$errors and !$_POST[comment][preview]) {
-		$commentsclass->add($date);
+		$ACDB->add($date);
 		#FIXME: Redirect javascript doesn't work on all servers
 		echo "<script type=\"text/javascript\">self.location.href='http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}';</script>";
 		}

@@ -3,13 +3,19 @@
 #
 #	Comment storage abstraction class
 #
+#
+#	EXtensive restructuring going on
 
 
 
 class KComments {
 
-	#
-	#	Construct a list of all available comments
+	var $last_query;
+	var $queries;
+	var $result;
+	
+	# ? ##################################################################
+	#	List all comments
 	function allcomments($limit=false) {
 		if (defined("KNIFESQL")) {
 			if ($limit) {
@@ -32,17 +38,33 @@ class KComments {
 			}
 		}
 	
-	#
+	# ? ##################################################################
 	#	Get a specific articles comments
+	
+	function alquery($query) {
+		$this->flush();
+		$this->last_query = $query;
+		$this->result = mysql_query($query, $this->dbc);
+		if (!$this->result) {
+			$this->error();
+			return false;
+			}
+		mysql_close($this->dbc);
+	}
+	
 	function articlecomments($timestamp) {
 		if (defined("KNIFESQL")) {
-			$class = KComments::connect();
-			$mysql_query = "SELECT * FROM comments WHERE articleid = $timestamp";
-			$result = mysql_query($mysql_query) or die('Query failed: ' . mysql_error());
-			while ($comment = mysql_fetch_assoc($result)) {
-				$articlecomments[$comment[commentid]] = $comment;
+			$this->connect();
+			$query = "SELECT * FROM comments WHERE articleid = $timestamp";
+			$this->alquery($query);
+			if ($this->result) {
+				while ($comment = mysql_fetch_assoc($this->result)) {
+					$articlecomments[$comment[commentid]] = $comment;
+					}
+				$this->flush();
+				return $articlecomments;
 				}
-			return $articlecomments;
+			else { $this->error(); }
 			}
 		else {
 			$allcomments = KComments::allcomments();
@@ -51,6 +73,8 @@ class KComments {
 			}
 		}
 		
+	# ? ##################################################################
+	#	Delete comments belonging to a specific article
 	function articlecommentsdelete($article) {
 		$commentsclass = new CommentStorage('comments');
 		if (!is_array($article)) {
@@ -64,7 +88,9 @@ class KComments {
 			return true;
 			}
 		}
-	
+
+	# ? ##################################################################
+	#	Get a specific comment from an article
 	function getcomment($article, $comment) {
 		if (defined("KNIFESQL")) {
 			$class = KComments::connect();
@@ -79,7 +105,9 @@ class KComments {
 			return $comment;
 			}
 		}
-			
+
+	# ? ##################################################################
+	#	Get the latest few comments
 	function latestcomments($number) {
 		$allcomments = KComments::allcomments();
 		$amount = 0;
@@ -97,19 +125,21 @@ class KComments {
 		reset($latestcomments);
 		return $latestcomments;
 		}	
-	
+
+	# ? ##################################################################
+	#	Save a comment
 	function add($articleid) {
 		$newcommentid = time();
 		$ip = $_SERVER["REMOTE_ADDR"];
 		if (!validate_ip($ip)) { $ip = "127.0.0.2"; }
 		$data = array(
-			'parentcid' => stripslashes($_GET[replyto]),
-			'name' => stripslashes($_POST[comment][name]),
-			'email' => stripslashes($_POST[comment][email]),
-			'url' => stripslashes($_POST[comment][url]),
+			'parentcid' => stripslashes(sanitize_variables($_GET[replyto])),
+			'name' => stripslashes(sanitize_variables($_POST[comment][name])),
+			'email' => stripslashes(sanitize_variables($_POST[comment][email])),
+			'url' => stripslashes(sanitize_variables($_POST[comment][url])),
 			'ip' => $ip,
-			'browser' => $_SERVER["HTTP_USER_AGENT"],
-			'content' => stripslashes($_POST[comment][content]),
+			'browser' => sanitize_variables($_SERVER["HTTP_USER_AGENT"]),
+			'content' => stripslashes(sanitize_variables($_POST[comment][content])),
 			);
 		if (defined("KNIFESQL")) {
 			$class = KComments::connect();			
@@ -117,21 +147,23 @@ class KComments {
 			$result = mysql_query($write_sql) or die('Query failed: ' . mysql_error());
 			return true;
 		}
-		else {
-			$class = KComments::connect();
+		else {		
+			$class = $this->connect();
 			$class->settings[$articleid][$newcommentid] = $data;
 			$class->save();
 			return true;
 		}
 	}
-				
+
+	# ? ##################################################################
+	#	Connect to the comments database
 	function connect() {
 		if (defined("KNIFESQL")) {
 			global $Settings;
 			$Storage = $Settings->co[storage];
-			$mysql_id = mysql_connect($Storage[mysqlhost], $Storage[mysqluser], $Storage[mysqlpass]);
-			mysql_select_db($Storage[mysqldatabase], $mysql_id);
-			return $mysql_id;	
+			$this->dbc = mysql_connect($Storage[mysqlhost], $Storage[mysqluser], $Storage[mysqlpass]);
+			@mysql_select_db($Storage[mysqldatabase], $this->dbc);
+			return $this->dbc;	
 			}
 		
 		else {
@@ -139,6 +171,29 @@ class KComments {
 			return $dataclass;
 			}			
 		}
+
+	function flush() {
+		@mysql_free_result($this->result);
+		$this->last_query = null;
+		$this->result = null;
+	}
+	
+	function error($str = '') {
+		if (!$str) $str = mysql_error();
+		array ('query' => $this->last_query, 'error_str' => $str);
+
+		// Is error output turned on or not..
+		if ( $this->show_errors ) {
+			// If there is an error then take note of it
+			print "<div id='error'>
+			<h2>Allegory comment database error:</h2><p class=\"error\">[ $str ]</p>
+			<p><code>$this->last_query</code></p>
+			</div>";
+		} else {
+			return false;	
+		}
+	}
+	
 }
 
 ?>

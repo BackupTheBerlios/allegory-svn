@@ -45,7 +45,7 @@ Latest comment by: {latestcomment}<br />
 {gravatar} <a href="{url}">{author}</a> <small>({date} - [mail="mail"] {reply}) {ip}</small>
 </div>
 {parentquote}
-{comment}
+{comment}{date=d/m/y}
 </div>',
         'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
         'commentform' => '<fieldset><legend>Add comment?</legend>
@@ -94,56 +94,17 @@ Sju
         'level' => '4',
         'avatar' => 'http://localhost/knife/source/trunk/graphics/talk.png',
       ),
-      'commenter' => 
+      'admin' => 
       array (
-        'registered' => '1107808829',
-        'nickname' => 'commenterrr',
-        'password' => '35a5aa9ebdfe1ad9afdcb323ffb3fb05341eb6b5',
-        'email' => '',
-        'url' => '',
-        'profile' => '',
-        'level' => '1',
-      ),
-      'jubbag' => 
-      array (
-        'registered' => '1107811415',
-        'nickname' => 'Jared Judge',
-        'password' => '4749709942162cd47a8a71020b6446efe3cfad79',
-        'email' => '',
-        'url' => '',
-        'profile' => '',
-        'level' => '4',
-      ),
-      'yoda' => 
-      array (
-        'registered' => '1107889400',
-        'nickname' => 'The German',
-        'password' => 'db11d626556186900a1cee5692406255e104a540',
-        'email' => '',
-        'url' => '',
-        'profile' => '',
-        'level' => '4',
-      ),
-      'stealtheye' => 
-      array (
-        'registered' => '1107983191',
-        'nickname' => 'StealthEye van Holland',
-        'password' => 'dfe642fd06030c47d3c2ea15d28589bc9ce1fca0',
-        'email' => '',
-        'url' => '',
-        'profile' => '',
-        'level' => '4',
-      ),
-      'john' => 
-      array (
-        'registered' => '1109971013',
+        'registered' => '1110301615',
         'lastlogin' => '',
-        'nickname' => 'john',
-        'password' => '82de2423ab98a11f25949847337462fbafd0f8c8',
+        'nickname' => 'Random Administrator',
+        'password' => '290cce4f9f84d616b8c58b5a702e29fa636d7f09',
         'email' => '',
         'url' => '',
         'profile' => '',
         'level' => '4',
+        'cats' => '0',
       ),
     ),
     'categories' => 
@@ -209,6 +170,7 @@ Sju
       array (
         'uniquekey' => 'b83b9c064c365cc68d675c8e1ca986904159a9f0',
         'typekey' => 'WRbB3duitFfHK13T072K',
+        'dateoffset' => '0',
         'emailspam' => 'yes',
         'defaultlanguage' => 'nb_no.php',
       ),

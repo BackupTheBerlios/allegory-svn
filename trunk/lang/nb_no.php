@@ -4,7 +4,7 @@
 	Filename: nb_no.php
 	Language National: Norsk Bokmål
 	Language International: Norwegian
-	Version: 0.1.1
+	Version: 0.3
 	Author: Øivind Overå Hoel
 	Author URI: http://appelsinjuice.org/
 	
@@ -15,8 +15,8 @@
 
 	%d 	= integer
 	%s  = string
-	%1$d = first string
-
+	%1$d = first variable. decimal
+	%3$s = third variable. string
 */
 
 $lang->login_modtitle			= 'Autentisering påkrevd';
@@ -69,18 +69,18 @@ $lang->edit_lastedit			= 'Sist redigert av';
 
 $lang->options_moduletitle		= 'Alle innstillinger';
 $lang->options_general			= 'Generelle innstillinger';
-$lang->options_d_unique			= 'Unik installasjonsnøkkel. %1$s(Brukes til hardning av svake passord)%2$s';
+$lang->options_d_unique			= 'Unik installasjonsnøkkel. %1$s(Brukes til hardning av svake passord)%2$s'; # 1: small 2: /small
 $lang->options_mysql_info		= 'MySQL-info';
-$lang->options_mysql_username	= '%1$s-brukernavn';
-$lang->options_mysql_password	= '%1$s-passord %2$s(la stå tomt for å ikke bruke passord)%3$s';
-$lang->options_mysql_host		= '%1$s-server %2$s(la stå tomt for å koble til &quot;localhost&quot;)%3$s';
-$lang->options_mysql_database	= '%1$s-database';
+$lang->options_mysql_username	= '%1$s-brukernavn'; # 1: mysql
+$lang->options_mysql_password	= '%1$s-passord %2$s(la stå tomt for å ikke bruke passord)%3$s'; # 1: mysql 2: small 3: /small
+$lang->options_mysql_host		= '%1$s-server %2$s(la stå tomt for å koble til &quot;localhost&quot;)%3$s'; # 1: mysql 2: small 3: /small
+$lang->options_mysql_database	= '%1$s-database';# 1: mysql
 $lang->options_default_lang		= 'Standardspråk';
 $lang->options_emailspam		= 'Motarbeid emailspamming?';
 $lang->options_storage_backedn	= 'Databasemotor';
 $lang->options_requireregister	= 'Bare registrerte brukere kan skrive kommentarer?';
 $lang->options_markdownpreview	= 'Aktivèr forhåndsvisning';
-$lang->options_markdownpreviewd = 'Kommentaren vil bli vist formatert med Markdown-filteret mens brukere skriver.<br /> Denne funksjonaliteten er basert på javascript, og støttes bare av nyere Mozilla-nettlesere';
+$lang->options_markdownpreviewd = 'Kommentaren vil bli vist formatert med Markdown-filteret mens brukere <br />skriver. Denne funksjonaliteten er basert på javascript, og støttes bare av nyere Mozilla-nettlesere';
 
 $lang->templates_moduletitle	= 'Rediger maler';
 $lang->templates_current		= 'Nåværende mal';
@@ -88,7 +88,7 @@ $lang->templates_list			= 'Artikkelliste';
 $lang->templates_view			= 'Artikkel';
 $lang->templates_comment		= 'Kommentar';
 $lang->templates_commentform	= 'Kommentarskjema';
-$lang->templates_fillnew		= 'Nye maler vil bli basert på &quot;%1$s&quot;. Fyll inn det nye navnet under:';
+$lang->templates_fillnew		= 'Nye maler vil bli basert på &quot;%1$s&quot;. Fyll inn det nye navnet under:'; # 1: Current template name
 $lang->templates_newtemplate	= 'Lag ny mal';
 $lang->templates_editname		= 'Endre malnavn';
 $lang->templates_quote			= 'Sitat';
@@ -129,8 +129,12 @@ $lang->generic_yes				= 'Ja';
 $lang->generic_no				= 'Nei';
 $lang->generic_general			= 'Generelt';
 
+$lang->level_admin				= 'Administrator';
+$lang->level_editor				= 'Redigerer';
+$lang->level_journalist			= 'Journalist';
+$lang->level_commenter			= 'Kommentator';
 
-$lang->search_header			= 'Søkeresultat %1$s(%2$d)%3$s';
+$lang->search_header			= 'Søkeresultat %1$s(%2$d)%3$s'; # 1: small 2: search hits 3: /small
 
 $lang->visible_comment_error_info			= 'Det oppstod et problem under verifiseringen av kommentaren. De spesifikke problemene finner du under, og du oppfordres til  å rette opp i dem og prøve igjen:';
 $lang->visible_comment_error_name			= 'Du må identifisere deg med et navn.';
@@ -138,7 +142,50 @@ $lang->visible_comment_error_email			= 'Du må oppgi en ekte emailadresse.';
 $lang->visible_comment_error_url			= 'Du må oppgi en ekte URL. Gjorde du det? Sjekk at den starter med den nødvendige http://-delen.';
 $lang->visible_comment_error_content		= 'En kommentar uten innhold er vel egentlig ikke særlig verdifull, er du ikke enig?';
 $lang->visible_comment_error_registered		= 'Dette navnet er registrert.<br />Hvis det er ditt navn, vennligst send ditt passord under:';
-$lang->visible_comment_error_onlyregistered	= 'Bare registrerte brukere kan legge inn kommentarer, og &quot;%1$s&quot; er ikke registrert.';
+$lang->visible_comment_error_onlyregistered	= 'Bare registrerte brukere kan legge inn kommentarer, og &quot;%1$s&quot; er ikke registrert.'; # 1: Name of submitter
 $lang->visible_comment_error_requiremail	= 'Du må oppgi emailadressen din for å legge inn kommentarer.';
 $lang->visible_comment_preview				= 'Kommentarforhåndsvisning';
+
+
+$lang->date_january				= 'Januar';
+$lang->date_februray			= 'Februar';
+$lang->date_march				= 'Mars';
+$lang->date_april				= 'April';
+$lang->date_may					= 'Mai';
+$lang->date_june				= 'Juni';
+$lang->date_july				= 'Juli';
+$lang->date_august				= 'August';
+$lang->date_september			= 'September';
+$lang->date_october				= 'Oktober';
+$lang->date_november			= 'November';
+$lang->date_december			= 'Desember';
+
+$lang->date_jan					= 'Jan';
+$lang->date_feb					= 'Feb';
+$lang->date_mar					= 'Mar';
+$lang->date_apr					= 'Apr';
+$lang->date_may					= 'Mai';
+$lang->date_jun					= 'Jun';
+$lang->date_jul					= 'Jul';
+$lang->date_aug					= 'Aug';
+$lang->date_sep					= 'Sep';
+$lang->date_oct					= 'Okt';
+$lang->date_nov					= 'Nov';
+$lang->date_dec					= 'Des';
+
+$lang->date_monday				= 'Mandag';
+$lang->date_tuesday				= 'Tirsdag';
+$lang->date_wednesday			= 'Onsdag';
+$lang->date_thursday			= 'Torsdag';
+$lang->date_friday				= 'Fredag';
+$lang->date_saturday			= 'Lørdag';
+$lang->date_sunday				= 'Søndag';
+
+$lang->date_mon					= 'Man';
+$lang->date_tue					= 'Tir';
+$lang->date_wed					= 'Ons';
+$lang->date_thu					= 'Tors';
+$lang->date_fri					= 'Fre';
+$lang->date_sat					= 'Lør';
+$lang->date_sun					= 'Søn';
 ?>

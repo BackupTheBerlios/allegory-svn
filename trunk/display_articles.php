@@ -58,8 +58,6 @@ $i = 0;
 
 foreach($allarticles as $date => $article) {
 	# Destroy variables from last loop
-	unset($catarray);
-	unset($newcatarray);
 	$output = $template[listing];
 	# category stuff
 		
@@ -152,11 +150,10 @@ foreach($allarticles as $date => $article) {
 	if ($i >= $amount) {
 		break 1;
 		}
+	unset($catarray);
+	unset($newcatarray);
 	}
 	# FIXME: This should be put in a seperate file ala cutenews that handles variable deaths, etc
-	unset ($from);
-	unset ($amount);
-	unset ($template);
 }
 	
 	elseif (($_GET[k] or $pathinfo_array[1]) and !$static) {
@@ -172,8 +169,12 @@ foreach($allarticles as $date => $article) {
 				print_r($_COOKIE);
 				echo "</pre>";
 				}
-				echo "list:<br />";
-	print_r($KAclass->listarticles());	
+				
+	unset ($cat);
+	unset ($allarticles);
+	unset ($from);
+	unset ($amount);
+	unset ($template);
 ?>
 
 <!--

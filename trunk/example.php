@@ -203,6 +203,7 @@ color: #f32988;
 	}
 	?>
 	<?php
+		include("config.php");
 		include("documentation.php");
 		if ($_GET[location]) {
 			$location = $_GET[location];
@@ -210,7 +211,7 @@ color: #f32988;
 			echo "<h1>$item[title]</h1>\n<div>$item[content]</div>";
 			}
 		else {
-			$cat = 3;
+			$cat = 7;
 			$amount = 7;
 			include("display_articles.php");
 			}
@@ -219,10 +220,8 @@ color: #f32988;
 	<div class="div_extended">
 	<h3>Latest articles</h3>
 	<ul>
-	<?php
+	<?php		
 		$static = true;
-		#$cat = 3;
-		unset($cat);
 		$amount = 10;
 		$template = "2";
 		include("display_articles.php");

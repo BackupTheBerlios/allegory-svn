@@ -21,6 +21,13 @@ class KArticles {
 			return $dataclass;
 			}			
 		}
+		
+	function disconnect($id) {
+		if (defined("KNIFESQL")) {
+			mysql_close($id);
+			return true;
+			}
+		}
 	#
 	#	Add new article
 	function add($author) {
@@ -114,24 +121,15 @@ class KArticles {
 	
 	#
 	#	Construct a list of all available articles
-	function listarticles($limit=false, $from=false) {
+	function listarticles($limit="false", $from="false", $cat="false") {
 		if (defined("KNIFESQL")) {
-
-			if (!$limit) { $limit = 0; }
-			if (!$from) { $limit = 0; }
-			$limits = "LIMIT $from $limit";
-
 			$class = KArticles::connect();
-#			$mysql_query = 'SELECT * FROM articles';
-#			$mysql_query = 'SELECT * FROM articles LIMIT 2, 4';
-			$mysql_query = "SELECT * FROM articles $limits";#.$limit;
-#			$dataclass = KArticles::connect();
-#			$mysql_query = 'SELECT * FROM `articles`';
+			$mysql_query = "SELECT * FROM articles";
 			$result = mysql_query($mysql_query) or die('Query failed: ' . mysql_error());
 			while ($article = mysql_fetch_assoc($result)) {
 				$allarticles["$article[articleid]"] = $article;
 				}
-			
+			$closed = KArticles::disconnect($class);
 			return $allarticles;
 			}
 		else {
@@ -152,7 +150,7 @@ class KArticles {
 			if (defined("KNIFESQL")) {
 				$class = KComments::connect();
 				$mysql_query = "SELECT * FROM articles WHERE articleid = $timestamp";
-				$result = mysql_query($mysql_query) or die('Query failed: ' . mysql_error());
+				$result = mysql_query($mysql_query) or die('<h1>SQL query failed.</h1><p>Looks like the timestamp is invalid or not supplied...:</p> ' . mysql_error());
 				$article = mysql_fetch_assoc($result);
 				return $article;
 				}
@@ -160,6 +158,7 @@ class KArticles {
 			else {
 				$allarticles = KArticles::listarticles();
 				$article = $allarticles[$timestamp];
+				unset($allarticles);
 				return $article;
 				}
 		}

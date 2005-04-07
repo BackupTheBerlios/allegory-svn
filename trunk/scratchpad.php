@@ -26,6 +26,15 @@ Feature hightlights:
 Feature wishlist:
 =================
 
+
+	- Post status
+		* Published
+			- Lifetime
+				* Start date
+				* End date
+		* Draft
+		* Private
+		
 	- Comments can be disabled after set time
 	- Comment and article preview
 		* Preview can be forced
@@ -36,6 +45,9 @@ Feature wishlist:
 		* Import Cutenews to Allegory
 		* Import Wordpress to Allegory
 		* Reset everything to defaults
+	
+	- RSS Feeds
+		* For every category
 		
 	- Restrict users to certain categories
 #	- Gravatars

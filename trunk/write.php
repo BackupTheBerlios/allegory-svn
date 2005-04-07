@@ -86,7 +86,28 @@ if (!$_POST[article]) {
 	edCanvas = document.getElementById(\'add_article_content\');
 	//-->
 	</script>
-	
+
+
+	<div class="div_extended">
+		<fieldset>
+			<legend>'.i18n("write_status_header").'</legend>
+				<div id="post_status_setting">
+				<label for="post_status">Save article as</label>
+					<select id="post_status">
+						<option>Published</option>
+						<option>Draft</option>
+						<option>Private</option>
+					</select>
+					
+					<fieldset>
+						<legend>Display period</legend>
+						Start date
+						End date
+					</fieldset>
+				</div>
+		</fieldset>
+	</div>	
+
 	<div class="div_extended">
 		<fieldset>
 			<legend>'.i18n("write_category").'</legend>

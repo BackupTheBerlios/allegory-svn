@@ -54,7 +54,10 @@ class KArticles {
 			"lastedit"	=> "",
 			"category" 	=> stripslashes($savecats),
 			"views"		=> "0",
+			"status"	=> stripslashes($_POST[article][status]),
 			);
+			
+			# status:	pub/dra/pri|startstamp|endstamp
 			
 		# hook to add custom fields here.
 		#	$data = run_filters('admin-new-savedata', $data);

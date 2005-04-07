@@ -144,7 +144,7 @@ Sju
     array (
       'storage' => 
       array (
-        'backend' => 'mysql',
+        'backend' => 'flat',
         'mysqluser' => 'appelsinjuice_o',
         'mysqlpass' => '',
         'mysqlhost' => '',

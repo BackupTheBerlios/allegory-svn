@@ -60,6 +60,7 @@ $lang->write_content			= 'Innhold';
 $lang->write_category			= 'Kategori(er)';
 $lang->write_publish			= 'Publisèr artikkel';
 $lang->write_published			= 'ble lagret';
+$lang->write_status_header		= 'Artikkelstatus';
 
 $lang->edit_module_edit			= 'Rediger';
 $lang->edit_module_list			= 'Rediger artikler';

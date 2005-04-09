@@ -137,7 +137,7 @@ if ($_POST[comment] && $valid) {
 
 
 	$_POST[comment][name] = trim($_POST[comment][name]);		# clean the submitted name for db lkp
-	$match = $Userclass->indatabase($allusers);
+	$match = $UserDB->indatabase($allusers);
 
 	if ($Settings->co[comments][requireregister] == "yes" and !$match[match]) {
 		$errors .= "<li><p>" . i18n("visible_comment_error_onlyregistered", $_POST[comment][name]) . "</p></li>";
@@ -161,8 +161,8 @@ if ($_POST[comment] && $valid) {
 				if ($match[type] = "nick") {
 					$_POST[comment][name] = $match[user];
 					}
-				$null = $Userclass->verify();
-				if ($Userclass->username) {
+				$null = $UserDB->verify();
+				if ($UserDB->username) {
 					$_POST[comment][name] = $match[name];
 					# No error, we're good to go - but first - make sure the stuff we're saving is okay...
 					$_POST[comment][content] = html2specialchars($_POST[comment][content]);

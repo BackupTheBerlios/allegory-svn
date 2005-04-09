@@ -1,4 +1,35 @@
 <?php
+
+function datedropdown($name, $id, $type) {
+	$out = "<select name=\"$name\" id=\"$id\">";
+	if ($type == "day") {
+		$i = 1;
+		$currentday = date("j", time());
+		while ($i <= 31) {
+			if ($i == $currentday) { $out .= "<option selected=\"selected\" value=\"$i\">$i</option>"; }
+			else { $out .= "<option value=\"$i\">$i</option>"; }
+			$i++;
+			}
+		$out .= "</select>\n";
+		}
+	elseif ($type == "year") {
+		$i = date("Y", time());
+		$e = $i + 10;
+		$currentyear = $i;
+		while ($i <= $e) {
+			if ($i == $currentyear) { $out .= "<option selected=\"selected\" value=\"$i\">$i</option>"; }
+			else { $out .= "<option value=\"$i\">$i</option>"; }
+			$i++;
+			}
+		$out .= "</select>\n";	
+	
+	}
+		
+	return $out;
+}
+
+
+
 if ($User->level < 2) { 
 	die(i18n("login_noaccess"));
 	}
@@ -90,19 +121,29 @@ if (!$_POST[article]) {
 
 	<div class="div_extended">
 		<fieldset>
-			<legend>'.i18n("write_status_header").'</legend>
+			<legend>'.i18n("write_meta_header").'</legend>
 				<div id="post_status_setting">
-				<label for="post_status">Save article as</label>
-					<select id="post_status">
-						<option>Published</option>
-						<option>Draft</option>
-						<option>Private</option>
-					</select>
+					<fieldset><legend>Status</legend>
+					<input id="post_status_pub" type="radio" name="article[status]" value="pub"> 
+						<label for="post_status_pub">Published</label><br />
+					<input id="post_status_draft" type="radio" name="article[status]" value="draft"> 
+						<label for="post_status_draft">Draft</label><br />
+					<input disabled="disabled" id="post_status_priv" type="radio" name="article[status]" value="priv"> 
+						<label for="post_status_priv">Private</label><br />
+					</fieldset>
 					
 					<fieldset>
-						<legend>Display period</legend>
-						Start date
-						End date
+						<legend class="link">
+						<label onclick="toggleDisplay(\'start_date_div\');" for="start_date_set">Start date</label>
+						<input type="checkbox" id="start_date_set" name="article[start_date_set]" value="true"/>
+						</legend>
+						<div id="start_date_div">
+							<input type="text" size="5" name="article[start_time]" value="'.date("H:i").'" id="start_time"/>
+							<label for="start_time"> ('.i18n("hhour").':'.i18n("hminute").')</label><br />
+							'. datedropdown("article[start_day]", "start_day", "day") .'
+							'. htmldropdown($lang->date_month_short, "article[start_month]", strtolower(date("M", time()))) .'
+							'. datedropdown("article[start_year]", "start_year", "year") .'
+						</div>
 					</fieldset>
 				</div>
 		</fieldset>

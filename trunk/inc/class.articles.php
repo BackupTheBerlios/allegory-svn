@@ -46,6 +46,17 @@ class KArticles {
 		$savecats = implode(", ", $_POST[article][category]);
 
 		# Enter it all into an array for use later
+		if ($_POST[article][start_date_set]) {
+		$startstring = 	$_POST[article][start_day] .' '. $_POST[article][start_month] .' '.	$_POST[article][start_year] .' '. $_POST[article][start_time];
+		$starttime = strtotime($startstring);
+		}
+		if ($_POST[article][stop_date_set]) {
+		$stopstring = $_POST[article][stop_day] .' '. $_POST[article][stop_month] .' '. $_POST[article][stop_year] .' '. $_POST[article][stop_time];
+		$stoptime = strtotime($stopstring);
+		}
+		
+		$status = sanitize_variables($_POST[article][status]) . "|$starttime|$stoptime";
+		
 		$data = array(
 			"timestamp" => $now,
 			"content" 	=> stripslashes($_POST[article][content]),
@@ -54,11 +65,9 @@ class KArticles {
 			"lastedit"	=> "",
 			"category" 	=> stripslashes($savecats),
 			"views"		=> "0",
-			"status"	=> stripslashes($_POST[article][status]),
+			"status"	=> $status,
 			);
-			
-			# status:	pub/dra/pri|startstamp|endstamp
-			
+		/*
 		# hook to add custom fields here.
 		#	$data = run_filters('admin-new-savedata', $data);
 			
@@ -78,7 +87,8 @@ class KArticles {
 			# Give the user a status message
 			$statusmessage = i18n("generic_article"). " &quot;$data[title]&quot; ". i18n("write_published");
 			return $statusmessage;
-			}
+			}*/
+			print_r($data);
 		}
 	
 	function edit($timestamp, $user) {

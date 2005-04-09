@@ -60,7 +60,7 @@ $lang->write_content			= 'Innhold';
 $lang->write_category			= 'Kategori(er)';
 $lang->write_publish			= 'Publisèr artikkel';
 $lang->write_published			= 'ble lagret';
-$lang->write_status_header		= 'Artikkelstatus';
+$lang->write_meta_header		= 'Metainfo';
 
 $lang->edit_module_edit			= 'Rediger';
 $lang->edit_module_list			= 'Rediger artikler';
@@ -148,45 +148,59 @@ $lang->visible_comment_error_requiremail	= 'Du må oppgi emailadressen din for �
 $lang->visible_comment_preview				= 'Kommentarforhåndsvisning';
 
 
-$lang->date_january				= 'Januar';
-$lang->date_februray			= 'Februar';
-$lang->date_march				= 'Mars';
-$lang->date_april				= 'April';
-$lang->date_may					= 'Mai';
-$lang->date_june				= 'Juni';
-$lang->date_july				= 'Juli';
-$lang->date_august				= 'August';
-$lang->date_september			= 'September';
-$lang->date_october				= 'Oktober';
-$lang->date_november			= 'November';
-$lang->date_december			= 'Desember';
+$lang->date_month_long = array(
+	"january" => "Januar",
+	"february" => "Februar",
+	"march" => "Mars",
+	"april" => "April",
+	"may" => "Mai",
+	"june" => "Juni",
+	"july" => "Juli",
+	"august" => "August",
+	"september" => "September",
+	"october" => "Oktober",
+	"november" => "November",
+	"december" => "Desember",
+	);
 
-$lang->date_jan					= 'Jan';
-$lang->date_feb					= 'Feb';
-$lang->date_mar					= 'Mar';
-$lang->date_apr					= 'Apr';
-$lang->date_may					= 'Mai';
-$lang->date_jun					= 'Jun';
-$lang->date_jul					= 'Jul';
-$lang->date_aug					= 'Aug';
-$lang->date_sep					= 'Sep';
-$lang->date_oct					= 'Okt';
-$lang->date_nov					= 'Nov';
-$lang->date_dec					= 'Des';
+$lang->date_month_short = array(
+	"jan" => "Jan",
+	"feb" => "Feb",
+	"mar" => "Mar",
+	"apr" => "Apr",
+	"may" => "Mai",
+	"jun" => "Jun",
+	"jul" => "Jul",
+	"aug" => "Aug",
+	"sep" => "Sep",
+	"oct" => "Oct",
+	"nov" => "Nov",
+	"dec" => "Des",
+	);
+$lang->date_day_long = array(
+	"monday" => "Mandag",
+	"tuesdag" => "Tirsdag",
+	"wednesday" => "Onsdag",
+	"thursdag" => "Torsdag",
+	"friday" => "Fredag",
+	"saturday" => "Lørdag",
+	"sunday" => "Søndag",
+	);
 
-$lang->date_monday				= 'Mandag';
-$lang->date_tuesday				= 'Tirsdag';
-$lang->date_wednesday			= 'Onsdag';
-$lang->date_thursday			= 'Torsdag';
-$lang->date_friday				= 'Fredag';
-$lang->date_saturday			= 'Lørdag';
-$lang->date_sunday				= 'Søndag';
+$lang->date_day_short = array(
+	"mon" => "Man",
+	"tue" => "Tir",
+	"wed" => "Ons",
+	"thu" => "Tor",
+	"fri" => "Fre",
+	"sat" => "Lør",
+	"sun" => "Søn",
+	);
+	
+$lang->hhour 				= 'tt';		# hourhour (for date help) (ie: 24)
+$lang->hyear 				= 'åååå';	# yearyearyear (for date help) (ie: 2005)
+$lang->hmonth 				= 'mm';		# monthmonth (for date help) (ie: 12)
+$lang->hday 				= 'dd';		# dayday (for date help) (ie: 31)
+$lang->hminute				= 'mm';		# minuteminute (for date help) (ie: 59)
 
-$lang->date_mon					= 'Man';
-$lang->date_tue					= 'Tir';
-$lang->date_wed					= 'Ons';
-$lang->date_thu					= 'Tors';
-$lang->date_fri					= 'Fre';
-$lang->date_sat					= 'Lør';
-$lang->date_sun					= 'Søn';
 ?>

@@ -829,6 +829,17 @@ Test to make sure we can use extended html in articles and still have a survivin
         'category' => '3, 7',
         'views' => 43,
       ),
+      1113075533 => 
+      array (
+        'timestamp' => 1113075533,
+        'content' => 'Is art',
+        'title' => 'Art',
+        'author' => 'eruin',
+        'lastedit' => '',
+        'category' => '3',
+        'views' => '0',
+        'status' => '|Array[start_date] Array[start_month] Array[start_year] Array[start_time]|',
+      ),
     ),
   ),
 );

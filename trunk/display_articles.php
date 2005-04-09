@@ -98,6 +98,13 @@ foreach($allarticles as $date => $article) {
 			
 	$thiscatnamelisting = implode(", ", $catarray);
 	
+	#
+	#	Functions that might skip the article
+	#
+	
+	
+#	$AADB->skip($article);
+	
 	if ((isset($cat) and array_key_exists($cat, $newcatarray))) {
 		# great, the article belongs to the requested category
 		}
@@ -110,7 +117,14 @@ foreach($allarticles as $date => $article) {
 			continue;
 			}	
 		}
-		# pre-parsing variable setup
+	
+	# skip draft articles
+	if ($article[status] == "draft") {
+		continue;
+		}
+		
+		
+	# pre-parsing variable setup
 	if (stristr($article[content], "<!--more-->")) {
 		$article[content] = explode("<!--more-->", $article[content]);
 		$article[content][0] = Markdown($article[content][0]);

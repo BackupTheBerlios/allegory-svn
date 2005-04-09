@@ -11,4 +11,5 @@ $config_urlstyle = array(
 	1 => "category",
 	2 => "title",
 	);
+	
 ?>

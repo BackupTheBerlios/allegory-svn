@@ -416,8 +416,8 @@ fieldset {
 }
 
 fieldset fieldset {
-	margin: 3px 0 5px 15px;
-	width: 70%;
+	margin: 3px 0 5px 10px;
+	width: 82%;
 	border: 1px solid #dae4ea;
 	}
 fieldset fieldset legend {
@@ -426,6 +426,10 @@ fieldset fieldset legend {
 fieldset legend {
 	font-weight: bold;
 	font-size: 130%;
+	}
+	
+legend.link {
+	border-bottom: 2px solid #f1f3d8;
 	}
 
 
@@ -469,6 +473,9 @@ th {
 #markdown_help {
 	display: none;
 	}
+#start_date_div {
+	display: none;
+	}
 
 </style>
 
@@ -507,7 +514,7 @@ th {
 	
 	<div id="footer">
 		<?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?> &quot;cutting edge personal publishing&quot; - Licensed under the <strong>GPL</strong>
-		<?php /*
+		<?php 
 			if (!$_GET[debug]) { 
 				$_GET[debug] = 1;
 				} 
@@ -520,7 +527,7 @@ th {
 				print_r($_COOKIE);
 				print_r($User->collectlogin());
 				echo "</pre></fieldset>";
-				}*/
+				}
 				?>
 	</div>
 

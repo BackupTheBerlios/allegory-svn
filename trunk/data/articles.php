@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 155,
+        'views' => 166,
       ),
       1109869152 => 
       array (
@@ -837,7 +837,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => '',
         'category' => '3',
-        'views' => '0',
+        'views' => 4,
         'status' => 'priv|1113077400|1113509400',
       ),
     ),

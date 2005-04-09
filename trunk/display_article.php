@@ -40,7 +40,22 @@ if (!$article) {
 if ($article != "") {
 	$valid = true;
 	}
-		
+
+	# rough copy from article(S)
+	# skip draft articles
+	$statusarray = explode("|", $article[status]);
+	if ($statusarray[0] == "draft") {
+		continue;
+		}
+	if ($statusarray[0] == "priv") {
+		if (!$UserDB->username) {
+			if ($static != true) {
+				exit("This article (<strong>&quot;$article[title]&quot;</strong>) is marked private.  You have to login, etc to view it.");
+				}
+			
+			}
+	}
+
 # date can come from two places
 if ($timestamp) {
 	$date = $timestamp;

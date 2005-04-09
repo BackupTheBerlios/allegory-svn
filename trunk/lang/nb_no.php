@@ -64,6 +64,11 @@ $lang->write_status_header		= 'Status og publisering';
 $lang->write_status_status		= 'Artikkeltype';
 $lang->write_status_starth		= 'Publiseringsdato';
 $lang->write_status_stoph		= 'Skjulingsdato';
+
+$lang->write_status_published	= 'Publisert';
+$lang->write_status_draft		= 'Kladd';
+$lang->write_status_private		= 'Privat';
+
 $lang->write_comment_header		= 'Diskusjonsinnstillinger';
 $lang->write_comment_allow		= 'Tillat kommentarer';
 

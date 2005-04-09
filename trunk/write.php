@@ -128,12 +128,12 @@ if (!$_POST[article]) {
 			<legend>'.i18n("write_status_header").'</legend>
 				<div id="post_status_setting">
 					<fieldset><legend>'.i18n("write_status_status").'</legend>
-					<input id="post_status_pub" type="radio" name="article[status]" value="pub"> 
-						<label for="post_status_pub">Published</label><br />
+					<input checked="checked" id="post_status_pub" type="radio" name="article[status]" value="pub"> 
+						<label for="post_status_pub">'.i18n("write_status_published").'</label><br />
 					<input id="post_status_draft" type="radio" name="article[status]" value="draft"> 
-						<label for="post_status_draft">Draft</label><br />
-					<input disabled="disabled" id="post_status_priv" type="radio" name="article[status]" value="priv"> 
-						<label for="post_status_priv">Private</label><br />
+						<label for="post_status_draft">'.i18n("write_status_draft").'</label><br />
+					<input id="post_status_priv" type="radio" name="article[status]" value="priv"> 
+						<label for="post_status_priv">'.i18n("write_status_private").'</label><br />
 					</fieldset>
 					
 					<fieldset>

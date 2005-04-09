@@ -840,6 +840,17 @@ Test to make sure we can use extended html in articles and still have a survivin
         'views' => 4,
         'status' => 'priv|1113077400|1113509400',
       ),
+      1113083214 => 
+      array (
+        'timestamp' => 1113083214,
+        'content' => 'Cuz drafts are cool :-P',
+        'title' => 'Let&#39;s post a draft',
+        'author' => 'eruin',
+        'lastedit' => '',
+        'category' => '0, 2, 3',
+        'views' => '0',
+        'status' => 'draft||',
+      ),
     ),
   ),
 );

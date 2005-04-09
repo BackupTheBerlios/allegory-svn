@@ -137,6 +137,7 @@ if (!$_GET[id] && !$_POST[editlist]) {
 	<form id=\"edit_article_list\" method=\"post\" class=\"cpform\">
 	<table>
 		<tr>
+			<th></th>
 			<th>".i18n("generic_title")."</th>
 			<th>".i18n("generic_date")."</th>
 			<th>".i18n("generic_comments")."</th>
@@ -165,8 +166,11 @@ if (!$_GET[id] && !$_POST[editlist]) {
 			}
 		
 		if ($article[lastedit]) { $article[author] = "$article[author] *"; }
+		$article[status] = current(explode("|", $article[status]));
+		if (!$article[status]) { $article[status] = "pub"; }
 		
 		$main_content .= "<tr id=\"editlist$date\" onmousedown=\"knife_bgc(this, true);\">
+			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\"><img src=\"graphics/icons/article_$article[status].png\" /></td>
 			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\"><a href=\"?panel=edit&amp;id=$date\">$one $article[title]</a></td>
 			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\">".date("d/m/y", $date)."</td>
 			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\">".count($Comments->articlecomments($date))."</td>

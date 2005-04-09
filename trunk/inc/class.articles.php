@@ -67,7 +67,7 @@ class KArticles {
 			"views"		=> "0",
 			"status"	=> $status,
 			);
-		/*
+			
 		# hook to add custom fields here.
 		#	$data = run_filters('admin-new-savedata', $data);
 			
@@ -87,7 +87,7 @@ class KArticles {
 			# Give the user a status message
 			$statusmessage = i18n("generic_article"). " &quot;$data[title]&quot; ". i18n("write_published");
 			return $statusmessage;
-			}*/
+			}
 			print_r($data);
 		}
 	

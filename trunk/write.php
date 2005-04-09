@@ -145,6 +145,20 @@ if (!$_POST[article]) {
 							'. datedropdown("article[start_year]", "start_year", "year") .'
 						</div>
 					</fieldset>
+					
+					<fieldset>
+						<legend class="link">
+						<label onclick="toggleDisplay(\'stop_date_div\');" for="stop_date_set">Stop date</label>
+						<input type="checkbox" id="stop_date_set" name="article[stop_date_set]" value="true"/>
+						</legend>
+						<div id="stop_date_div">
+							<input type="text" size="5" name="article[stop_time]" value="'.date("H:i").'" id="stop_time"/>
+							<label for="stop_time"> ('.i18n("hhour").':'.i18n("hminute").')</label><br />
+							'. datedropdown("article[stop_day]", "stop_day", "day") .'
+							'. htmldropdown($lang->date_month_short, "article[stop_month]", strtolower(date("M", time()))) .'
+							'. datedropdown("article[stop_year]", "stop_year", "year") .'
+						</div>
+					</fieldset>
 				</div>
 		</fieldset>
 	</div>	

@@ -473,6 +473,9 @@ th {
 #markdown_help {
 	display: none;
 	}
+#stop_date_div {
+	display: none;
+	}
 #start_date_div {
 	display: none;
 	}

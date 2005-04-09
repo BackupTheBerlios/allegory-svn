@@ -11,7 +11,7 @@ $menus["sub_options"] = '
 	<li id="options_menu_users"><a href="?panel=users">'.i18n("menu_users").'</a></li>
 	<li id="options_menu_templates"><a href="?panel=template">'.i18n("menu_templates").'</a></li>
 	<li id="options_menu_categories"><a href="?panel=options&amp;screen=categories">'.i18n("menu_categories").'</a></li>
-	<li id="options_menu_setup"><a href="?panel=options&amp;screen=setup"><span style="color: #f32988;">k</span>nife'.i18n("menu_setup").'</a></li>
+	<li id="options_menu_setup"><a href="?panel=options&amp;screen=setup">'.i18n("menu_setup", SCRIPT_TITLE).'</a></li>
 </ul>
 ';
 

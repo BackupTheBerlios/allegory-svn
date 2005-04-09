@@ -522,7 +522,7 @@ th {
 				$_GET[debug] = 1;
 				} 
 			if ($_GET[debug] == 1) {
-				echo "<br /><fieldset><legend>Debugging info</legend><pre>";
+				echo "<br /><fieldset><legend>".i18n("dashboard_DBI")."<legend><pre>";
 				print_r($_GET);
 				echo "\n\n-----------&lt;- get  | post   -&gt;---------------\n\n";
 				print_r($_POST);

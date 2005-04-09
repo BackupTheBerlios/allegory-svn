@@ -39,7 +39,7 @@ $lang->menu_logout				= 'logg ut';
 $lang->menu_users				= 'brukere';
 $lang->menu_templates			= 'maler';
 $lang->menu_categories			= 'kategorier';
-$lang->menu_setup				= '-oppsett';
+$lang->menu_setup				= '%s-oppsett';
 
 
 $lang->dashboard_moduletitle	= 'Skrivebord';

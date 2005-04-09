@@ -15,7 +15,7 @@
 
 	$pathinfo_array	= explode("/",$_SERVER[PATH_INFO]);
 	$ACDB 	= new KComments;
-	$Userclass 		= new KUsers;
+	$UserDB 		= new KUsers;
 	$AADB 		= new KArticles;
 	$Settings 		= new KSettings;
 	
@@ -28,7 +28,8 @@
 	$alltemplates = $Settings->te;
 	$allcats = $Settings->ca;
 	$Config = $Settings->co;
-	$allusers = $Userclass->getusers();
+	$allusers = $UserDB->getusers();
+	$null = $UserDB->verify();
 
 	include_once(KNIFE_PATH.'/config.php');					# load temporary config
 
@@ -120,11 +121,18 @@ foreach($allarticles as $date => $article) {
 	
 	# skip draft articles
 	$statusarray = explode("|", $article[status]);
-	print_r($statusarray);
 	if ($statusarray[0] == "draft") {
-		echo "draft";
 		continue;
 		}
+	if ($statusarray[0] == "priv") {
+		if (!$UserDB->username) {
+			if ($static != true) {
+				echo "* Article titled <strong>&quot;$article[title]&quot;</strong> is marked private.  You have to login, etc to view it. Skipped.";
+				continue;
+				}
+			
+			}
+	}
 	
 
 	# Actual parsing needs to be done by the parser class!
@@ -195,13 +203,14 @@ foreach($allarticles as $date => $article) {
 		}
 			
 	if (!$_GET[debug] and !$static) {
-				echo " (debug mode)<br /><pre>";
+					echo "<br /><fieldset><legend>".i18n("dashboard_DBI")."<legend><pre>";
 				print_r($_GET);
 				echo "\n\n-----------&lt;- get  | post   -&gt;---------------\n\n";
 				print_r($_POST);
 				echo "\n\n-----------&lt;- post | cookie -&gt;---------------\n\n;";
 				print_r($_COOKIE);
-				echo "</pre>";
+				print_r($UserDB->collectlogin());
+				echo "</pre></fieldset>";
 				}
 				
 	unset ($cat);

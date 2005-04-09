@@ -35,6 +35,8 @@ Feature wishlist:
 		* Draft
 		* Private
 		
+		- Should have icons in edit list
+		
 	- Comments can be disabled after set time
 	- Comment and article preview
 		* Preview can be forced

@@ -29,6 +29,11 @@ function datedropdown($name, $id, $type) {
 }
 
 
+		$options_yesno = array(
+			"yes" => i18n("generic_yes"),
+			"no" => i18n("generic_no"),
+			);
+
 
 if ($User->level < 2) { 
 	die(i18n("login_noaccess"));
@@ -118,12 +123,11 @@ if (!$_POST[article]) {
 	//-->
 	</script>
 
-
 	<div class="div_extended">
 		<fieldset>
-			<legend>'.i18n("write_meta_header").'</legend>
+			<legend>'.i18n("write_status_header").'</legend>
 				<div id="post_status_setting">
-					<fieldset><legend>Status</legend>
+					<fieldset><legend>'.i18n("write_status_status").'</legend>
 					<input id="post_status_pub" type="radio" name="article[status]" value="pub"> 
 						<label for="post_status_pub">Published</label><br />
 					<input id="post_status_draft" type="radio" name="article[status]" value="draft"> 
@@ -134,7 +138,7 @@ if (!$_POST[article]) {
 					
 					<fieldset>
 						<legend class="link">
-						<label onclick="toggleDisplay(\'start_date_div\');" for="start_date_set">Start date</label>
+						<label onclick="toggleDisplay(\'start_date_div\');" for="start_date_set">'.i18n("write_status_starth").'</label>
 						<input type="checkbox" id="start_date_set" name="article[start_date_set]" value="true"/>
 						</legend>
 						<div id="start_date_div">
@@ -148,7 +152,7 @@ if (!$_POST[article]) {
 					
 					<fieldset>
 						<legend class="link">
-						<label onclick="toggleDisplay(\'stop_date_div\');" for="stop_date_set">Stop date</label>
+						<label onclick="toggleDisplay(\'stop_date_div\');" for="stop_date_set">'.i18n("write_status_stoph").'</label>
 						<input type="checkbox" id="stop_date_set" name="article[stop_date_set]" value="true"/>
 						</legend>
 						<div id="stop_date_div">
@@ -160,6 +164,13 @@ if (!$_POST[article]) {
 						</div>
 					</fieldset>
 				</div>
+		</fieldset>
+	</div>
+	
+	<div class="div_extended">
+		<fieldset>
+			<legend>'.i18n("write_comment_header").'</legend>
+						'. radioGroup($options_yesno, "emailspam", "article[comments][allow]", i18n("write_comment_allow"), "yes") .'
 		</fieldset>
 	</div>	
 

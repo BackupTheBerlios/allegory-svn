@@ -70,7 +70,7 @@ class KArticles {
 			
 		# hook to add custom fields here.
 		#	$data = run_filters('admin-new-savedata', $data);
-			
+		
 		if (defined("KNIFESQL")) {
 			$dataclass = KArticles::connect();			
 			$write_sql = "INSERT INTO articles VALUES ('$data[timestamp]', '$data[category]', '$data[author]', '0', '$data[title]', '$data[content]', '$data[views]')";
@@ -88,7 +88,6 @@ class KArticles {
 			$statusmessage = i18n("generic_article"). " &quot;$data[title]&quot; ". i18n("write_published");
 			return $statusmessage;
 			}
-			print_r($data);
 		}
 	
 	function edit($timestamp, $user) {

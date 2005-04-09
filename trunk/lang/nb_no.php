@@ -60,7 +60,12 @@ $lang->write_content			= 'Innhold';
 $lang->write_category			= 'Kategori(er)';
 $lang->write_publish			= 'Publisèr artikkel';
 $lang->write_published			= 'ble lagret';
-$lang->write_meta_header		= 'Metainfo';
+$lang->write_status_header		= 'Status og publisering';
+$lang->write_status_status		= 'Artikkeltype';
+$lang->write_status_starth		= 'Publiseringsdato';
+$lang->write_status_stoph		= 'Skjulingsdato';
+$lang->write_comment_header		= 'Diskusjonsinnstillinger';
+$lang->write_comment_allow		= 'Tillat kommentarer';
 
 $lang->edit_module_edit			= 'Rediger';
 $lang->edit_module_list			= 'Rediger artikler';

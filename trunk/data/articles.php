@@ -829,16 +829,16 @@ Test to make sure we can use extended html in articles and still have a survivin
         'category' => '3, 7',
         'views' => 43,
       ),
-      1113075533 => 
+      1113077441 => 
       array (
-        'timestamp' => 1113075533,
-        'content' => 'Is art',
-        'title' => 'Art',
+        'timestamp' => 1113077441,
+        'content' => 'tatatata',
+        'title' => 'tattatata',
         'author' => 'eruin',
         'lastedit' => '',
-        'category' => '3',
+        'category' => '0',
         'views' => '0',
-        'status' => '|Array[start_date] Array[start_month] Array[start_year] Array[start_time]|',
+        'status' => 'draft|1113077400|1113509400',
       ),
     ),
   ),

@@ -119,10 +119,15 @@ foreach($allarticles as $date => $article) {
 		}
 	
 	# skip draft articles
-	if ($article[status] == "draft") {
+	$statusarray = explode("|", $article[status]);
+	print_r($statusarray);
+	if ($statusarray[0] == "draft") {
+		echo "draft";
 		continue;
 		}
-		
+	
+
+	# Actual parsing needs to be done by the parser class!
 		
 	# pre-parsing variable setup
 	if (stristr($article[content], "<!--more-->")) {
@@ -141,6 +146,7 @@ foreach($allarticles as $date => $article) {
 	$output = str_replace("[/link]","</a>", $output);    		
 	$output = str_replace("[friendlylink]","<a title=\"".htmlspecialchars($article[title])."\" href=\"$_SERVER[SCRIPT_NAME]/".$AADB->urlconstructor($article, $catarray)."\">", $output);
     $output = str_replace("[/friendlylink]","</a>", $output);
+#    if ($article[status
 	$output = str_replace("{content}", $article[content], $output);
 	$output = str_replace("{extended}", "", $output);
 	$output = str_replace("{author}", $article[author], $output);

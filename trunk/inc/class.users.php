@@ -8,6 +8,8 @@ class KUsers {
 
 	var $username;
 	var $nickname;
+	var $email;
+	var $url;
 	var $status;
 	var $level;
 	var $language;
@@ -195,6 +197,8 @@ function verify() {
 			if ($e_given == $thisuserdata[password]) {
 				$this->username = $thisuser;
 				$this->nickname = $thisuserdata[nickname];
+				$this->url = $thisuserdata[url];
+				$this->email = $thisuserdata[email];
 				$this->status = "verified";
 				$this->level = $thisuserdata[level];
 				$this->language = $userdata[language];

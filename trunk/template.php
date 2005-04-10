@@ -254,7 +254,7 @@ $tvars_commentform = array(
 
 			
 			
-			<p><input type="submit" value="'.i18n("generic_save").'" /></p>
+			<p><input class="save" type="submit" value="'.i18n("generic_save").'" /></p>
 			</fieldset>
 		</form>
 	</div>
@@ -265,8 +265,8 @@ $tvars_commentform = array(
 				<p>';
 					$main_content .= makeDropDown($templates, "id", $templateid);
 					$main_content .= '</p><p>
-					<input type="submit" name="tswitch[submit]" value="'.i18n("generic_edit").'" /> 
-					<input type="submit" class="delete" name="changet[delete]" value="'.i18n("generic_delete").'" />
+					<input class="edit" type="submit" name="tswitch[submit]" value="'.i18n("generic_edit").'" /> 
+					<input class="delete" type="submit" class="delete" name="changet[delete]" value="'.i18n("generic_delete").'" />
 				</p>
 				<p>
 					'.i18n("templates_fillnew", $template[name]).'
@@ -274,7 +274,7 @@ $tvars_commentform = array(
 				<p>
 					<input type="text" name="changet[name]" class="inshort" id="changetname" /> 
 					<br />
-					<input type="submit" name="changet[new]" value="'.i18n("templates_newtemplate").'" />
+					<input class="add" type="submit" name="changet[new]" value="'.i18n("templates_newtemplate").'" />
 				</p>
 			</fieldset>
 		</form>	

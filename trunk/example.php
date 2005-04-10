@@ -221,7 +221,7 @@ color: #f32988;
 		?>
 	</div>
 	<div class="div_extended">
-	<?php if ($UserDB->username) { echo "<p>Logged in as $UserDB->nickname</p>"; } ?>
+	<?php if ($UserDB->username) { echo "<p>Logged in as $UserDB->nickname (<a href=\"mailto:$UserDB->email\">@</a>, <a href=\"$UserDB->url\">www</a>)</p>"; } ?>
 	<h3>Latest articles</h3>
 	<ul>
 	<?php		

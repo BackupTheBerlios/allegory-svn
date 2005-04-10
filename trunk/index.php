@@ -379,8 +379,11 @@ span.delete a {
 	}
 
 input.delete {
-	background: #d94848;
+	height: 22px;
+	background: #d94848 url(graphics/icons/delete.png) no-repeat;
 	color: #fff;
+	padding: 0 0 0 25px; 
+	border-left: 3px solid #333;
 	}
 
 input, textarea {
@@ -402,6 +405,18 @@ input.save {
 input.preview {
 	height: 22px;
 	background: url(graphics/icons/preview.png) no-repeat; 
+	padding: 0 0 0 25px; 
+	border-left: 3px solid #333;
+	}
+input.edit {
+	height: 22px;
+	background: url(graphics/icons/edit.png) no-repeat; 
+	padding: 0 0 0 25px; 
+	border-left: 3px solid #333;
+	}
+input.add {
+	height: 22px;
+	background: url(graphics/icons/add.png) no-repeat; 
 	padding: 0 0 0 25px; 
 	border-left: 3px solid #333;
 	}

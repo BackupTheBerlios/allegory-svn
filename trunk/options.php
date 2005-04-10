@@ -101,7 +101,7 @@ if ($_GET[screen] == "setup") {
 	foreach ($settingfields as $class => $fields) {
 		$main_content .= formGroup($fields, $fields[name]);
 		}
-	$main_content .= '<p><input type="submit" value="Save" name="configsave" /></p></div>';
+	$main_content .= '<p><input class="save" type="submit" value="Save" name="configsave" /></p></div>';
 	$main_content .= '</form>';
 	
 	
@@ -145,7 +145,7 @@ if ($_GET[screen] == "categories" && !$_POST[addcat]) {
 				<td>$catid</td>
 				<td>$catinfo[name]</td>
 				<td>$thistemplate[name]</td>
-				<td><input type=\"submit\" value=\"".i18n("generic_edit")."\" /><input type=\"submit\" name=\"action\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td>
+				<td><input class=\"edit\" type=\"submit\" value=\"".i18n("generic_edit")."\" /><input class=\"delete\" type=\"submit\" name=\"action\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td>
 			</form>
 		</tr>";
 		}
@@ -172,7 +172,7 @@ if ($_GET[screen] == "categories" && !$_POST[addcat]) {
 	$main_content .= ' <label>'.i18n("categories_defaulttpl").'</label>
 					</p>
 					<p>
-						<input type="submit" value="'.i18n("categories_add").'" />
+						<input class="add" type="submit" value="'.i18n("categories_add").'" />
 					</p>
 			</fieldset>
 		</form>	

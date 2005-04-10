@@ -112,7 +112,7 @@ if($_GET[edit] && !$_POST[edituser] && !$_GET[action]) {
 			<p><input class="inmedium" type="text" id="edit_user_url" name="edituser[url]" value="'.$usertoedit[url].'" /><label for="edit_user_url">'.i18n("generic_url").'</label></p>
 			<p><label for="edit_user_profile">'.i18n("generic_profile").'</label><br /><textarea class="tamedium" id="edit_user_profile" name="edituser[profile]">'.$usertoedit[profile].'</textarea></p>
 			</fieldset>
-			<p><input type="submit" value="'.i18n("generic_save").'" /></p>
+			<p><input class="save" type="submit" value="'.i18n("generic_save").'" /></p>
 			</form></div><div class="div_extended"><p>Extended options</p></div></div>';
 			}
 	
@@ -153,7 +153,7 @@ $main_content .= ' <label for="add_user_level">'.i18n("generic_level").'</label>
 		<p><input class="inmedium" type="text" id="add_user_url" name="adduser[url]" /><label for="add_user_url">'.i18n("generic_url").'</label></p>
 		<p><label for="add_user_profile">'.i18n("generic_profile").'</label><br /><textarea class="tamedium" id="add_user_profile" name="adduser[profile]"></textarea></p>
 		</fieldset>
-		<p><input type="submit" value="'.i18n("generic_add").'" /></p>
+		<p><input class="add" type="submit" value="'.i18n("generic_add").'" /></p>
 	</div>
 	<div class="div_extended users_options">
 		<fieldset>
@@ -180,7 +180,7 @@ $main_content .= ' <label for="add_user_level">'.i18n("generic_level").'</label>
 	
 	foreach ($User->getusers() as $username => $userdata) {
 		$level = $User->convertlevel($userdata[level]);
-		$main_content .= "<tr><form method=\"get\"><input type=\"hidden\" name=\"panel\" value=\"users\" /><input type=\"hidden\" name=\"edit\" value=\"$username\" /><td>$username</td><td>$level</td><td>".date("j. F Y", $userdata[registered])."</td><td></td><td><input type=\"submit\" value=\"".i18n("generic_edit")."\" /><input type=\"submit\" name=\"action[delete]\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td></form></tr>";
+		$main_content .= "<tr><form method=\"get\"><input type=\"hidden\" name=\"panel\" value=\"users\" /><input type=\"hidden\" name=\"edit\" value=\"$username\" /><td>$username</td><td>$level</td><td>".date("j. F Y", $userdata[registered])."</td><td></td><td><input class=\"edit\" type=\"submit\" value=\"".i18n("generic_edit")."\" /><input type=\"submit\" name=\"action[delete]\" class=\"delete\" value=\"".i18n("generic_delete")."\" /></td></form></tr>";
 		}
 	$main_content .='
 	</table>

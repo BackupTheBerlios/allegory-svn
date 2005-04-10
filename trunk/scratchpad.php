@@ -23,6 +23,7 @@ Feature hightlights:
 		* Results ranked by relevance
 		* Strict match for all words
 
+
 Feature wishlist:
 =================
 
@@ -41,6 +42,9 @@ Feature wishlist:
 	- Comments can be disabled after set time
 	- Comment and article preview
 		* Preview can be forced
+	- IPbanning w/ wildcard support
+	- Comment moderation queue
+		* Two kinds of comment status: Approved and Unapproved. Approved will show on-site.
 	- Photoblogging capability w/exif support
 	- Display_articles needs a wrapper that can destroy variables and do basic config
 	- Utility page
@@ -51,10 +55,9 @@ Feature wishlist:
 	
 	- RSS Feeds
 		* For every category
+		* For article comments
 		
 	- Restrict users to certain categories
-#	- Gravatars
-	- Favatars
 	- Let users register themselves
 	- Fetch IP when adding a comment
 

@@ -113,7 +113,7 @@ if (!$_POST[article]) {
 		</p>
 		</fieldset>
 		<p>
-			<input type="submit" name="preview" value="'.i18n("generic_preview").'" /><input type="submit" value="'.i18n("write_publish").'" />
+			<input class="preview" type="submit" name="preview" value="'.i18n("generic_preview").'" /><input class="save" type="submit" value="'.i18n("write_publish").'" />
 		</p>
 	</div>
 	

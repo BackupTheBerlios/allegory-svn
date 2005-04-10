@@ -49,6 +49,8 @@ class KArticles {
 		if ($_POST[article][start_date_set]) {
 		$startstring = 	$_POST[article][start_day] .' '. $_POST[article][start_month] .' '.	$_POST[article][start_year] .' '. $_POST[article][start_time];
 		$starttime = strtotime($startstring);
+		#FIXME: Just in case... might want to reconsider this scheme.
+		$now = $starttime;
 		}
 		if ($_POST[article][stop_date_set]) {
 		$stopstring = $_POST[article][stop_day] .' '. $_POST[article][stop_month] .' '. $_POST[article][stop_year] .' '. $_POST[article][stop_time];

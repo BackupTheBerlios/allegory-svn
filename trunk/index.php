@@ -316,6 +316,14 @@ li#options_menu_categories {
 	background-image: url(graphics/icons/categories.png);
 	background-repeat: no-repeat;
 	}
+	
+li#options_menu_utils {
+	background: url(graphics/icons/utils.png) no-repeat top left;
+	}
+	li#options_menu_utils:hover {
+	background-image: url(graphics/icons/utils.png);
+	background-repeat: no-repeat;
+	}
 		
 li#options_menu_setup {
 	background: url(graphics/icons/setup.png) no-repeat top left;
@@ -383,6 +391,19 @@ input, textarea {
 
 input:focus, textarea:focus {
 	background: #fff;
+	}
+	
+input.save {
+	height: 22px;
+	background: url(graphics/icons/save.png) no-repeat; 
+	padding: 0 0 0 25px; 
+	border-left: 3px solid #333;
+	}
+input.preview {
+	height: 22px;
+	background: url(graphics/icons/preview.png) no-repeat; 
+	padding: 0 0 0 25px; 
+	border-left: 3px solid #333;
 	}
 
 textarea {

@@ -63,16 +63,33 @@
 							</ul></li>
 					</ul>
 					</li>
-					<li>Language selected on login, saved in expireless cookie?</li>
+					<li><del>Language selected on login, saved in expireless cookie?</del></li>
 				</ul>
 			</li>
 			<li>Categories<ul><li>Add</li><li>Edit</li><li>Delete</li><li>Default template</li></ul></li>
 			<li>Plugins</li>
-			<li>Comments</li>
-			<li><del>Write news</del><ul><li>Custom date</li></ul></li>
+			<li><del>Comments</del>
+				<ul>
+					<li><del>Write comments</del></li>
+					<li>Edit comments</li>
+					<li>Mass functions</li>
+					<li><del>Gravatar support</del></li>
+					</ul>
+			</li>
+			<li><del>Write news</del><ul><li>Custom date</li><li><del>Article status: published, draft, private</del></li></ul></li>
 			<li><del>Edit news</del><ul><li>Custom date</li><li><del>Delete article</del></li><li><del>Delete articles</del></li></ul></li>
 			<li>Generate archive</li>
-			<li>Search!</li>
+			<li><del>Search!</del></li>
+			<li>Include-code generator (talk to stealtheye)</li>
+			<li><del>Internationalization</del>
+				<ul>
+					<li>One file for admin screens</li>
+					<li>One file for output</li>
+					<li>One file for dates</li>
+					<li>One file for help</li>
+					<li>(currently one big file)</li>
+				</ul>
+			</li>
 			<li>MySQL</li></ol>
 		</fieldset>
 		<fieldset>

@@ -34,8 +34,9 @@ Feature wishlist:
 				* End date
 		* Draft
 		* Private
+		* Should have icons in edit list				[done]
 		
-		- Should have icons in edit list
+	- Login form class.
 		
 	- Comments can be disabled after set time
 	- Comment and article preview
@@ -54,7 +55,6 @@ Feature wishlist:
 	- Restrict users to certain categories
 #	- Gravatars
 	- Favatars
-#	- Typekey support
 	- Let users register themselves
 	- Fetch IP when adding a comment
 

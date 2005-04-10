@@ -11,6 +11,7 @@ $menus["sub_options"] = '
 	<li id="options_menu_users"><a href="?panel=users">'.i18n("menu_users").'</a></li>
 	<li id="options_menu_templates"><a href="?panel=template">'.i18n("menu_templates").'</a></li>
 	<li id="options_menu_categories"><a href="?panel=options&amp;screen=categories">'.i18n("menu_categories").'</a></li>
+	<li id="options_menu_utils"><a href="?panel=options&amp;screen=utils">'.i18n("menu_utils").'</a></li>
 	<li id="options_menu_setup"><a href="?panel=options&amp;screen=setup">'.i18n("menu_setup", SCRIPT_TITLE).'</a></li>
 </ul>
 ';
@@ -72,7 +73,7 @@ if ($_GET[screen] == "setup") {
 			"general" => array(
 				"name" => i18n("options_general"),
 				makeField("text", "config[general][uniquekey]", "uniquekey", $Settings->co[general][uniquekey], i18n("options_d_unique", "<small>,</small>"), "inlong", "top"), 
-				makeField("text", "config[general][typekey]", "typekey", $Settings->co[general][typekey], "TypeKey", "inmedium", "top"),
+#				makeField("text", "config[general][typekey]", "typekey", $Settings->co[general][typekey], "TypeKey", "inmedium", "top"),
 				makeField("text", "config[general][dateoffset]", "dateoffset", $Settings->co[general][dateoffset], i18n("options_dateoffset"), "inshort"),
 				formGroup($options_mysql_info, i18n("options_mysql_info")),
 				radioGroup($options_yesno, "emailspam", "config[general][emailspam]", i18n("options_emailspam"), $Settings->co[general][emailspam]),

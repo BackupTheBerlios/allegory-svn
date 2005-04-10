@@ -221,6 +221,7 @@ color: #f32988;
 		?>
 	</div>
 	<div class="div_extended">
+	<?php if ($UserDB->username) { echo "<p>Logged in as $UserDB->nickname</p>"; } ?>
 	<h3>Latest articles</h3>
 	<ul>
 	<?php		

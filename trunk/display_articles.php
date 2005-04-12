@@ -194,12 +194,13 @@ foreach($allarticles as $date => $article) {
 	unset($newcatarray);
 	unset($lastcomment);
 	unset($article);
+	unset($static);
 	}
 	# FIXME: This should be put in a seperate file ala cutenews that handles variable deaths, etc
 }
 	
 	elseif (($_GET[k] or $pathinfo_array[1]) and !$static) {
-		include("display_article.php");
+		include(KNIFE_PATH."/display_article.php");
 		}
 			
 	if (!$_GET[debug] and !$static) {

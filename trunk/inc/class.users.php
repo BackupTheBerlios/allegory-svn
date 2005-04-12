@@ -134,9 +134,9 @@ function indatabase($allusers="FALSE", $user=false) {
 function collectlogin() {
 	$checkpost = array();
 	
-	if ($_COOKIE[kusername] && $_COOKIE[kmd5password]) {
-		$checkpost[username] = $_COOKIE[kusername];
-		$checkpost[password] = $_COOKIE[kmd5password];
+	if ($_COOKIE[allegory_username] && $_COOKIE[allegory_md5password]) {
+		$checkpost[username] = $_COOKIE[allegory_username];
+		$checkpost[password] = $_COOKIE[allegory_md5password];
 		$checkpost[logintype] = "cookie";
 		}
 
@@ -156,8 +156,8 @@ function collectlogin() {
 			$checkpost[language] = $_POST[language];
 			}
 			
-	elseif ($_COOKIE[klanguage]) {
-			$checkpost[language] = $_COOKIE[klanguage];
+	elseif ($_COOKIE[allegory_language]) {
+			$checkpost[language] = $_COOKIE[allegory_language];
 			}
 /*	$checkpost = array(
 		"username" => $_POST[username],
@@ -205,9 +205,9 @@ function verify() {
 				$this->type = $userdata[logintype];
 				
 				if ($userdata[logintype] == "standard") {
-					setcookie("kusername", $thisuser, time()+7200);
-					setcookie("kmd5password", $e_md5, time()+7200);	
-					setcookie("klanguage", $userdata[language]);
+					setcookie("allegory_username", $thisuser, time()+7200);
+					setcookie("allegory_md5password", $e_md5, time()+7200);	
+					setcookie("allegory_language", $userdata[language]);
 					}
 				}
 			}

@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 207,
+        'views' => 210,
       ),
       1108842457 => 
       array (
@@ -33,7 +33,7 @@ Hejdå!',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 26,
+        'views' => 28,
       ),
       1107610947 => 
       array (
@@ -47,7 +47,7 @@ Forresten, Philip: Beezewax skal spille i Bergen snart :)
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 4,
+        'views' => 7,
       ),
       1107206795 => 
       array (
@@ -58,7 +58,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 18,
+        'views' => 21,
       ),
       1107009146 => 
       array (
@@ -69,7 +69,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 0,
+        'views' => 1,
       ),
       1105972367 => 
       array (
@@ -82,7 +82,7 @@ En ting som er kult med <a href="http://akam.no/art.php?artikkelid=4161">mitt ny
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 1,
+        'views' => 2,
       ),
       1104717011 => 
       array (
@@ -105,7 +105,7 @@ Reiseskildring og bilder kommer vel etterhvert ;)',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 1,
+        'views' => 2,
       ),
       1103428768 => 
       array (
@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 167,
+        'views' => 191,
       ),
       1109869152 => 
       array (
@@ -827,7 +827,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 44,
+        'views' => 47,
       ),
       1113077441 => 
       array (
@@ -837,7 +837,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => '',
         'category' => '3',
-        'views' => 4,
+        'views' => 5,
         'status' => 'priv|1113077400|1113509400',
       ),
       1113083214 => 
@@ -850,6 +850,33 @@ Test to make sure we can use extended html in articles and still have a survivin
         'category' => '0, 2, 3',
         'views' => '0',
         'status' => 'draft||',
+      ),
+      1113266260 => 
+      array (
+        'timestamp' => 1113266260,
+        'content' => 'Jeg merker jeg er fantastisk lite glad i å skrive oppgaver for tiden. Før var det noe av det mest interessante jeg kunne tenke meg, men akkurat nå utsetter jeg og utsetter og utsetter og utsetter. Klokken er nå 02:36, jeg har masse, masse, masse igjen å skrive - jeg må nesten være ferdig før 12:00, og i tilleg må jeg forberede en muntlig presentasjon som skal avholdes på musset kvart over 12.
+
+Stressa som et uvær, men klarer likevel ikke å skrive oppgave. Bare dette. Øynene svir fordi skjermen er så lys. Usj. Jeg må ha mer øl :)',
+        'title' => 'Oppgaveskriving',
+        'author' => 'eruin',
+        'lastedit' => '',
+        'category' => '3',
+        'views' => '0',
+        'status' => 'draft||',
+      ),
+      1113266737 => 
+      array (
+        'content' => '<del>Leste</del> Så nettopp en slankeguide i et såkalt manneblad, og jeg må bare få sagt herregud. Er det mulig? Skal menn også begynne med slankehysteri nå? Jeg må protestere. Jeg tror det er veldig vanlig spesielt blant jenter å lyge om vekta, noe som fører meg til en perfekt protest mot slankehysteriet. Jeg skal begynne å lyge på vekta. Når folk spør meg hva jeg veier (noe jeg aner ikke kommer til å skje med det første, men men), skal jeg si nitti. Jeg skal nemlig lyge meg oppover på vektskalaen istedenfor nedover slik som alle andre "vektløgnere".
+
+Når folk selvfølgelig begynner å kverulere - jeg må jo veie mer seksti, sytti maks, akter jeg å fortelle en elaborat historie om bly-dingsen jeg fikk operert inn i rompa som barn. Så får jeg bare starte jobbingen med å forklare hvorfor jeg
+
+a) <strong>overlever på tross av giftig metall i kroppen,</strong>   
+b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
+        'title' => 'Slanking',
+        'author' => 'eruin',
+        'lastedit' => 'eruin',
+        'category' => '3',
+        'views' => 4,
       ),
     ),
   ),

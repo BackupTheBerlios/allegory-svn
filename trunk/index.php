@@ -56,7 +56,7 @@ if (!$User->username) {
 
 	foreach ($available_languages as $null => $languagedata) {
 		unset($langchecked);
-		if ($languagedata[file] == $_COOKIE[klanguage]) { $langchecked = 'checked="checked" '; }
+		if ($languagedata[file] == $_COOKIE[allegory_language]) { $langchecked = 'checked="checked" '; }
 		$lang_input_fields .= '<input id="ls'.$languagedata[file].'" type="radio" name="language" value="'.$languagedata[file].'" '.$langchecked.'/> 
 		<label for="ls'.$languagedata[file].'">'.$languagedata[langinternational].' ( '.$languagedata[langnational].' )</label><br />';
 		}

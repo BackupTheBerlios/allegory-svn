@@ -157,6 +157,9 @@ $lang->visible_comment_error_registered		= 'Dette navnet er registrert.<br />Hvi
 $lang->visible_comment_error_onlyregistered	= 'Bare registrerte brukere kan legge inn kommentarer, og &quot;%1$s&quot; er ikke registrert.'; # 1: Name of submitter
 $lang->visible_comment_error_requiremail	= 'Du må oppgi emailadressen din for å legge inn kommentarer.';
 $lang->visible_comment_preview				= 'Kommentarforhåndsvisning';
+$lang->visible_comment_none					= '<p>Ingen kommentarer</p>';
+$lang->visible_comment_disabled				= '<p>Kommentering avslått</p>';
+$lang->visible_comment_stopped				= '<p>Kommentering for denne artikkelen er stoppet</p>';
 
 
 $lang->date_month_long = array(

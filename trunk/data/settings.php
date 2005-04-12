@@ -37,9 +37,7 @@ Latest comment by: {latestcomment}<br />
 </div>
 </div>
 
-<div style="background: #333; padding: 3px; border-bottom: 5px solid #fffeee;">
-<h2>Comments</h2>
-</div>',
+<h1>Comments</h1>',
         'comment' => '<div class="comment">
 <div class="commentheader">
 {gravatar} <a href="{url}">{author}</a> <small>({date} - [mail="mail"] {reply}) {ip}</small>

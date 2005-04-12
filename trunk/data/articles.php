@@ -810,7 +810,7 @@ Var bare det jeg ville si.',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 191,
+        'views' => 192,
       ),
       1109869152 => 
       array (
@@ -827,7 +827,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 47,
+        'views' => 48,
       ),
       1113077441 => 
       array (
@@ -837,7 +837,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => '',
         'category' => '3',
-        'views' => 5,
+        'views' => 8,
         'status' => 'priv|1113077400|1113509400',
       ),
       1113083214 => 
@@ -876,7 +876,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 4,
+        'views' => 22,
       ),
     ),
   ),

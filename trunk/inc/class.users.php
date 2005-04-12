@@ -205,9 +205,9 @@ function verify() {
 				$this->type = $userdata[logintype];
 				
 				if ($userdata[logintype] == "standard") {
-					setcookie("allegory_username", $thisuser, time()+7200);
-					setcookie("allegory_md5password", $e_md5, time()+7200);	
-					setcookie("allegory_language", $userdata[language]);
+					setcookie("allegory_username", $thisuser, time()+14400, "/");
+					setcookie("allegory_md5password", $e_md5, time()+14400, "/");	
+					setcookie("allegory_language", $userdata[language], time()+100000, "/");
 					}
 				}
 			}
@@ -215,8 +215,8 @@ function verify() {
 	}
 
 function logout() {
-	setcookie("kusername", "", time() - 7200);
-	setcookie("kmd5password", "", time() - 7200);
+	setcookie("allegory_username", "", time() - 7200, "/");
+	setcookie("allegory_md5password", "", time() - 7200, "/");
 	}
 	
 function convertlevel($level) {

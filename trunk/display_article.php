@@ -101,7 +101,7 @@ echo '<div id="'.SCRIPT_TITLE.'_commentscontainer">';
 $articlescomments = $ACDB->articlecomments($date);
 		
 if (!$articlescomments or $articlescomments == "") {
-	echo "No comments";
+	echo i18n("visible_comment_none");
 }
 else {
 	krsort($articlescomments);

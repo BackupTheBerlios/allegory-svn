@@ -63,11 +63,18 @@ class Parser {
 	
 	
 	function CommentForm($template) {
+		global $UserDB;
+		$UserDB->verify("headers_sent");
 		$output = '<form method="post" action="" id="'.SCRIPT_TITLE.'_addcommentform" name="comment">';
 		$output .= $template[commentform];
 		$output = preg_replace("/\[save\=\"(.*)\"\]/ui", "<input name=\"comment[save]\" type=\"submit\" value=\"\\1\" />", $output);
 		$output = preg_replace("/\[preview\=\"(.*)\"\]/ui", "<input name=\"comment[preview]\" type=\"submit\" value=\"\\1\" />", $output);
 		$output = str_replace("{allowedtags}", kses_filter("gettags"), $output);
+		if ($UserDB->username) {
+			$output = str_replace("{cookiename}", $UserDB->nickname, $output);
+			$output = str_replace("{cookiemail}", $UserDB->mail, $output);
+			$output = str_replace("{cookieurl}", $UserDB->url, $output);
+			}
 		$output .= '</form>';
 		return $output;
 	

@@ -28,7 +28,7 @@
 	$allcats = $Settings->ca;
 	$Config = $Settings->co;
 	$allusers = $UserDB->getusers();
-	$null = $UserDB->verify();
+#	$null = $UserDB->verify();
 
 	include_once(KNIFE_PATH.'/config.php');					# load temporary config
 

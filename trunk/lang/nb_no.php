@@ -161,7 +161,7 @@ $lang->visible_comment_none					= '<p>Ingen kommentarer</p>';
 $lang->visible_comment_disabled				= '<p>Kommentering avslått</p>';
 $lang->visible_comment_stopped				= '<p>Kommentering for denne artikkelen er stoppet</p>';
 $lang->visible_logon_noauth					= '<p>Ikke innlogget</p>';
-$lang->visible_logon_noauth					= '<p>Logget inn som %s</p>';
+$lang->visible_logon_authed					= '<p>Logget inn som %s</p>';
 
 
 $lang->date_month_long = array(

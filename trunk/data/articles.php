@@ -876,7 +876,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 30,
+        'views' => 57,
       ),
       '' => 
       array (

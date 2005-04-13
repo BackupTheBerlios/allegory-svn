@@ -48,9 +48,9 @@ Latest comment by: {latestcomment}<br />
         'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
         'commentform' => '<fieldset><legend>Add comment?</legend>
 <input type="text" name="comment[parentcid]" /> Parent<br />
-<input type="text" name="comment[name]" id="commentame" /> Name<br />
-<input type="text" name="comment[email]" id="commentemail" /> Email<br />
-<input type="text" name="comment[url]" id="commenturl" /> URL<br /><br />
+<input type="text" name="comment[name]" id="commentame" value="{cookiename}" /> Name<br />
+<input type="text" name="comment[email]" id="commentemail" value="{cookiemail}" /> Email<br />
+<input type="text" name="comment[url]" id="commenturl" value="{cookieurl}" /> URL<br /><br />
 Comment <small>(allowed html: {allowedtags})</small><br />
 <textarea onkeyup="markUp(\'\', false);" name="comment[content]" rows="7" cols="50" id="commentcomment"></textarea>
 <p>[preview="Forhåndsvis"] [save="Send"]</p>

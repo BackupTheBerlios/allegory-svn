@@ -159,6 +159,8 @@ function collectlogin() {
 	elseif ($_COOKIE[allegory_language]) {
 			$checkpost[language] = $_COOKIE[allegory_language];
 			}
+	
+	else { $checkpost[language] = "en_gb.php"; }
 /*	$checkpost = array(
 		"username" => $_POST[username],
 		"password" => $_POST[password],
@@ -168,10 +170,12 @@ function collectlogin() {
 		"cookielang" => $_COOKIE[klanguage],
 		);*/
 		
+		# FIXME: Needs to verify language / Set default!
+		
 	return $checkpost;
 }
 
-function verify() {
+function verify($SentHeaders = false) {
 	global $Settings;
 	$userdata = KUsers::collectlogin();
 	
@@ -205,9 +209,21 @@ function verify() {
 				$this->type = $userdata[logintype];
 				
 				if ($userdata[logintype] == "standard") {
-					setcookie("allegory_username", $thisuser, time()+14400, "/");
-					setcookie("allegory_md5password", $e_md5, time()+14400, "/");	
-					setcookie("allegory_language", $userdata[language], time()+100000, "/");
+					if (!$SentHeaders) {
+						setcookie("allegory_username", $thisuser, time()+14400, "/");
+						setcookie("allegory_md5password", $e_md5, time()+14400, "/");	
+						setcookie("allegory_language", $userdata[language], time()+100000, "/");
+						}
+					else {
+						# Set the cookies via echoing a javascript here.
+						# Will probably also need a JS refresh ( FIXME )
+						echo "<script type=\"text/javascript\">
+						var now = new Date();
+						now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+						Allegory_Setcookie(\"allegory_username\", \"$thisuser\", now, \"/\");
+						Allegory_Setcookie(\"allegory_md5password\", \"$e_md5\", now, \"/\");
+						</script>";				
+						}
 					}
 				}
 			}

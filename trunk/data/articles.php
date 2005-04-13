@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 210,
+        'views' => 215,
       ),
       1108842457 => 
       array (
@@ -33,7 +33,7 @@ Hejdå!',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 28,
+        'views' => 30,
       ),
       1107610947 => 
       array (
@@ -47,7 +47,7 @@ Forresten, Philip: Beezewax skal spille i Bergen snart :)
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 7,
+        'views' => 16,
       ),
       1107206795 => 
       array (
@@ -58,7 +58,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 21,
+        'views' => 23,
       ),
       1107009146 => 
       array (
@@ -69,7 +69,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 1,
+        'views' => 4,
       ),
       1105972367 => 
       array (
@@ -82,7 +82,7 @@ En ting som er kult med <a href="http://akam.no/art.php?artikkelid=4161">mitt ny
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 2,
+        'views' => 5,
       ),
       1104717011 => 
       array (
@@ -105,7 +105,7 @@ Reiseskildring og bilder kommer vel etterhvert ;)',
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 2,
+        'views' => 6,
       ),
       1103428768 => 
       array (
@@ -827,7 +827,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 48,
+        'views' => 50,
       ),
       1113077441 => 
       array (
@@ -837,7 +837,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => '',
         'category' => '3',
-        'views' => 8,
+        'views' => 11,
         'status' => 'priv|1113077400|1113509400',
       ),
       1113083214 => 
@@ -876,7 +876,19 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 22,
+        'views' => 30,
+      ),
+      '' => 
+      array (
+        'views' => 7,
+      ),
+      'gledelige-nyheter' => 
+      array (
+        'views' => 2,
+      ),
+      'gledelige-nyheterd' => 
+      array (
+        'views' => 5,
       ),
     ),
   ),

@@ -155,7 +155,6 @@ Sju
       'comments' => 
       array (
         'requireregister' => 'yes',
-        'markdownpreview' => 'yes',
         'dateformat' => 'd/m/Y H:i:s',
         'avatar' => 
         array (
@@ -167,7 +166,7 @@ Sju
       'general' => 
       array (
         'uniquekey' => 'b83b9c064c365cc68d675c8e1ca986904159a9f0',
-        'typekey' => 'WRbB3duitFfHK13T072K',
+        'adminmail' => 'oivind.hoel@appelsinjuice.org',
         'dateoffset' => '0',
         'emailspam' => 'yes',
         'defaultlanguage' => 'nb_no.php',

@@ -73,7 +73,7 @@ if ($_GET[screen] == "setup") {
 			"general" => array(
 				"name" => i18n("options_general"),
 				makeField("text", "config[general][uniquekey]", "uniquekey", $Settings->co[general][uniquekey], i18n("options_d_unique", "<small>,</small>"), "inlong", "top"), 
-#				makeField("text", "config[general][typekey]", "typekey", $Settings->co[general][typekey], "TypeKey", "inmedium", "top"),
+				makeField("text", "config[general][adminmail]", "adminmail", $Settings->co[general][adminmail], "Administrator email", "inmedium", "top"),
 				makeField("text", "config[general][dateoffset]", "dateoffset", $Settings->co[general][dateoffset], i18n("options_dateoffset"), "inshort"),
 				formGroup($options_mysql_info, i18n("options_mysql_info")),
 				radioGroup($options_yesno, "emailspam", "config[general][emailspam]", i18n("options_emailspam"), $Settings->co[general][emailspam]),
@@ -86,7 +86,6 @@ if ($_GET[screen] == "setup") {
 			"comments" => array(
 				"name" => i18n("dashboard_Comments"),
 				radioGroup($options_yesno, "requireregister", "config[comments][requireregister]", i18n("options_requireregister"), $Settings->co[comments][requireregister]),
-				radioGroup($options_yesno, "markdownpreview", "config[comments][markdownpreview]", i18n("options_markdownpreview"), $Settings->co[comments][markdownpreview], i18n("options_markdownpreviewd")),
 				makeField("text", "config[comments][dateformat]", "commentdateformat", $Settings->co[comments][dateformat], "Comments date format"),
 				makeField("text", "config[comments][avatar][size]", "gravatarsize", $Settings->co[comments][avatar][size], "Gravatar size (in pixels)"),
 				makeField("text", "config[comments][avatar][defaulturl]", "gravatardefault", $Settings->co[comments][avatar][defaulturl], "Default gravatar (url)", "inlong"),

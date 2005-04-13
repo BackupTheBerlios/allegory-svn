@@ -91,8 +91,6 @@ $lang->options_default_lang		= 'Standardspråk';
 $lang->options_emailspam		= 'Motarbeid emailspamming?';
 $lang->options_storage_backend	= 'Databasemotor';
 $lang->options_requireregister	= 'Bare registrerte brukere kan skrive kommentarer?';
-$lang->options_markdownpreview	= 'Aktivèr forhåndsvisning';
-$lang->options_markdownpreviewd = 'Kommentaren vil bli vist formatert med Markdown-filteret mens brukere <br />skriver. Denne funksjonaliteten er basert på javascript, og støttes bare av nyere Mozilla-nettlesere';
 
 $lang->templates_moduletitle	= 'Rediger maler';
 $lang->templates_current		= 'Nåværende mal';
@@ -148,6 +146,8 @@ $lang->level_commenter			= 'Kommentator';
 
 $lang->search_header			= 'Søkeresultat %1$s(%2$d)%3$s'; # 1: small 2: search hits 3: /small
 
+
+$lang->visible_article_invalid				= 'Forespurt artikkel finnes ikke. Vennligst sjekk URLen du tastet inn. Kom du fra en link her på siden, vennligst <a href="mailto:%s">informèr oss om feilen</a>';
 $lang->visible_comment_error_info			= 'Det oppstod et problem under verifiseringen av kommentaren. De spesifikke problemene finner du under, og du oppfordres til  å rette opp i dem og prøve igjen:';
 $lang->visible_comment_error_name			= 'Du må identifisere deg med et navn.';
 $lang->visible_comment_error_email			= 'Du må oppgi en ekte emailadresse.';
@@ -160,6 +160,8 @@ $lang->visible_comment_preview				= 'Kommentarforhåndsvisning';
 $lang->visible_comment_none					= '<p>Ingen kommentarer</p>';
 $lang->visible_comment_disabled				= '<p>Kommentering avslått</p>';
 $lang->visible_comment_stopped				= '<p>Kommentering for denne artikkelen er stoppet</p>';
+$lang->visible_logon_noauth					= '<p>Ikke innlogget</p>';
+$lang->visible_logon_noauth					= '<p>Logget inn som %s</p>';
 
 
 $lang->date_month_long = array(

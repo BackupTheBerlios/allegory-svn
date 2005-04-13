@@ -11,7 +11,6 @@
 	
 	include_once(KNIFE_PATH.'/inc/functions.php');
 	include_once(KNIFE_PATH.'/plugins/markdown.php');
-	include_once(KNIFE_PATH.'/plugins/live-comment-preview.php');
 
 	$pathinfo_array	= explode("/",$_SERVER[PATH_INFO]);
 	$ACDB 	= new KComments;
@@ -194,7 +193,6 @@ foreach($allarticles as $date => $article) {
 	unset($newcatarray);
 	unset($lastcomment);
 	unset($article);
-	unset($static);
 	}
 	# FIXME: This should be put in a seperate file ala cutenews that handles variable deaths, etc
 }
@@ -213,7 +211,7 @@ foreach($allarticles as $date => $article) {
 				print_r($UserDB->collectlogin());
 				echo "</pre></fieldset>";
 				}
-				
+	unset ($static);
 	unset ($cat);
 	unset ($allarticles);
 	unset ($from);
@@ -224,7 +222,7 @@ foreach($allarticles as $date => $article) {
 
 <!--
     
-    Content publishing: <?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?> 
-    	GPL-licensed by Øivind Hoel (http://appelsinjuice.org/)
+    	Content publishing: <?=SCRIPT_TITLE;?> <?=SCRIPT_VERSION;?> 
+    	GPL-licensed by Øivind Hoel ( http://appelsinjuice.org/ - allegory at appelsinjuice org )
     
 -->

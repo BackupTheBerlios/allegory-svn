@@ -12,7 +12,7 @@
 	include_once(KNIFE_PATH.'/inc/class.users.php');
 	include_once(KNIFE_PATH.'/inc/class.settings.php');
 	include_once(KNIFE_PATH.'/inc/class.comments.php');
-	include_once(KNIFE_PATH.'/inc/class	.articles.php');
+	include_once(KNIFE_PATH.'/inc/class.articles.php');
 	
 /*
  *	Required setup

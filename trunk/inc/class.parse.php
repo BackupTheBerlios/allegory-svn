@@ -248,7 +248,7 @@ class Parser {
 			if ($statusarray[0] == "priv") {
 				if (!$UserDB->username) {
 					if ($static != true) {
-						echo "* Article titled <strong>&quot;$article[title]&quot;</strong> is marked private.  You have to login, etc to view it. Skipped.";
+						echo "<p>* Article titled <strong>&quot;$article[title]&quot;</strong> is marked private.  You have to login, etc to view it. Skipped. This message needs its own template...</p>";
 						continue;
 						}		
 					}

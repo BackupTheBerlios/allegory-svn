@@ -41,7 +41,7 @@ $array = array (
 {parentquote}
 {comment}
 </div>',
-        'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
+        'quote' => '<blockquote><h1>Quoting <strong>{name}</strong>:</h1>{quote}</blockquote>',
         'commentform' => '<h1>Add comment?</h1>
 <input type="text" name="comment[parentcid]" /> Parent<br />
 <input type="text" name="comment[name]" id="commentame" value="{cookiename}" /> Name<br />

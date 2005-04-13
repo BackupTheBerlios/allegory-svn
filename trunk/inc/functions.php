@@ -1,5 +1,7 @@
 <?php
 
+/* Pure DATA storage-related functions */
+
 function FileFolderList($path, $depth = 0, $current = '', $level=0, $ignore=FALSE) {
 	if ($level==0 && !@file_exists($path))
 		return false;
@@ -120,10 +122,20 @@ class SettingsStorage {
 }
 
 
+
+/* Utility functions for admin interface */
+
 function msg_status($message) {
 		echo $message;
 		}
 		
+
+/* Utility functions general*/	
+
+/*
+ *	Function: sanitize_variables("variable to replace, "template")
+ *	by Øivind Hoel / eruin
+ */
 function sanitize_variables($variable, $template=false) {
 		
 		$search = array(
@@ -146,6 +158,10 @@ function sanitize_variables($variable, $template=false) {
 		return $variable;
 }
 
+/*
+ *	Function: urlTitle("title")
+ *	by Wordpress team - expanded by Øivind Hoel
+ */		
 function urlTitle($title) {
 	
     $title = strtolower($title);
@@ -162,9 +178,10 @@ function urlTitle($title) {
     return $title;
 	}
 
-#
-# 	Bad dropdown
-#
+/*
+ *	Function: makeDropDown("array options", "name of select", "selected option")
+ *	by Øivind Hoel / eruin
+ */
 function makeDropDown($options, $name, $selected="FALSE")
     {
 		$output = "<select name=\"$name\">\r\n";
@@ -180,10 +197,11 @@ function makeDropDown($options, $name, $selected="FALSE")
     	return $output;
     }
 
-#
-# 	Good dropdown
-#
-
+/*
+ *	Function: htmldropdown("array options", "name of select", "selected option")
+ *	
+ *	by Øivind Hoel / eruin
+ */
 function htmldropdown($options, $name, $selected="FALSE")
     {
 		$output = "<select size=1 name=\"$name\">\r\n";
@@ -200,11 +218,11 @@ function htmldropdown($options, $name, $selected="FALSE")
     }
 
 
-#
-#	Function: 		formatsize
-#	Description:	Properly formats the size of a file
-#	Credit:			Flexer
-#
+/*
+ *	Function: formatsize("file size in bits")
+ *	Properly formats a filesize
+ *	by Georgi Amarov
+ */
 function formatsize($file_size){
 	if($file_size >= 1073741824)
 		{$file_size = round($file_size / 1073741824 * 100) / 100 . "GB";}
@@ -216,10 +234,11 @@ function formatsize($file_size){
 return $file_size;
 }
 
-#
-#	knife Login function
-#
-
+/*
+ *	Function: i18n("string identifier", "multi variables")
+ *	Displays internationalized messages. Takes an array or string of variables to put in the int. msg.
+ *	by Øivind Hoel
+ */
 function i18n( $messageid, $variable=false ) {
 	global $lang;
 	
@@ -305,13 +324,21 @@ function validate_ip($ip){
    return $return;
 }
 
+/*
+ *	Function: html2specialchars("string")
+ *	For use when editing templates -> converts.
+ *	from PHP manual contrib
+ */
 function html2specialchars($str){
 	$trans_table = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
 	return strtr($str, $trans_table);
 	}
 
-# http://no2.php.net/usort (todor at todor dot net)
-# updated for int-assoc article arrays
+/*
+ *	Function: multi_sort("array data", "string key to sort by")
+ *	Displays internationalized messages. Takes an array or string of variables to put in the int. msg.
+ *	by http://no2.php.net/usort (todor at todor dot net) updated by Øivind Hoel for int-assoc article arrays
+ */
 function multi_sort($array,$key){
 	$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? -1 : 1;}');
 	uasort($array,$compare) ;

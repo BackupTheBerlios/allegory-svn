@@ -190,6 +190,8 @@ class Parser {
 			}
 		}
 	echo '</div>';
+	
+	if ($valid === true) { return true; }
 # end single article parser
 	}
 		

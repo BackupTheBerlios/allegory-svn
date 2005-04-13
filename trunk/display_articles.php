@@ -105,7 +105,7 @@ if (!$_GET[k] and !$pathinfo_array[1] or $static) {
 		include(KNIFE_PATH."/display_article.php");
 		}*/
 			
-	if ($_GET[debug] and !$static) {
+	if (!$_GET[debug] and !$static) {
 					echo "<br /><fieldset><legend>".i18n("dashboard_DBI")."<legend><pre>";
 				print_r($_GET);
 				echo "\n\n-----------&lt;- get  | post   -&gt;---------------\n\n";

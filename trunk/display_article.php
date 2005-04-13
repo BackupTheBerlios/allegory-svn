@@ -9,13 +9,13 @@ include_once(KNIFE_PATH.'/plugins/kses.php');
 # We got here for some reason. Display the bloody article, already...
 #
 
-$Parser->Article();
-		
+$Valid = $Parser->Article();
+
 #
 #	If receiving a comment
 #
 		
-if ($_POST[comment] && $valid) {
+if ($_POST[comment] && $Valid === true) {
 	if (!$_POST[comment][name] or $_POST[comment][name] == "") {
 		$errors .= "<li><p>" . i18n("visible_comment_error_name") . "</p></li>";
 		}

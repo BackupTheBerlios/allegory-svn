@@ -12,18 +12,17 @@ $array = array (
 <div class="articlemeta">
 <h1>[friendlylink]{title}[/friendlylink] {comments}</h1>
 <p>
-<strong><small>Published by: {author} (last edit by {lastedit}) around {date}<br />
+<strong><small>[link]#[/link] Skrevet av {author} (sist redigert av {lastedit}) rundt {date}<br />
 Filed in: {category}<br />
-Views: {views}<br />
-Latest comment by: {latestcomment}<br />
-[friendlylink]Read all about it[/friendlylink]<br />
-[link]Read all about the old link[/link]</small></strong>
+</small></strong>
 </p>
 </div>
 
 <div class="article_text">
 {content}
 </div>
+
+<p>Lest {views} gang<small>er</small> - siste kommentar av {latestcomment}</p>
 
 </div>',
         'view' => '<div class="article" style="margin-bottom: 40px;">
@@ -33,28 +32,27 @@ Latest comment by: {latestcomment}<br />
 {content}
 
 {extended}
-<p>views: {views}</p>
+<p>Lest {views} gang<small>(er)</small></p>
 </div>
 </div>
 
-<h1>Comments</h1>',
+<h1>Kommentarer</h1>',
         'comment' => '<div class="comment">
 <div class="commentheader">
-{gravatar} <a href="{url}">{author}</a> <small>({date} - [mail="mail"] {reply}) {ip}</small>
+{gravatar} <a href="{url}">{author}</a> <small>({date=d/m/y} - [mail="mail"] {reply}) {ip}</small>
 </div>
 {parentquote}
-{comment}{date=d/m/y}
+{comment}
 </div>',
         'quote' => '<blockquote><p>Quoting <strong>{name}</strong>:</p>{quote}</blockquote>',
-        'commentform' => '<fieldset><legend>Add comment?</legend>
+        'commentform' => '<h1>Add comment?</h1>
 <input type="text" name="comment[parentcid]" /> Parent<br />
 <input type="text" name="comment[name]" id="commentame" value="{cookiename}" /> Name<br />
 <input type="text" name="comment[email]" id="commentemail" value="{cookiemail}" /> Email<br />
 <input type="text" name="comment[url]" id="commenturl" value="{cookieurl}" /> URL<br /><br />
 Comment <small>(allowed html: {allowedtags})</small><br />
 <textarea onkeyup="markUp(\'\', false);" name="comment[content]" rows="7" cols="50" id="commentcomment"></textarea>
-<p>[preview="Forhåndsvis"] [save="Send"]</p>
-</fieldset>',
+<p>[preview="Forhåndsvis"] [save="Send"]</p>',
       ),
       2 => 
       array (

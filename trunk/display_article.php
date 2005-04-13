@@ -4,7 +4,7 @@
 #		File loaded when displaying a single article
 #
 include_once(KNIFE_PATH.'/plugins/kses.php');
-include_once(KNIFE_PATH.'/inc/class.parse.php');
+#include_once(KNIFE_PATH.'/inc/class.parse.php');
 
 
 # FIXME: NEEDS LOTS OF WORK
@@ -13,7 +13,7 @@ include_once(KNIFE_PATH.'/inc/class.parse.php');
 $currenturl = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/" . end(explode("/", $_SERVER['SCRIPT_NAME'])) . $_SERVER['PATH_INFO'];
 global $currenturl;
 $currentdir = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/";
-$Parser 	= new Parser;
+#$Parser 	= new Parser;
 
 
 # moved to parser

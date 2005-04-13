@@ -47,7 +47,7 @@ Forresten, Philip: Beezewax skal spille i Bergen snart :)
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 16,
+        'views' => 23,
       ),
       1107206795 => 
       array (
@@ -58,7 +58,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 23,
+        'views' => 24,
       ),
       1107009146 => 
       array (
@@ -827,7 +827,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 50,
+        'views' => 51,
       ),
       1113077441 => 
       array (
@@ -876,7 +876,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 57,
+        'views' => 60,
       ),
       '' => 
       array (

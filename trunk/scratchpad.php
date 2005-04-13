@@ -27,7 +27,11 @@ Feature hightlights:
 Feature wishlist:
 =================
 
-
+	- Better comment quoting:
+		* Click a comment and have it highlighted/class-switched.
+			- Javascript
+				* Modify a hidden form field (possible, right?)
+				* Change class of respective thingie Difficult. Check IPB code?
 	- Post status
 		* Published
 			- Lifetime

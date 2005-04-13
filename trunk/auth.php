@@ -57,6 +57,10 @@ function Allegory_Deletecookie(name, path, domain) {
 
 </script>';
 
+	# FIXME: Not working
+	if ($_GET[logout] == "y") { 
+		$UserDB->logout("SentHeaders"); 
+		}
 	$UserDB->verify("headers");
 	
 	if (!$UserDB->username) {
@@ -90,6 +94,7 @@ function Allegory_Deletecookie(name, path, domain) {
 			include_once(KNIFE_PATH.'/lang/'.$Settings->co[general][defaultlanguage]);
 			}	
 		# Great, some kind of login was successful - Tell this to the user	
-		echo i18n("visible_logon_authed", $UserDB->nickname);	
+		echo i18n("visible_logon_authed", $UserDB->nickname) . '<a href="?logout=y">logout</a>';	
 	}
+	
 ?>	

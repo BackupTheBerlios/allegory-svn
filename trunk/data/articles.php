@@ -69,7 +69,7 @@ Det var to år siden. Juli 2003. Jeg var på min to måneder lange sommerferie f
         'author' => 'rilmith',
         'lastedit' => 'rilmith',
         'category' => '3',
-        'views' => 4,
+        'views' => 11,
       ),
       1105972367 => 
       array (
@@ -876,7 +876,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 60,
+        'views' => 67,
       ),
       '' => 
       array (

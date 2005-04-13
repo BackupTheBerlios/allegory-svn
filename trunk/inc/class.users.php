@@ -230,9 +230,23 @@ function verify($SentHeaders = false) {
 		}
 	}
 
-function logout() {
-	setcookie("allegory_username", "", time() - 7200, "/");
-	setcookie("allegory_md5password", "", time() - 7200, "/");
+function logout($SentHeaders = false) {
+	if (!$SentHeaders) {
+		setcookie("allegory_username", "", time() - 7200, "/");
+		setcookie("allegory_md5password", "", time() - 7200, "/");
+		}
+	else {
+	
+		# FIXME: This really isn't working :-P
+		echo '<script type="text/javascript">
+		var now = new Date();
+		now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+		Allegory_Deletecookie("allegory_username");
+		Allegory_Deletecookie("allegory_md5password");
+		window.location = "NewPage.aspx";
+		document.write("moooooooooooooooooop");
+		</script>';			
+		}
 	}
 	
 function convertlevel($level) {

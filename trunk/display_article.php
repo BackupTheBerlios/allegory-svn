@@ -4,19 +4,10 @@
 #		File loaded when displaying a single article
 #
 include_once(KNIFE_PATH.'/plugins/kses.php');
-#include_once(KNIFE_PATH.'/inc/class.parse.php');
 
-
-# FIXME: NEEDS LOTS OF WORK
-
-
-$currenturl = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/" . end(explode("/", $_SERVER['SCRIPT_NAME'])) . $_SERVER['PATH_INFO'];
-global $currenturl;
-$currentdir = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/";
-#$Parser 	= new Parser;
-
-
-# moved to parser
+#
+# We got here for some reason. Display the bloody article, already...
+#
 
 $Parser->Article();
 		

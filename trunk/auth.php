@@ -65,7 +65,7 @@ function Allegory_Deletecookie(name, path, domain) {
 	
 	if (!$UserDB->username) {
 		require(KNIFE_PATH.'/lang/'.$Settings->co[general][defaultlanguage]);
-		echo i18n("visible_logon_noauth") . " - Display login form here later (./auth.php)";
+		echo i18n("visible_logon_noauth");
 		
 		$LoginForm = '
 		<h1>'.i18n("login_Login").'</h1><form id="allegory_loginform" method="post" action=""><input type="hidden" name="panel" value="dashboard" />

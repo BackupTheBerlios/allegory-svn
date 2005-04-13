@@ -818,16 +818,12 @@ Var bare det jeg ville si.',
 
 Er det egentlig noen som tror dette er noe annet enn en slags moderne form for gapestokk? Er det noen som forventer at juryen skal ta hensyn til hver enkelt person? Er det noen som forventer at juryen skal se helt bort fra de uungåelige "brenn dem på bålet"-strømningene i samfunnet utenfor rettssalen?
 
-Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? 
-
-<textarea>
-Test to make sure we can use extended html in articles and still have a surviving editarticles screen...<?php echo "moo"; ?>
-</textarea>',
+Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? ',
         'title' => 'Pedofili',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 51,
+        'views' => 52,
       ),
       1113077441 => 
       array (
@@ -837,7 +833,7 @@ Test to make sure we can use extended html in articles and still have a survivin
         'author' => 'eruin',
         'lastedit' => '',
         'category' => '3',
-        'views' => 11,
+        'views' => 12,
         'status' => 'priv|1113077400|1113509400',
       ),
       1113083214 => 
@@ -876,7 +872,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 67,
+        'views' => 79,
       ),
       '' => 
       array (

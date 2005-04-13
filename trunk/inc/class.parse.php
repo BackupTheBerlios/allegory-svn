@@ -10,7 +10,7 @@
 class Parser {
 
 	function Comment($template, $commentid, $comment, $articlescomments) {
-		global $Settings, $ACDB;
+		global $Settings, $ACDB, $UserDB;
 		$Config = $Settings->co;
 		$output = $template[comment];
 		$output = str_replace("{number}", $i, $output);
@@ -75,6 +75,11 @@ class Parser {
 			$output = str_replace("{cookiemail}", $UserDB->mail, $output);
 			$output = str_replace("{cookieurl}", $UserDB->url, $output);
 			}
+		else { 
+			$output = str_replace("{cookiename}", '', $output);
+			$output = str_replace("{cookiemail}", '', $output);
+			$output = str_replace("{cookieurl}", '', $output);
+			}
 		$output .= '</form>';
 		return $output;
 	
@@ -84,7 +89,7 @@ class Parser {
 	
 		# Needs cleanup! Stuff shouldnt have to be globalized! OMFG this is sad stuff!
 		global $AADB, $ACDB, $UserDB, $Settings, $pathinfo_array, $allarticles, $template;
-	
+		$UserDB->verify("HeadersSent");
 		$k = $_GET[k];
 		
 		if (!$k) { 
@@ -190,7 +195,7 @@ class Parser {
 		
 	function ArticleList($from, $amount, $static = false) {
 		global $AADB, $ACDB, $UserDB, $Settings, $pathinfo_array, $allarticles, $template, $amount, $cat, $allcats;
-		
+		$UserDB->verify("HeadersSent");
 		$i = 0;				# will hold the number of displayed articles
 		foreach($allarticles as $date => $article) {
 			# Destroy variables from last loop
@@ -248,7 +253,7 @@ class Parser {
 			if ($statusarray[0] == "priv") {
 				if (!$UserDB->username) {
 					if ($static != true) {
-						echo "<p>* Article titled <strong>&quot;$article[title]&quot;</strong> is marked private.  You have to login, etc to view it. Skipped. This message needs its own template...</p>";
+						echo "<div class=\"article disabled\"><h1>$article[title]</h1><p>This article is marked private.  You have to login, etc to view it. Skipped. This message needs its own template...</p></div>";
 						continue;
 						}		
 					}

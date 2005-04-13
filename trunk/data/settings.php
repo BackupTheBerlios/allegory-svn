@@ -7,14 +7,11 @@ $array = array (
       1 => 
       array (
         'name' => 'Default',
-        'listing' => '<div class="article" style="margin-bottom: 40px;">
-
-<div class="articlemeta">
+        'listing' => '<div class="article">
 <h1>[friendlylink]{title}[/friendlylink] {comments}</h1>
+<div class="articlemeta">
 <p>
-<strong><small>[link]#[/link] Skrevet av {author} (sist redigert av {lastedit}) rundt {date}<br />
-Filed in: {category}<br />
-</small></strong>
+<strong><small>[link]#[/link] Skrevet av {author} (sist redigert av {lastedit}) rundt {date} - i {category}</small></strong>
 </p>
 </div>
 

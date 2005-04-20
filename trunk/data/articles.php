@@ -823,7 +823,7 @@ Jeg undrer meg. Hva om det er uskyldige mennesker i denne menneskehopen? ',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3, 7',
-        'views' => 52,
+        'views' => 63,
       ),
       1113077441 => 
       array (
@@ -872,19 +872,11 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 90,
+        'views' => 121,
       ),
       '' => 
       array (
-        'views' => 7,
-      ),
-      'gledelige-nyheter' => 
-      array (
-        'views' => 2,
-      ),
-      'gledelige-nyheterd' => 
-      array (
-        'views' => 5,
+        'views' => 4,
       ),
     ),
   ),

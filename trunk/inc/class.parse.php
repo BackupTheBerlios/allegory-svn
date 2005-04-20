@@ -85,65 +85,11 @@ class Parser {
 	
 		}
 
-	function Article() {
+	function Article($article, $date) {
 	
 		# Needs cleanup! Stuff shouldnt have to be globalized! OMFG this is sad stuff!
 		global $AADB, $ACDB, $UserDB, $Settings, $pathinfo_array, $allarticles, $template;
-		$UserDB->verify("HeadersSent");
-		$k = $_GET[k];
-		
-		if (!$k) { 
-			$k = $AADB->urldeconstructor($pathinfo_array, "title");
-			}
-			
-		if (eregi("[a-z]", $k)) {
-			# if $k is alpha , find the timestamp for this article
-			foreach ($allarticles as $timestamp => $article) {
-				if (urlTitle($article[title]) == $k) {
-					$k = $timestamp;
-					print_r($next);
-					break 1;
-					}
-				}
-			}
-		
-		# FIXME: The following seems a bit inappropriate - resource-hog: Have a variable and reconstructing it...
-		unset($allarticles);
-		$article = $AADB->getarticle($k);
-		
-		# FIXME: Is this needed?
-		#if (!$article) { 
-		#	$article = $allarticles[$k];
-		#	}
-		
-		if (is_array($article) and $article != "") {
-			$valid = true;
-			}
-		else { exit(i18n("visible_article_invalid", $Settings->co[general][adminmail])); }
-
-	# rough copy from article(S)
-	# skip draft articles
-	$statusarray = explode("|", $article[status]);
-	if ($statusarray[0] == "draft") {
-		continue;
-		}
-	if ($statusarray[0] == "priv") {
-		if (!$UserDB->username) {
-			if ($static != true) {
-				exit("This article (<strong>&quot;$article[title]&quot;</strong>) is marked private.  You have to login, etc to view it.");
-				}
-			
-			}
-		}
-
-	# date can come from two places
-	if ($timestamp) {
-		$date = $timestamp;
-		}
-	else {
-		$date = $k;
-		}
-			
+	
 	# select the current template
 	$output = $template[view];
 	# parse the listing template
@@ -191,7 +137,7 @@ class Parser {
 		}
 	echo '</div>';
 	
-	if ($valid === true) { return true; }
+	return true;
 # end single article parser
 	}
 		

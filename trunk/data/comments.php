@@ -2258,6 +2258,122 @@ html-tag allowed by kses (strong).',
         'content' => 'En quotende kommentar',
       ),
     ),
+    '' => 
+    array (
+      1114031751 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114031796 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114031935 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032017 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032024 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032036 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032078 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032087 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => 'http://appelsiner.org',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'En kommentar',
+      ),
+      1114032233 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => '',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'Detta er meg',
+      ),
+      1114032361 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => '',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'Detta er meg',
+      ),
+    ),
+    1113266737 => 
+    array (
+      1114032838 => 
+      array (
+        'parentcid' => '',
+        'name' => 'Øivind Hoel',
+        'email' => 'oivind.hoel@appelsinjuice.org',
+        'url' => '',
+        'ip' => '127.0.0.1',
+        'browser' => 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050405 Firefox/1.0 (Ubuntu package 1.0.2)',
+        'content' => 'Dette er en kommentar til slankingen',
+      ),
+    ),
   ),
 );
 ?>

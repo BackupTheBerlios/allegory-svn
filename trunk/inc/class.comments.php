@@ -141,6 +141,7 @@ class KComments {
 			'browser' => sanitize_variables($_SERVER["HTTP_USER_AGENT"]),
 			'content' => stripslashes(sanitize_variables($_POST[comment][content])),
 			);
+			print_r($data);
 		if (defined("KNIFESQL")) {
 			$class = KComments::connect();			
 			$write_sql = "INSERT INTO comments VALUES ('$articleid', '$newcommentid', '$data[parentcid]', '$data[name]', '$data[email]', '$data[url]', '$data[ip]', '$data[browser]', '$data[content]')";
@@ -148,7 +149,7 @@ class KComments {
 			return true;
 		}
 		else {		
-			$class = $this->connect();
+			$class = KComments::connect();
 			$class->settings[$articleid][$newcommentid] = $data;
 			$class->save();
 			return true;

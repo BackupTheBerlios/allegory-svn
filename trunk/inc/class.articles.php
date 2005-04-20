@@ -3,7 +3,9 @@
 #
 #	Article storage abstraction class
 #
-
+			function comparar($a, $b) {
+       return strnatcasecmp($a["status"], $b["status"]);
+}
 
 
 class KArticles {
@@ -194,6 +196,16 @@ class KArticles {
 			$allarticles = $dataclass->settings['articles'];
 			krsort($allarticles);
 			reset($allarticles);
+/*#			usort($allarticles, "comparar"); 
+
+foreach ($allarticles as $key => $row) {
+   $date[$key]  = $key;
+   $status[$key] = $row['status'];
+}
+// Sort the data with volume descending, edition ascending
+// Add $data as the last parameter, to sort by the common key
+array_multisort($date, SORT_ASC, SORT_STRING, $status, SORT_ASC, SORT_STRING, $allarticles);
+*/
 			if ($from) {
 					$allarticles = array_slice_key($allarticles, $from);
 				}

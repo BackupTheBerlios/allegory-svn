@@ -5,11 +5,69 @@
 #
 include_once(KNIFE_PATH.'/plugins/kses.php');
 
+
+		$UserDB->verify("HeadersSent");
+		$k = $_GET[k];
+		
+		if (!$k) { 
+			$k = $AADB->urldeconstructor($pathinfo_array, "title");
+			}
+			
+		if (eregi("[a-z]", $k)) {
+			# if $k is alpha , find the timestamp for this article
+			foreach ($allarticles as $timestamp => $article) {
+				if (urlTitle($article[title]) == $k) {
+					$k = $timestamp;
+					print_r($next);
+					break 1;
+					}
+				}
+			}
+			
+		
+		# FIXME: The following seems a bit inappropriate - resource-hog: Have a variable and reconstructing it...
+		unset($allarticles);
+		$article = $AADB->getarticle($k);
+		
+		# FIXME: Is this needed?
+		#if (!$article) { 
+		#	$article = $allarticles[$k];
+		#	}
+		
+		if (is_array($article) and $article != "") {
+
+			$valid = true;
+			}
+		else { exit(i18n("visible_article_invalid", $Settings->co[general][adminmail])); }
+
+	# rough copy from article(S)
+	# skip draft articles
+	$statusarray = explode("|", $article[status]);
+	if ($statusarray[0] == "draft") {
+		continue;
+		}
+	if ($statusarray[0] == "priv") {
+		if (!$UserDB->username) {
+			if ($static != true) {
+				exit("This article (<strong>&quot;$article[title]&quot;</strong>) is marked private.  You have to login, etc to view it.");
+				}
+			
+			}
+		}
+
+	# date can come from two places
+	if ($timestamp) {
+		$date = $timestamp;
+		}
+	else {
+		$date = $k;
+		}
+
 #
 # We got here for some reason. Display the bloody article, already...
 #
 
-$Valid = $Parser->Article();
+$Valid = $Parser->Article($article, $date);
 
 #
 #	If receiving a comment
@@ -78,7 +136,7 @@ if ($_POST[comment] && $Valid === true) {
 		# Save the comment if no errors occurred and we didnt request a preview
 	if (!$errors and !$_POST[comment][preview]) {
 		$ACDB->add($date);
-		#FIXME: Redirect javascript doesn't work on all servers
+		#FIXME: Redirect javascript doesn't work on all servers	
 		echo "<script type=\"text/javascript\">self.location.href='http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}';</script>";
 		}
 		

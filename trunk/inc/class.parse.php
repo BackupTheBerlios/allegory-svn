@@ -72,7 +72,7 @@ class Parser {
 		$output = str_replace("{allowedtags}", kses_filter("gettags"), $output);
 		if ($UserDB->username) {
 			$output = str_replace("{cookiename}", $UserDB->nickname, $output);
-			$output = str_replace("{cookiemail}", $UserDB->mail, $output);
+			$output = str_replace("{cookiemail}", $UserDB->email, $output);
 			$output = str_replace("{cookieurl}", $UserDB->url, $output);
 			}
 		else { 

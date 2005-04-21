@@ -22,7 +22,7 @@ Da skal hun få sin dose kjærleik :)
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 216,
+        'views' => 217,
       ),
       1108842457 => 
       array (
@@ -872,7 +872,7 @@ b) <strong>har flatrompe på tross av gedigen metallklump i ræva.</strong>',
         'author' => 'eruin',
         'lastedit' => 'eruin',
         'category' => '3',
-        'views' => 121,
+        'views' => 127,
       ),
       '' => 
       array (

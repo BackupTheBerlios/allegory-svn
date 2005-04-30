@@ -153,9 +153,9 @@ if (!$_GET[id] && !$_POST[editlist]) {
 		   	$srt2[$key] = $row['date'];
 		}
 
-# Sort crap. This needs to be fixed. Should be in the next foreach loop.
-# Content shouldnt be output in the next loop, but buffered.
-array_multisort($srt1, SORT_ASC, $srt2, SORT_DESC, $listarticles);
+	# Sort crap. This needs to be fixed. Should be in the next foreach loop.
+	# Content shouldnt be output in the next loop, but buffered.
+	array_multisort($srt1, SORT_ASC, $srt2, SORT_DESC, $listarticles);
 	
 	
 	foreach($listarticles as $id => $article) {

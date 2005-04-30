@@ -7,7 +7,8 @@
 	if (!defined( "KNIFE_PATH" )) {
     	define( "KNIFE_PATH", dirname(__FILE__)."/");	# Absolute path to current script
     	}
-    	
+
+	
 	include_once(KNIFE_PATH.'/inc/functions.php');			# load common functions
 	include_once(KNIFE_PATH.'/inc/class.users.php');
 	include_once(KNIFE_PATH.'/inc/class.settings.php');

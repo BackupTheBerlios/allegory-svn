@@ -145,7 +145,20 @@ if (!$_GET[id] && !$_POST[editlist]) {
 			<th>".i18n("generic_author")."</th>
 			<th style=\"text-align: right;\">".i18n("generic_actions")."</th>
 		</tr>";
-	foreach($Articles->listarticles("", "") as $date => $article) {
+	$listarticles = $Articles->listarticles("", "");
+	foreach ($listarticles as $key => $row) {
+		$row[status] = current(explode("|", $row[status]));
+		if (!$row[status]) { $row[status] = "pub"; }
+	   		$srt1[$key]  = $row['status'];
+		   	$srt2[$key] = $row['date'];
+		}
+
+# Sort crap. This needs to be fixed. Should be in the next foreach loop.
+# Content shouldnt be output in the next loop, but buffered.
+array_multisort($srt1, SORT_ASC, $srt2, SORT_DESC, $listarticles);
+	
+	
+	foreach($listarticles as $id => $article) {
 
 		$catarray = explode(", ", $article[category]);
 		$catamount = count($catarray);
@@ -169,14 +182,14 @@ if (!$_GET[id] && !$_POST[editlist]) {
 		$article[status] = current(explode("|", $article[status]));
 		if (!$article[status]) { $article[status] = "pub"; }
 		
-		$main_content .= "<tr id=\"editlist$date\" onmousedown=\"knife_bgc(this, true);\">
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\"><img src=\"graphics/icons/article_$article[status].png\" /></td>
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\"><a href=\"?panel=edit&amp;id=$date\">$one $article[title]</a></td>
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\">".date("d/m/y", $date)."</td>
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\">".count($Comments->articlecomments($date))."</td>
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\">$catrowcontent</td>
-			<td onmousedown=\"document.getElementById('del$date').checked = (document.getElementById('del$date').checked ? false : true);\" title=\"".i18n("edit_lastedit")." $article[lastedit]\">$article[author]</td>
-			<td style=\"text-align: right;\"><span class=\"delete\"><a href=\"?panel=edit&amp;id=$date&amp;action=delete\" title=\"".i18n("edit_quickerase")." $article[title] ?\">X</a></span> <input type=\"checkbox\" id=\"del$date\" name=\"id[]\" value=\"$date\" /></td>
+		$main_content .= "<tr id=\"editlist$id\" onmousedown=\"knife_bgc(this, true);\">
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\"><img src=\"graphics/icons/article_$article[status].png\" /></td>
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\"><a href=\"?panel=edit&amp;id=$id\">$one $article[title]</a></td>
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\">".date("d/m/y", $article[date])."</td>
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\">".count($Comments->articlecomments($id))."</td>
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\">$catrowcontent</td>
+			<td onmousedown=\"document.getElementById('del$id').checked = (document.getElementById('del$id').checked ? false : true);\" title=\"".i18n("edit_lastedit")." $article[lastedit]\">$article[author]</td>
+			<td style=\"text-align: right;\"><span class=\"delete\"><a href=\"?panel=edit&amp;id=id&amp;action=delete\" title=\"".i18n("edit_quickerase")." $article[title] ?\">X</a></span> <input type=\"checkbox\" id=\"del$id\" name=\"id[]\" value=\"$id\" /></td>
 			</tr>";	
 		}
 	$main_content .= "</table><div style=\"text-align: right;\"><br /><input type=\"submit\" name=\"editlist[submit]\" value=\"".i18n("generic_do")."\" /></div></form>";

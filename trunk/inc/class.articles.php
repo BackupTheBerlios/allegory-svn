@@ -62,7 +62,7 @@ class KArticles {
 		$status = sanitize_variables($_POST[article][status]) . "|$starttime|$stoptime";
 		
 		$data = array(
-			"timestamp" => $now,
+			"date" 		=> $now,
 			"content" 	=> stripslashes($_POST[article][content]),
 			"title" 	=> stripslashes($_POST[article][title]),
 			"author" 	=> stripslashes($author),
@@ -74,6 +74,7 @@ class KArticles {
 			
 		# hook to add custom fields here.
 		#	$data = run_filters('admin-new-savedata', $data);
+		$articleid = 'a' . $now;
 		
 		if (defined("KNIFESQL")) {
 			$dataclass = KArticles::connect();			
@@ -85,7 +86,7 @@ class KArticles {
 
 		else {
 			$dataclass = KArticles::connect();
-			$dataclass->settings['articles'][$now] = $data;
+			$dataclass->settings['articles'][$articleid] = $data;
 			$dataclass->save();
 
 			# Give the user a status message
@@ -104,6 +105,7 @@ class KArticles {
 
 		# Put the posted and santitized stuff into an array for saving
 		$data = array(
+			"date"		=> stripslashes($_POST[article][date]),
 			"content" 	=> stripslashes($_POST[article][content]),
 			"title" 	=> stripslashes($_POST[article][title]),
 			"author" 	=> "",

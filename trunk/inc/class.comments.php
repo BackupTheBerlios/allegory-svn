@@ -133,6 +133,7 @@ class KComments {
 		$ip = $_SERVER["REMOTE_ADDR"];
 		if (!validate_ip($ip)) { $ip = "127.0.0.2"; }
 		$data = array(
+			'date' => $newcommentid,
 			'parentcid' => stripslashes(sanitize_variables($_GET[replyto])),
 			'name' => stripslashes(sanitize_variables($_POST[comment][name])),
 			'email' => stripslashes(sanitize_variables($_POST[comment][email])),
@@ -142,6 +143,7 @@ class KComments {
 			'content' => stripslashes(sanitize_variables($_POST[comment][content])),
 			);
 			print_r($data);
+			$newcommentid = 'c' . $newcommentid;
 		if (defined("KNIFESQL")) {
 			$class = KComments::connect();			
 			$write_sql = "INSERT INTO comments VALUES ('$articleid', '$newcommentid', '$data[parentcid]', '$data[name]', '$data[email]', '$data[url]', '$data[ip]', '$data[browser]', '$data[content]')";
